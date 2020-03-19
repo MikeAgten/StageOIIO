@@ -1,0 +1,10 @@
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.csprojAssemblyReference.cache
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.AssemblyInfoInputs.cache
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.AssemblyInfo.cs
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.deps.json
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.runtimeconfig.json
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.runtimeconfig.dev.json
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.pdb
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.pdb

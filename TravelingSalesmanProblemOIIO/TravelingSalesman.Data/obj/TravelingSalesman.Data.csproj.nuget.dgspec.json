@@ -1,0 +1,278 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\TravelingSalesman.Data\\TravelingSalesman.Data.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Appointment\\Appointment.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Appointment\\Appointment.csproj",
+        "projectName": "Appointment",
+        "projectPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Appointment\\Appointment.csproj",
+        "packagesPath": "C:\\Users\\11600438\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Appointment\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\11600438\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Customer\\CustomerProj.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Customer\\CustomerProj.csproj",
+        "projectName": "CustomerProj",
+        "projectPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Customer\\CustomerProj.csproj",
+        "packagesPath": "C:\\Users\\11600438\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Customer\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\11600438\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\Tenant.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\Tenant.csproj",
+        "projectName": "Tenant",
+        "projectPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\Tenant.csproj",
+        "packagesPath": "C:\\Users\\11600438\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\11600438\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\TravelingSalesman.Data\\TravelingSalesman.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\TravelingSalesman.Data\\TravelingSalesman.Data.csproj",
+        "projectName": "TravelingSalesman.Data",
+        "projectPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\TravelingSalesman.Data\\TravelingSalesman.Data.csproj",
+        "packagesPath": "C:\\Users\\11600438\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\TravelingSalesman.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\11600438\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Appointment\\Appointment.csproj": {
+                "projectPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Appointment\\Appointment.csproj"
+              },
+              "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Customer\\CustomerProj.csproj": {
+                "projectPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Customer\\CustomerProj.csproj"
+              },
+              "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\Tenant.csproj": {
+                "projectPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\Tenant.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

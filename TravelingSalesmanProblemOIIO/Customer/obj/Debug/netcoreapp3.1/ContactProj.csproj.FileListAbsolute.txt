@@ -1,0 +1,13 @@
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.csprojAssemblyReference.cache
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.AssemblyInfoInputs.cache
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.AssemblyInfo.cs
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\ContactProj.deps.json
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\ContactProj.runtimeconfig.json
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\ContactProj.runtimeconfig.dev.json
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\ContactProj.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\ContactProj.pdb
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.csproj.CopyComplete
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.pdb
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\AppointmentProj.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\AppointmentProj.pdb

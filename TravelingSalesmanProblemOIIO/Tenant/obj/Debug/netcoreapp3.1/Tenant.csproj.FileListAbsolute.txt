@@ -1,0 +1,8 @@
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\Tenant.deps.json
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\Tenant.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\Tenant.csprojAssemblyReference.cache
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\Tenant.AssemblyInfoInputs.cache
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\Tenant.AssemblyInfo.cs
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\Tenant.pdb
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\Tenant.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\Tenant.pdb

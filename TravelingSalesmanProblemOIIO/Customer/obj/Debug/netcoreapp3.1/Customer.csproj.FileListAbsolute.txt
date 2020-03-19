@@ -1,0 +1,8 @@
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\Customer.deps.json
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\Customer.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\Customer.pdb
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\Customer.csprojAssemblyReference.cache
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\Customer.AssemblyInfoInputs.cache
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\Customer.AssemblyInfo.cs
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\Customer.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\Customer.pdb

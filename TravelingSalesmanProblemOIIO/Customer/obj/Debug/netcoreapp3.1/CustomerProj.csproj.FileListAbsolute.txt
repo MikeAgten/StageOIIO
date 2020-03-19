@@ -1,0 +1,15 @@
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\CustomerProj.deps.json
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\CustomerProj.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\CustomerProj.pdb
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\CustomerProj.csprojAssemblyReference.cache
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\CustomerProj.AssemblyInfoInputs.cache
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\CustomerProj.AssemblyInfo.cs
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\CustomerProj.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\CustomerProj.pdb
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\CustomerProj.runtimeconfig.json
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\CustomerProj.runtimeconfig.dev.json
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\CustomerProj.csproj.CopyComplete
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\TenantProj.dll
+C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\TenantProj.pdb
