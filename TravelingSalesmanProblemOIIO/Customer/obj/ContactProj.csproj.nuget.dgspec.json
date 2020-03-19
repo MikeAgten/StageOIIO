@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Customer\\ContactProj.csproj": {}
+    "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Customer\\ContactProj.csproj": {}
   },
   "projects": {
-    "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Customer\\ContactProj.csproj": {
+    "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Customer\\ContactProj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Customer\\ContactProj.csproj",
+        "projectUniqueName": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Customer\\ContactProj.csproj",
         "projectName": "ContactProj",
-        "projectPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Customer\\ContactProj.csproj",
+        "projectPath": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Customer\\ContactProj.csproj",
         "packagesPath": "C:\\Users\\11600438\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Customer\\obj\\",
+        "outputPath": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Customer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -32,8 +32,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj": {
-                "projectPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj"
+              "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj": {
+                "projectPath": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj"
               }
             }
           }
@@ -93,14 +93,14 @@
         }
       }
     },
-    "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj": {
+    "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj",
+        "projectUniqueName": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj",
         "projectName": "AppointmentProj",
-        "projectPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj",
+        "projectPath": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj",
         "packagesPath": "C:\\Users\\11600438\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\obj\\",
+        "outputPath": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

@@ -5487,11 +5487,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj",
+      "projectUniqueName": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj",
       "projectName": "AppointmentProj",
-      "projectPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj",
+      "projectPath": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj",
       "packagesPath": "C:\\Users\\11600438\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\11600438\\source\\repos\\TravelingSalesmanProblemOIIO\\Tenant\\obj\\",
+      "outputPath": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

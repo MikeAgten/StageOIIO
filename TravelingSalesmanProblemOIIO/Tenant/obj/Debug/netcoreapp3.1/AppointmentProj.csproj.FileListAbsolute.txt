@@ -8,3 +8,12 @@ C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\net
 C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.pdb
 C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.dll
 C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.pdb
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.deps.json
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.runtimeconfig.json
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.runtimeconfig.dev.json
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.dll
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.pdb
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.AssemblyInfoInputs.cache
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.AssemblyInfo.cs
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.dll
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.pdb

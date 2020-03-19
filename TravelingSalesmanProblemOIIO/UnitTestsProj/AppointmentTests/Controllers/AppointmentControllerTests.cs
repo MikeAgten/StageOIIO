@@ -11,9 +11,9 @@ using TravelingSalesmanProblemOIIO.Controllers;
 
 namespace UnitTestsProj.AppointmentTests.Controllers
 {
-    class AppointmentControllerTests
+    public class AppointmentControllerTests
     {
-        AppointmentsController appointmentsController;
+        /*AppointmentsController appointmentsController;
         private readonly IMediator mediator;
 
         [SetUp]
@@ -29,6 +29,13 @@ namespace UnitTestsProj.AppointmentTests.Controllers
             var AppointmentResult = await appointmentsController.CreateAppointment(createAppointmentCommand);
 
             Assert.NotNull(AppointmentResult);
+        }*/
+
+        [Test]
+        public async void Test()
+        {
+            int i = 1;
+            Assert.NotNull(i);
         }
 
     }
