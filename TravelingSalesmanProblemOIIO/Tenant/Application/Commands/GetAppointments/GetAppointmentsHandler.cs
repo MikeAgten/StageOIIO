@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
 
-namespace AppointmentProj.Application.Commands.CreateCustomer
+namespace AppointmentProj.Application.Commands.GetAppointments
 {
     public class GetAppointmentsHandler : IRequestHandler<GetAppointmentsCommand, List<Appointment>>
     {

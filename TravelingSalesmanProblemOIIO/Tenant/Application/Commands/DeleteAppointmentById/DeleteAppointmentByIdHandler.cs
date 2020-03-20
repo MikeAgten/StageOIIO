@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
 
-namespace AppointmentProj.Application.Commands.DeleteCustomerById
+namespace AppointmentProj.Application.Commands.DeleteAppointmentById
 {
     public class DeleteAppointmentByIdHandler : IRequestHandler<DeleteAppointmentByIdCommand, Appointment>
     {

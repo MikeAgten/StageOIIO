@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
 
-namespace AppointmentProj.Application.Commands.PutCustomer
+namespace AppointmentProj.Application.Commands.PutAppointment
 {
     public class PutAppointmentHandler : IRequestHandler<PutAppointmentCommand, Appointment>
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using AppointmentProj.Domain;
 
-namespace AppointmentProj.Application.Commands.PutCustomer
+namespace AppointmentProj.Application.Commands.PutAppointment
 {
     public class PutAppointmentCommand : IRequest<Appointment>
     {

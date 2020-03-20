@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
 
-namespace AppointmentProj.Application.Commands.GetCustomerById
+namespace AppointmentProj.Application.Commands.GetAppointmentById
 {
     public class GetAppointmentByIdHandler : IRequestHandler<GetAppointmentByIdCommand, Appointment>
     {
