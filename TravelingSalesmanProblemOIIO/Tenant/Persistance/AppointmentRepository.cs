@@ -14,52 +14,50 @@ namespace AppointmentProj.Persistance
         {
 
         }
-        internal Task SaveAsync(Appointment tenant)
+        public virtual void SaveAsync(Appointment appointment)
         {
             using(var context = new AppointmentDbContext())
             {
-                context.Appointments.Add(tenant);
+                context.Appointments.Add(appointment);
                 context.SaveChanges();
-                return Task.FromResult(tenant);
             }
         }
 
-        internal Task<Appointment> PutAsync(Appointment tenant)
+        public virtual void PutAsync(Appointment appointment)
         {
             using (var context = new AppointmentDbContext())
             {
-                context.Appointments.Update(tenant);
+                context.Appointments.Update(appointment);
                 context.SaveChanges();
-                return Task.FromResult(tenant);
             }
         }
 
-        internal Task<List<Appointment>> GetAsync()
+        public virtual Task<List<Appointment>> GetAsync()
         {
             using (var context = new AppointmentDbContext())
             {
-                List<Appointment> tenants = context.Appointments.ToList();
-                return Task.FromResult(tenants);
+                List<Appointment> appointments = context.Appointments.ToList();
+                return Task.FromResult(appointments);
             }
         }
 
-        internal Task<Appointment> GetByIdAsync(int id)
+        public virtual Task<Appointment> GetByIdAsync(int id)
         {
             using (var context = new AppointmentDbContext())
             {
-                Appointment tenant = context.Appointments.Where(c => c.Id == id).Single();
-                return Task.FromResult(tenant);
+                Appointment appointment = context.Appointments.Where(c => c.Id == id).Single();
+                return Task.FromResult(appointment);
             }
         }
 
-        internal Task<Appointment> DeleteByIdAsync(int id)
+        public virtual Task<Appointment> DeleteByIdAsync(int id)
         {
             using (var context = new AppointmentDbContext())
             {
-                Appointment tenant = context.Appointments.Where(c => c.Id == id).Single();
-                context.Appointments.Remove(tenant);
+                Appointment appointment = context.Appointments.Where(c => c.Id == id).Single();
+                context.Appointments.Remove(appointment);
                 context.SaveChanges();
-                return Task.FromResult(tenant);
+                return Task.FromResult(appointment);
             }
         }
     }

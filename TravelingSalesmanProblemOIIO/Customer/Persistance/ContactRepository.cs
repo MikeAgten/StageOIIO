@@ -13,7 +13,7 @@ namespace ContactProj.Persistance
         {
 
         }
-        internal Task SaveAsync(Contact customer)
+        public virtual Task SaveAsync(Contact customer)
         {
             using(var context = new ContactDbContext())
             {
@@ -23,7 +23,7 @@ namespace ContactProj.Persistance
             }
         }
 
-        internal Task<Contact> PutAsync(Contact customer)
+        public virtual Task<Contact> PutAsync(Contact customer)
         {
             using (var context = new ContactDbContext())
             {
@@ -33,7 +33,7 @@ namespace ContactProj.Persistance
             }
         }
 
-        internal Task<List<Contact>> GetAsync()
+        public virtual Task<List<Contact>> GetAsync()
         {
             using (var context = new ContactDbContext())
             {
@@ -42,7 +42,7 @@ namespace ContactProj.Persistance
             }
         }
 
-        internal Task<Contact> GetByIdAsync(int id)
+        public virtual Task<Contact> GetByIdAsync(int id)
         {
             using (var context = new ContactDbContext())
             {
@@ -51,7 +51,7 @@ namespace ContactProj.Persistance
             }
         }
 
-        internal Task<Contact> DeleteByIdAsync(int id)
+        public virtual Task<Contact> DeleteByIdAsync(int id)
         {
             using (var context = new ContactDbContext())
             {
