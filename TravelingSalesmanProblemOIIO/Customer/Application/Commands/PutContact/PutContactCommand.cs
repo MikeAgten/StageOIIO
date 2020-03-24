@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ContactProj.Application.Commands.PutCustomer
 {
-    public class PutContactCommand : IRequest<Contact>
+    public class PutContactCommand : IRequest<Unit>
     {
         public int Id { get; set; }
         public int ContactType { get; set; }

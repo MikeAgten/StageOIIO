@@ -6,7 +6,7 @@ using MediatR;
 
 namespace ContactProj.Application.Commands.DeleteCustomerById
 {
-    public class DeleteContactByIdCommand : IRequest<Contact>
+    public class DeleteContactByIdCommand : IRequest<Unit>
     {
         public DeleteContactByIdCommand(int id)
         {

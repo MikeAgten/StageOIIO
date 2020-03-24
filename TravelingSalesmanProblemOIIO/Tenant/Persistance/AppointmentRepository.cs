@@ -14,7 +14,8 @@ namespace AppointmentProj.Persistance
         {
 
         }
-        public virtual void SaveAsync(Appointment appointment)
+
+        public virtual async void SaveAsync(Appointment appointment)
         {
             using(var context = new AppointmentDbContext())
             {
@@ -23,7 +24,7 @@ namespace AppointmentProj.Persistance
             }
         }
 
-        public virtual void PutAsync(Appointment appointment)
+        public virtual async void PutAsync(Appointment appointment)
         {
             using (var context = new AppointmentDbContext())
             {
@@ -50,14 +51,13 @@ namespace AppointmentProj.Persistance
             }
         }
 
-        public virtual Task<Appointment> DeleteByIdAsync(int id)
+        public virtual void DeleteByIdAsync(int id)
         {
             using (var context = new AppointmentDbContext())
             {
                 Appointment appointment = context.Appointments.Where(c => c.Id == id).Single();
                 context.Appointments.Remove(appointment);
                 context.SaveChanges();
-                return Task.FromResult(appointment);
             }
         }
     }

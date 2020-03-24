@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace AppointmentProj.Application.Commands.CreateCommand
 {
-    public class CreateAppointmentHandler : IRequestHandler<CreateAppointmentCommand, Appointment>
+    public class CreateAppointmentHandler : IRequestHandler<CreateAppointmentCommand, int>
     {
         private readonly AppointmentRepository appointmentRepository;
 
@@ -16,7 +16,7 @@ namespace AppointmentProj.Application.Commands.CreateCommand
         {
             this.appointmentRepository = appointmentRepository;
         }
-        public async Task<Appointment> Handle(CreateAppointmentCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateAppointmentCommand request, CancellationToken cancellationToken)
         {
             var appointment = new Appointment() { Title = request.Title,
                 Description = request.Description,
@@ -28,9 +28,8 @@ namespace AppointmentProj.Application.Commands.CreateCommand
                 TenantId = request.TenantId,
                 //CreatedDateUtc = DateTime.Now
             };
-
             appointmentRepository.SaveAsync(appointment);
-            return appointment;
+            return appointment.Id;
         }
     }
 }

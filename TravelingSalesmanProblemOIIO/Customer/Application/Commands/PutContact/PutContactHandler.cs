@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ContactProj.Application.Commands.PutCustomer
 {
-    public class PutContactHandler : IRequestHandler<PutContactCommand, Contact>
+    public class PutContactHandler : IRequestHandler<PutContactCommand, Unit>
     {
         private readonly ContactRepository contactRepository;
 
@@ -17,7 +17,7 @@ namespace ContactProj.Application.Commands.PutCustomer
         {
             this.contactRepository = contactRepository;
         }
-        public async Task<Contact> Handle(PutContactCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(PutContactCommand request, CancellationToken cancellationToken)
         {
             var contact = await contactRepository.GetByIdAsync(request.Id);
             contact.Type = (Contact.ContactType)request.ContactType;
@@ -25,8 +25,8 @@ namespace ContactProj.Application.Commands.PutCustomer
             contact.Surname = request.Surname;
             contact.EmailAddress = request.EmailAddress;
             contact.CreatedDateUtc = request.CreatedDateUtc;
-            await contactRepository.PutAsync(contact);
-            return contact;
+            contactRepository.PutAsync(contact);
+            return Unit.Value;
         }
     }
 }

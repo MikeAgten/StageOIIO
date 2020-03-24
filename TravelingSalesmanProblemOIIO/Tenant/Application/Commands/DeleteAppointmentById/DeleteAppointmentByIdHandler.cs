@@ -9,7 +9,7 @@ using AppointmentProj.Domain;
 
 namespace AppointmentProj.Application.Commands.DeleteAppointmentById
 {
-    public class DeleteAppointmentByIdHandler : IRequestHandler<DeleteAppointmentByIdCommand, Appointment>
+    public class DeleteAppointmentByIdHandler : IRequestHandler<DeleteAppointmentByIdCommand, Unit>
     {
         private readonly AppointmentRepository appointmentRepository;
 
@@ -17,10 +17,10 @@ namespace AppointmentProj.Application.Commands.DeleteAppointmentById
         {
             this.appointmentRepository = appointmentRepository;
         }
-        public async Task<Appointment> Handle(DeleteAppointmentByIdCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteAppointmentByIdCommand request, CancellationToken cancellationToken)
         {
-            var appointment = await appointmentRepository.DeleteByIdAsync(request.Id);
-            return appointment;
+            appointmentRepository.DeleteByIdAsync(request.Id);
+            return Unit.Value;
         }
     }
 }

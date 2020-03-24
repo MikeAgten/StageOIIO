@@ -27,8 +27,8 @@ namespace TravelingSalesmanProblemOIIO.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateContact(CreateContactCommand command)
         {
-            var createdContact = await mediator.Send(command);
-            return Created(new Uri("https://localhost:5001/api/Customers/" + createdContact.Id), createdContact);
+            var createdContactId = await mediator.Send(command);
+            return Created(new Uri("https://localhost:5001/api/Customers/" + createdContactId), createdContactId);
         }
 
         [HttpPut]

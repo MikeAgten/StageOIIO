@@ -13,23 +13,22 @@ namespace ContactProj.Persistance
         {
 
         }
-        public virtual Task SaveAsync(Contact customer)
+        public virtual Task<int> SaveAsync(Contact customer)
         {
             using(var context = new ContactDbContext())
             {
                 context.Contacts.Add(customer);
                 context.SaveChanges();
-                return Task.FromResult(customer);
+                return Task.FromResult(customer.Id);
             }
         }
 
-        public virtual Task<Contact> PutAsync(Contact customer)
+        public virtual void PutAsync(Contact customer)
         {
             using (var context = new ContactDbContext())
             {
                 context.Contacts.Update(customer);
                 context.SaveChanges();
-                return Task.FromResult(customer);
             }
         }
 
@@ -51,14 +50,13 @@ namespace ContactProj.Persistance
             }
         }
 
-        public virtual Task<Contact> DeleteByIdAsync(int id)
+        public virtual void DeleteByIdAsync(int id)
         {
             using (var context = new ContactDbContext())
             {
                 Contact customer = context.Contacts.Where(c => c.Id == id).Single();
                 context.Contacts.Remove(customer);
                 context.SaveChanges();
-                return Task.FromResult(customer);
             }
         }
     }

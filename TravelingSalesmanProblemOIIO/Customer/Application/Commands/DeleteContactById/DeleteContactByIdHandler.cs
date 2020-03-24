@@ -9,7 +9,7 @@ using ContactProj.Persistance;
 
 namespace ContactProj.Application.Commands.DeleteCustomerById
 {
-    public class DeleteContactByIdHandler : IRequestHandler<DeleteContactByIdCommand, Contact>
+    public class DeleteContactByIdHandler : IRequestHandler<DeleteContactByIdCommand, Unit>
     {
         private readonly ContactRepository contactRepository;
 
@@ -17,10 +17,10 @@ namespace ContactProj.Application.Commands.DeleteCustomerById
         {
             this.contactRepository = contactRepository;
         }
-        public async Task<Contact> Handle(DeleteContactByIdCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteContactByIdCommand request, CancellationToken cancellationToken)
         {
-            var contact = await contactRepository.DeleteByIdAsync(request.Id);
-            return contact;
+            contactRepository.DeleteByIdAsync(request.Id);
+            return Unit.Value;
         }
     }
 }

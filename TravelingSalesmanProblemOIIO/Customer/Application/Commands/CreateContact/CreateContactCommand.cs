@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ContactProj.Application.Commands.CreateCommand
 {
-    public class CreateContactCommand : IRequest<Contact>
+    public class CreateContactCommand : IRequest<int>
     {
         public int ContactType { get; set; }
         public string FirstName { get; set; }

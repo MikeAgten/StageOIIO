@@ -6,7 +6,7 @@ using AppointmentProj.Domain;
 
 namespace AppointmentProj.Application.Commands.DeleteAppointmentById
 {
-    public class DeleteAppointmentByIdCommand : IRequest<Appointment>
+    public class DeleteAppointmentByIdCommand : IRequest<Unit>
     {
         public DeleteAppointmentByIdCommand(int id)
         {

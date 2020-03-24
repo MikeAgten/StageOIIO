@@ -27,15 +27,15 @@ namespace TravelingSalesmanProblemOIIO.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAppointment(CreateAppointmentCommand command)
         {
-            var createdAppointment = await mediator.Send(command);
-            return Created(new Uri("https://localhost:5001/api/Appointments/" + createdAppointment.Id), createdAppointment);
+            var createdAppointmentId = await mediator.Send(command);
+            return Created(new Uri("https://localhost:5001/api/Appointments/" + createdAppointmentId), createdAppointmentId);
         }
 
         [HttpPut]
-        public async Task<IActionResult> DeleteAppointmentById(PutAppointmentCommand command)
+        public async Task<IActionResult> PutAppointmentById(PutAppointmentCommand command)
         {
-            var appointment = await mediator.Send(command);
-            return Ok(appointment);
+            await mediator.Send(command);
+            return Ok();
         }
 
         [HttpGet("{appointmentid:int}")]
@@ -46,17 +46,17 @@ namespace TravelingSalesmanProblemOIIO.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAppointment()
+        public async Task<IActionResult> GetAppointments()
         {
-            var appointment = await mediator.Send(new GetAppointmentsCommand());
-            return Ok(appointment);
+            var appointments = await mediator.Send(new GetAppointmentsCommand());
+            return Ok(appointments);
         }
 
         [HttpDelete("{appointmentid:int}")]
         public async Task<IActionResult> DeleteAppointmentById(int appointmentid)
         {
             var appointment = await mediator.Send(new DeleteAppointmentByIdCommand(appointmentid));
-            return Ok(appointment);
+            return Ok();
         }
     }
 }

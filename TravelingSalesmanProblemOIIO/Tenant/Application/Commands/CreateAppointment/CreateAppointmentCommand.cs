@@ -6,7 +6,7 @@ using AppointmentProj.Domain;
 
 namespace AppointmentProj.Application.Commands.CreateCommand
 {
-    public class CreateAppointmentCommand : IRequest<Appointment>
+    public class CreateAppointmentCommand : IRequest<int>
     {
         public string Title { get; set; }
         public string Description { get; set; }
