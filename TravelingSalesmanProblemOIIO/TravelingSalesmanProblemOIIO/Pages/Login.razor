@@ -1,0 +1,30 @@
+﻿@page "/loginpage"
+@inherits LoginBase
+
+<h1>Login page</h1>
+<p>Dit zijn alle contacten</p>
+@if (Contacts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else { 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Voornaam</th>
+            <th>Achternaam</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var contact in Contacts)
+        {
+            <tr>
+                <td>@contact.Id</td>
+                <td>@contact.FirstName</td>
+                <td>@contact.Surname</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}

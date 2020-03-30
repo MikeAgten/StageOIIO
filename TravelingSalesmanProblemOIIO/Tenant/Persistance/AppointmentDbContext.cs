@@ -11,28 +11,11 @@ namespace AppointmentProj.Persistance
 {
     public class AppointmentDbContext : DbContext
     {
-        ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
-        {
-            builder.AddFilter("Microsoft", LogLevel.Warning)
-                   .AddFilter("System", LogLevel.Warning)
-                   .AddFilter("SampleApp.Program", LogLevel.Debug)
-                   .AddConsole();
-        });
 
-        public AppointmentDbContext() : base()
-        {
-
-        }
+        public AppointmentDbContext(DbContextOptions<AppointmentDbContext> options): base(options)
+        { }
 
         public DbSet<Appointment> Appointments { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder
-                .UseLoggerFactory(loggerFactory)
-                .UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = TSPAppointmentDatabase; Trusted_Connection = True;");
-            base.OnConfiguring(optionsBuilder);
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

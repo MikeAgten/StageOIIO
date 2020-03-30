@@ -1,63 +1,50 @@
 ﻿using ContactProj.Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ContactProj.Persistance
 {
     public class ContactRepository
     {
-        public ContactRepository()
-        {
+        private readonly ContactDbContext dbContext;
 
-        }
-        public virtual Task<int> SaveAsync(Contact customer)
+        public ContactRepository(ContactDbContext dbContext)
         {
-            using(var context = new ContactDbContext())
-            {
-                context.Contacts.Add(customer);
-                context.SaveChanges();
-                return Task.FromResult(customer.Id);
-            }
+            this.dbContext = dbContext;
         }
-
-        public virtual void PutAsync(Contact customer)
+        public virtual async Task<int> SaveAsync(Contact customer, CancellationToken cancellationToken)
         {
-            using (var context = new ContactDbContext())
-            {
-                context.Contacts.Update(customer);
-                context.SaveChanges();
-            }
+            var result = await dbContext.Contacts.AddAsync(customer, cancellationToken);
+            await dbContext.SaveChangesAsync(cancellationToken);
+            return result.Entity.Id;
         }
 
-        public virtual Task<List<Contact>> GetAsync()
+        public virtual async Task PutAsync(Contact customer, CancellationToken cancellationToken)
         {
-            using (var context = new ContactDbContext())
-            {
-                List<Contact> customers = context.Contacts.ToList();
-                return Task.FromResult(customers);
-            }
+            dbContext.Contacts.Update(customer);
+            await dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public virtual Task<Contact> GetByIdAsync(int id)
+        public virtual async Task<List<Contact>> GetAsync(CancellationToken cancellationToken)
         {
-            using (var context = new ContactDbContext())
-            {
-                Contact customer = context.Contacts.Where(c => c.Id == id).Single();
-                return Task.FromResult(customer);
-            }
+            return await dbContext.Contacts.ToListAsync(cancellationToken);
         }
 
-        public virtual void DeleteByIdAsync(int id)
+        public virtual async Task<Contact> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
-            using (var context = new ContactDbContext())
-            {
-                Contact customer = context.Contacts.Where(c => c.Id == id).Single();
-                context.Contacts.Remove(customer);
-                context.SaveChanges();
-            }
+            return await dbContext.Contacts.Where(c => c.Id == id).FirstOrDefaultAsync(cancellationToken);
+        }
+
+        public virtual async Task DeleteByIdAsync(int id, CancellationToken cancellationToken)
+        {
+            var customer = await dbContext.Contacts.Where(c => c.Id == id).FirstOrDefaultAsync(cancellationToken);
+            dbContext.Contacts.Remove(customer);
+            await dbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }

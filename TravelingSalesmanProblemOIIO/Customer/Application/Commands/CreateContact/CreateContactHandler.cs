@@ -19,7 +19,7 @@ namespace ContactProj.Application.Commands.CreateCommand
         {
             var contact = new Contact() {Type = (Contact.ContactType)request.ContactType, FirstName = request.FirstName, Surname = request.Surname, EmailAddress = request.EmailAddress, CreatedDateUtc = DateTime.Now};
 
-            await contactRepository.SaveAsync(contact);
+            await contactRepository.SaveAsync(contact, cancellationToken);
             return contact.Id;
         }
     }

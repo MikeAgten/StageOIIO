@@ -19,7 +19,7 @@ namespace AppointmentProj.Application.Commands.PutAppointment
         }
         public async Task<Appointment> Handle(PutAppointmentCommand request, CancellationToken cancellationToken)
         {
-            var appointment = await appointmentRepository.GetByIdAsync(request.Id);
+            var appointment = await appointmentRepository.GetByIdAsync(request.Id, cancellationToken);
             appointment.Id = request.Id;
             appointment.Title = request.Title;
             appointment.Description = request.Description;
@@ -30,7 +30,7 @@ namespace AppointmentProj.Application.Commands.PutAppointment
             appointment.ClientId = request.ClientId;
             appointment.TenantId = request.TenantId;
             appointment.CreatedDateUtc = DateTime.Now;
-            appointmentRepository.PutAsync(appointment);
+            appointmentRepository.PutAsync(appointment, cancellationToken);
             return appointment;
         }
     }

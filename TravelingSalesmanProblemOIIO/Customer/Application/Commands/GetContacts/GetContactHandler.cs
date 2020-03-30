@@ -18,7 +18,7 @@ namespace ContactProj.Application.Commands.CreateCustomer
         public async Task<List<Contact>> Handle(GetContactCommand request, CancellationToken cancellationToken)
         {
 
-            var contact = await contactRepository.GetAsync();
+            var contact = await contactRepository.GetAsync(cancellationToken);
             return contact;
         }
     }

@@ -32,7 +32,7 @@ namespace TestProject.ContactTests.Handlers
                 EmailAddress = "mikeagten2@gmail.com",
                 ContactType = 1
             };
-            var mockContactRepository = new Mock<ContactRepository>();
+            var mockContactRepository = new Mock<ContactRepository>(null);
             //Act
             
             var sut = new CreateContactHandler(mockContactRepository.Object);
@@ -40,7 +40,7 @@ namespace TestProject.ContactTests.Handlers
             //Assert
             mockContactRepository.Verify(x => x.SaveAsync(It.Is<Contact>(a => a.FirstName == command.FirstName &&
                                                                                       a.Surname == command.Surname &&
-                                                                                      a.EmailAddress == command.EmailAddress)), Times.Once);
+                                                                                      a.EmailAddress == command.EmailAddress), It.IsAny<CancellationToken>()), Times.Once);
             mockContactRepository.VerifyNoOtherCalls();
         }
         #endregion
@@ -60,15 +60,15 @@ namespace TestProject.ContactTests.Handlers
                 ContactType = 1
             };
             Contact contact = new Contact();
-            var mockContactRepository = new Mock<ContactRepository>();
+            var mockContactRepository = new Mock<ContactRepository>(null);
             //Act
-            mockContactRepository.Setup(x => x.GetByIdAsync(command.Id)).ReturnsAsync(contact);
+            mockContactRepository.Setup(x => x.GetByIdAsync(command.Id, It.IsAny<CancellationToken>())).ReturnsAsync(contact);
             var sut = new PutContactHandler(mockContactRepository.Object);
             await sut.Handle(command, CancellationToken.None);
             mockContactRepository.Verify(x => x.PutAsync(It.Is<Contact>(a => a.FirstName == command.FirstName &&
                                                                                       a.Surname == command.Surname &&
-                                                                                      a.EmailAddress == command.EmailAddress)), Times.Once);
-            mockContactRepository.Verify(x => x.GetByIdAsync(command.Id), Times.Once);
+                                                                                      a.EmailAddress == command.EmailAddress), It.IsAny<CancellationToken>()), Times.Once);
+            mockContactRepository.Verify(x => x.GetByIdAsync(command.Id, It.IsAny<CancellationToken>()), Times.Once);
             mockContactRepository.VerifyNoOtherCalls();
         }
         #endregion
@@ -80,12 +80,12 @@ namespace TestProject.ContactTests.Handlers
             //Arrange
             int deleteId = 1;
             var command = new DeleteContactByIdCommand(deleteId);
-            var mockContactRepository = new Mock<ContactRepository>();
+            var mockContactRepository = new Mock<ContactRepository>(null);
             //Act
             var sut = new DeleteContactByIdHandler(mockContactRepository.Object);
             await sut.Handle(command, CancellationToken.None);
             //Act
-            mockContactRepository.Verify(x => x.DeleteByIdAsync(deleteId), Times.Once);
+            mockContactRepository.Verify(x => x.DeleteByIdAsync(deleteId, It.IsAny<CancellationToken>()), Times.Once);
             mockContactRepository.VerifyNoOtherCalls();
         }
         #endregion
@@ -97,13 +97,13 @@ namespace TestProject.ContactTests.Handlers
             //Arrange
             var dateTimeNow = DateTime.Now;
             var command = new GetContactCommand();
-            var mockContactRepository = new Mock<ContactRepository>();
+            var mockContactRepository = new Mock<ContactRepository>(null);
             //Act
-            mockContactRepository.Setup(x => x.GetAsync()).ReturnsAsync(It.IsAny<List<Contact>>);
+            mockContactRepository.Setup(x => x.GetAsync(It.IsAny<CancellationToken>())).ReturnsAsync(It.IsAny<List<Contact>>);
             var sut = new GetContactHandler(mockContactRepository.Object);
             var result = await sut.Handle(command, CancellationToken.None);
             //Act
-            mockContactRepository.Verify(x => x.GetAsync(), Times.Once);
+            mockContactRepository.Verify(x => x.GetAsync(It.IsAny<CancellationToken>()), Times.Once);
             mockContactRepository.VerifyNoOtherCalls();
         }
         #endregion
@@ -116,15 +116,15 @@ namespace TestProject.ContactTests.Handlers
             var getId = 0;
             Contact result = new Contact();
             var command = new GetContactByIdCommand(getId);
-            var mockContactRepository = new Mock<ContactRepository>();
+            var mockContactRepository = new Mock<ContactRepository>(null);
             //Act
-            mockContactRepository.Setup(x => x.GetByIdAsync(getId)).ReturnsAsync(result);
+            mockContactRepository.Setup(x => x.GetByIdAsync(getId, It.IsAny<CancellationToken>())).ReturnsAsync(result);
             var sut = new GetContactByIdHandler(mockContactRepository.Object);
             result = await sut.Handle(command, CancellationToken.None);
             //Act
             Assert.NotNull(result);
             Assert.Equal(result.Id, getId);
-            mockContactRepository.Verify(x => x.GetByIdAsync(getId), Times.Once);
+            mockContactRepository.Verify(x => x.GetByIdAsync(getId, It.IsAny<CancellationToken>()), Times.Once);
             mockContactRepository.VerifyNoOtherCalls();
         }
         #endregion

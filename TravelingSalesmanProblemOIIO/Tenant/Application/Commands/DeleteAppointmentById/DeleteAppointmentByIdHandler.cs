@@ -19,7 +19,7 @@ namespace AppointmentProj.Application.Commands.DeleteAppointmentById
         }
         public async Task<Unit> Handle(DeleteAppointmentByIdCommand request, CancellationToken cancellationToken)
         {
-            appointmentRepository.DeleteByIdAsync(request.Id);
+            appointmentRepository.DeleteByIdAsync(request.Id, cancellationToken);
             return Unit.Value;
         }
     }

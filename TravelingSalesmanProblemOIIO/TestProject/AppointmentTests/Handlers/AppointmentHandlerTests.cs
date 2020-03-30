@@ -24,7 +24,6 @@ namespace TestProject.AppointmentTests.Handlers
         {
             //Arrange
             var dateTimeNow = DateTime.Now;
-            Appointment result = new Appointment();
             var command = new CreateAppointmentCommand
             {
                 Title = "testTitle",
@@ -36,12 +35,13 @@ namespace TestProject.AppointmentTests.Handlers
                 ClientId = 9,
                 TenantId = 1
             };
-            var mockAppointmentRepository = new Mock<AppointmentRepository>();
+            var mockAppointmentRepository = new Mock<AppointmentRepository>(null);
             //Act
             
             var sut = new CreateAppointmentHandler(mockAppointmentRepository.Object);
-            await sut.Handle(command, CancellationToken.None);
+            var result = await sut.Handle(command, CancellationToken.None);
             //Assert
+            Assert.IsType<int>(result);
             mockAppointmentRepository.Verify(x => x.SaveAsync(It.Is<Appointment>(a => a.Title == command.Title &&
                                                                                       a.Description == command.Description &&
                                                                                       a.Latitude == command.Latitude &&
@@ -49,7 +49,7 @@ namespace TestProject.AppointmentTests.Handlers
                                                                                       a.Start == command.Start &&
                                                                                       a.End == command.End &&
                                                                                       a.ClientId == command.ClientId &&
-                                                                                      a.TenantId == command.TenantId)), Times.Once);
+                                                                                      a.TenantId == command.TenantId), It.IsAny<CancellationToken>()), Times.Once);
             mockAppointmentRepository.VerifyNoOtherCalls();
         }
         #endregion
@@ -73,9 +73,9 @@ namespace TestProject.AppointmentTests.Handlers
                 TenantId = 1
             };
             Appointment appointment = new Appointment();
-            var mockAppointmentRepository = new Mock<AppointmentRepository>();
+            var mockAppointmentRepository = new Mock<AppointmentRepository>(null);
             //Act
-            mockAppointmentRepository.Setup(x => x.GetByIdAsync(command.Id)).ReturnsAsync(appointment);
+            mockAppointmentRepository.Setup(x => x.GetByIdAsync(command.Id, It.IsAny<CancellationToken>())).ReturnsAsync(appointment);
             var sut = new PutAppointmentHandler(mockAppointmentRepository.Object);
             await sut.Handle(command, CancellationToken.None);
             mockAppointmentRepository.Verify(x => x.PutAsync(It.Is<Appointment>(a => a.Title == command.Title &&
@@ -85,8 +85,8 @@ namespace TestProject.AppointmentTests.Handlers
                                                                                       a.Start == command.Start &&
                                                                                       a.End == command.End &&
                                                                                       a.ClientId == command.ClientId &&
-                                                                                      a.TenantId == command.TenantId)), Times.Once);
-            mockAppointmentRepository.Verify(x => x.GetByIdAsync(command.Id),Times.Once);
+                                                                                      a.TenantId == command.TenantId), It.IsAny<CancellationToken>()), Times.Once);
+            mockAppointmentRepository.Verify(x => x.GetByIdAsync(command.Id, It.IsAny<CancellationToken>()),Times.Once);
             mockAppointmentRepository.VerifyNoOtherCalls();
         }
         #endregion
@@ -98,12 +98,12 @@ namespace TestProject.AppointmentTests.Handlers
             //Arrange
             int deleteId = 1;
             var command = new DeleteAppointmentByIdCommand(deleteId);
-            var mockAppointmentRepository = new Mock<AppointmentRepository>();
+            var mockAppointmentRepository = new Mock<AppointmentRepository>(null);
             //Act
             var sut = new DeleteAppointmentByIdHandler(mockAppointmentRepository.Object);
             await sut.Handle(command, CancellationToken.None);
             //Act
-            mockAppointmentRepository.Verify(x => x.DeleteByIdAsync(deleteId), Times.Once);
+            mockAppointmentRepository.Verify(x => x.DeleteByIdAsync(deleteId, It.IsAny<CancellationToken>()), Times.Once);
             mockAppointmentRepository.VerifyNoOtherCalls();
         }
         #endregion
@@ -115,13 +115,13 @@ namespace TestProject.AppointmentTests.Handlers
             //Arrange
             var dateTimeNow = DateTime.Now;
             var command = new GetAppointmentsCommand();
-            var mockAppointmentRepository = new Mock<AppointmentRepository>();
+            var mockAppointmentRepository = new Mock<AppointmentRepository>(null);
             //Act
-            mockAppointmentRepository.Setup(x => x.GetAsync()).ReturnsAsync(It.IsAny<List<Appointment>>);
+            mockAppointmentRepository.Setup(x => x.GetAsync(It.IsAny<CancellationToken>())).ReturnsAsync(It.IsAny<List<Appointment>>);
             var sut = new GetAppointmentsHandler(mockAppointmentRepository.Object);
             var result = await sut.Handle(command, CancellationToken.None);
             //Act
-            mockAppointmentRepository.Verify(x => x.GetAsync(), Times.Once);
+            mockAppointmentRepository.Verify(x => x.GetAsync(It.IsAny<CancellationToken>()), Times.Once);
             mockAppointmentRepository.VerifyNoOtherCalls();
         }
         #endregion
@@ -134,15 +134,15 @@ namespace TestProject.AppointmentTests.Handlers
             var getId = 0;
             Appointment result = new Appointment();
             var command = new GetAppointmentByIdCommand(getId);
-            var mockAppointmentRepository = new Mock<AppointmentRepository>();
+            var mockAppointmentRepository = new Mock<AppointmentRepository>(null);
             //Act
-            mockAppointmentRepository.Setup(x => x.GetByIdAsync(getId)).ReturnsAsync(result);
+            mockAppointmentRepository.Setup(x => x.GetByIdAsync(getId, It.IsAny<CancellationToken>())).ReturnsAsync(result);
             var sut = new GetAppointmentByIdHandler(mockAppointmentRepository.Object);
             result = await sut.Handle(command, CancellationToken.None);
             //Act
             Assert.NotNull(result);
             Assert.Equal(result.Id, getId);
-            mockAppointmentRepository.Verify(x => x.GetByIdAsync(getId), Times.Once);
+            mockAppointmentRepository.Verify(x => x.GetByIdAsync(getId, It.IsAny<CancellationToken>()), Times.Once);
             mockAppointmentRepository.VerifyNoOtherCalls();
         }
         #endregion

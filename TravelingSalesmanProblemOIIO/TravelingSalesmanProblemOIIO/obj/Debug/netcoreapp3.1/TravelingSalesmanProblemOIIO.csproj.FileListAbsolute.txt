@@ -336,3 +336,7 @@ C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\TravelingSalesmanProblemOIIO\
 C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\TravelingSalesmanProblemOIIO\obj\Debug\netcoreapp3.1\TravelingSalesmanProblemOIIO.csproj.CopyComplete
 C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\TravelingSalesmanProblemOIIO\obj\Debug\netcoreapp3.1\TravelingSalesmanProblemOIIO.dll
 C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\TravelingSalesmanProblemOIIO\obj\Debug\netcoreapp3.1\TravelingSalesmanProblemOIIO.pdb
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\TravelingSalesmanProblemOIIO\obj\Debug\netcoreapp3.1\TravelingSalesmanProblemOIIO.RazorComponent.input.cache
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\TravelingSalesmanProblemOIIO\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Login.razor.g.cs
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\TravelingSalesmanProblemOIIO\obj\Debug\netcoreapp3.1\RazorDeclaration\TravelingSalesmanProblemOIIO.dll
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\TravelingSalesmanProblemOIIO\obj\Debug\netcoreapp3.1\Razor\Pages\Login.razor.g.cs

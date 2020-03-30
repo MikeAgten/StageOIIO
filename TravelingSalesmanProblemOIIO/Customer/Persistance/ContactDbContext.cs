@@ -10,27 +10,10 @@ namespace ContactProj.Persistance
 {
     public class ContactDbContext : DbContext
     {
-        ILoggerFactory loggerFactory = LoggerFactory.Create(builder => {
-            builder.AddFilter("Microsoft", LogLevel.Warning)
-                   .AddFilter("System", LogLevel.Warning)
-                   .AddFilter("SampleApp.Program", LogLevel.Debug)
-                   .AddConsole();
-        });
-
-        public ContactDbContext(): base()
-        {
-
-        }
+        public ContactDbContext(DbContextOptions<ContactDbContext> options) : base(options)
+        { }
 
         public DbSet<Contact> Contacts { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder
-                .UseLoggerFactory(loggerFactory)
-                .UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = TSPContactDatabase; Trusted_Connection = True;");
-            base.OnConfiguring(optionsBuilder);
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

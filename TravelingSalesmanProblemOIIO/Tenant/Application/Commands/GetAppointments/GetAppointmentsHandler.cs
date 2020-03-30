@@ -18,7 +18,7 @@ namespace AppointmentProj.Application.Commands.GetAppointments
         public async Task<List<Appointment>> Handle(GetAppointmentsCommand request, CancellationToken cancellationToken)
         {
 
-            var appointments = await appointmentRepository.GetAsync();
+            var appointments = await appointmentRepository.GetAsync(cancellationToken);
             return appointments;
         }
     }

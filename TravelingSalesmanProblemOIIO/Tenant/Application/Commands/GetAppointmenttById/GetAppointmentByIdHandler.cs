@@ -20,7 +20,7 @@ namespace AppointmentProj.Application.Commands.GetAppointmentById
         public async Task<Appointment> Handle(GetAppointmentByIdCommand request, CancellationToken cancellationToken)
         {
 
-            var appointment = await appointmentRepository.GetByIdAsync(request.Id);
+            var appointment = await appointmentRepository.GetByIdAsync(request.Id, cancellationToken);
             return appointment;
         }
     }

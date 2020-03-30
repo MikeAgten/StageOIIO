@@ -19,13 +19,13 @@ namespace ContactProj.Application.Commands.PutCustomer
         }
         public async Task<Unit> Handle(PutContactCommand request, CancellationToken cancellationToken)
         {
-            var contact = await contactRepository.GetByIdAsync(request.Id);
+            var contact = await contactRepository.GetByIdAsync(request.Id, cancellationToken);
             contact.Type = (Contact.ContactType)request.ContactType;
             contact.FirstName = request.FirstName;
             contact.Surname = request.Surname;
             contact.EmailAddress = request.EmailAddress;
             contact.CreatedDateUtc = request.CreatedDateUtc;
-            contactRepository.PutAsync(contact);
+            contactRepository.PutAsync(contact, cancellationToken);
             return Unit.Value;
         }
     }

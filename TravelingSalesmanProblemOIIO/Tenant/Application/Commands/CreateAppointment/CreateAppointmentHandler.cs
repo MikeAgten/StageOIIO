@@ -28,8 +28,7 @@ namespace AppointmentProj.Application.Commands.CreateCommand
                 TenantId = request.TenantId,
                 //CreatedDateUtc = DateTime.Now
             };
-            appointmentRepository.SaveAsync(appointment);
-            return appointment.Id;
+            return await appointmentRepository.SaveAsync(appointment, cancellationToken);
         }
     }
 }

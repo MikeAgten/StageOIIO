@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AppointmentProj.Extensions;
 using AppointmentProj.Persistance;
 using ContactProj.Domain;
 using ContactProj.Extensions;
@@ -33,7 +34,9 @@ namespace TravelingSalesmanProblemOIIO
             services.AddMediatR(typeof(AppointmentRepository));
             services.AddControllers();
             services.AddRazorPages();
-            services.RegisterDependencies();
+            services.AddServerSideBlazor();
+            services.RegisterContactDependencies(Configuration);
+            services.RegisterAppointmentDependencies(Configuration);
             services.AddMvc();
             services.AddDbContext<ContactDbContext>();
             services.AddDbContext<AppointmentDbContext>();
@@ -63,6 +66,7 @@ namespace TravelingSalesmanProblemOIIO
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapBlazorHub();
                 endpoints.MapRazorPages();
             });
         }

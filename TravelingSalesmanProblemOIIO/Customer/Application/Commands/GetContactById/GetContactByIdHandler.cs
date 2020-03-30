@@ -20,7 +20,7 @@ namespace ContactProj.Application.Commands.GetCustomerById
         public async Task<Contact> Handle(GetContactByIdCommand request, CancellationToken cancellationToken)
         {
 
-            var contact = await contactRepository.GetByIdAsync(request.Id);
+            var contact = await contactRepository.GetByIdAsync(request.Id, cancellationToken);
             return contact;
         }
     }

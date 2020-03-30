@@ -5,60 +5,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
+using Microsoft.EntityFrameworkCore;
 
 namespace AppointmentProj.Persistance
 {
     public class AppointmentRepository
     {
-        public AppointmentRepository()
-        {
+        private readonly AppointmentDbContext dbContext;
 
+        public AppointmentRepository(AppointmentDbContext dbContext)
+        {
+            this.dbContext = dbContext;
         }
 
-        public virtual async void SaveAsync(Appointment appointment)
+        public virtual async Task<int> SaveAsync(Appointment appointment, CancellationToken cancellationToken)
         {
-            using(var context = new AppointmentDbContext())
-            {
-                context.Appointments.Add(appointment);
-                context.SaveChanges();
-            }
+            var result = await dbContext.Appointments.AddAsync(appointment, cancellationToken);
+            await dbContext.SaveChangesAsync();
+            return result.Entity.Id;
         }
 
-        public virtual async void PutAsync(Appointment appointment)
+        public virtual async Task PutAsync(Appointment appointment, CancellationToken cancellationToken)
         {
-            using (var context = new AppointmentDbContext())
-            {
-                context.Appointments.Update(appointment);
-                context.SaveChanges();
-            }
+
+            dbContext.Appointments.Update(appointment);
+            await dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public virtual Task<List<Appointment>> GetAsync()
+        public virtual async Task<List<Appointment>> GetAsync(CancellationToken cancellationToken)
         {
-            using (var context = new AppointmentDbContext())
-            {
-                List<Appointment> appointments = context.Appointments.ToList();
-                return Task.FromResult(appointments);
-            }
+                return await dbContext.Appointments.ToListAsync(cancellationToken);
         }
 
-        public virtual Task<Appointment> GetByIdAsync(int id)
+        public virtual async Task<Appointment> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
-            using (var context = new AppointmentDbContext())
-            {
-                Appointment appointment = context.Appointments.Where(c => c.Id == id).Single();
-                return Task.FromResult(appointment);
-            }
+                return await dbContext.Appointments.Where(c => c.Id == id).FirstOrDefaultAsync(cancellationToken);
         }
 
-        public virtual void DeleteByIdAsync(int id)
+        public virtual async Task DeleteByIdAsync(int id, CancellationToken cancellationToken)
         {
-            using (var context = new AppointmentDbContext())
-            {
-                Appointment appointment = context.Appointments.Where(c => c.Id == id).Single();
-                context.Appointments.Remove(appointment);
-                context.SaveChanges();
-            }
+            Appointment appointment = await dbContext.Appointments.Where(c => c.Id == id).FirstOrDefaultAsync(cancellationToken);
+            dbContext.Appointments.Remove(appointment);
+            await dbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }
