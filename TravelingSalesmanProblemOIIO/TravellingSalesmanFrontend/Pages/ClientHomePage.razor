@@ -1,0 +1,14 @@
+﻿@page "/clienthome/{ContactId}"
+@inherits ClientHomePageBase
+@inject NavigationManager NavigationManager
+<h3>Welkom @Contact.FirstName</h3>
+<button class="btn-danger" @onclick="(() => Logout())">Logout</button>
+<button><img src="~/Resources/plusPng.png" width="500" height="500" /></button>
+
+
+@functions{
+    public void Logout()
+    {
+        NavigationManager.NavigateTo("/", true);
+    }
+}

@@ -1,0 +1,29 @@
+<html>
+  <body>
+<div id="loginDiv">
+  <div id="logoDiv">
+    <img src="../../assets/Images/oiio-logo.png">
+  </div>
+  <div id="formDiv">
+    <h1>Inloggen</h1>
+  <div>
+    <p>contactType</p>
+<select (change)="changeContactType($event)" id="ContactTypeSelect">
+  <option>Tenant</option>
+  <option>Client</option>
+</select>
+</div><br>
+<div>
+<p>naam</p>
+<select (change)="changeCurrentContact($event.target.value)">
+  <option *ngFor="let contact of contacts; let i = index" [value]="contact.id">{{contact.firstName + " " + contact.surName}}</option>
+</select>
+<p>Selected option: {{ currentContactId}}</p>
+</div><br>
+<nav>
+  <button (click)="loginHandle($event)" routerLink="/contact/{{currentContactId}}" [routerLinkActive]="'current'" title="clientHome">Login</button>
+</nav>
+</div>
+</div>
+</body>
+</html>

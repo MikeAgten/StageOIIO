@@ -1,0 +1,63 @@
+#loginDiv{
+  background-color: whitesmoke;
+  border-color: black;
+  border-width: 4px;
+  border-radius: 20px;
+  position: fixed;
+  height: 500px;
+  width: 700px;
+}
+
+#logoDiv{
+  width: 100%;
+  height: 100px;
+  margin-top: 50px;
+  align-content: center;
+  background-color: whitesmoke;
+}
+
+#logoDiv img{
+  margin-left: 212px;
+  height: 100%;
+  align-content: center;
+}
+#formDiv{
+  width: 100%;
+  height: 300px;
+  align-content: center;
+  background-color: whitesmoke;
+}
+
+#formDiv h1{
+  font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
+  width: 100%;
+  text-align: center;
+}
+#formDiv p{
+  font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: large;
+  width: 100%;
+  text-align: center;
+}
+
+#formDiv select{
+  font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: large;
+  width: 150px;
+  margin-left: 285px;
+  text-align: center;
+}
+
+#formDiv button{
+  font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: large;
+  margin-left: 285px;
+  width: 150px;
+  height: 50px;
+  color: white;
+  background-color: darkturquoise;
+  border-color: darkturquoise;
+  text-align: center;
+  margin-top: 20px;
+}
+

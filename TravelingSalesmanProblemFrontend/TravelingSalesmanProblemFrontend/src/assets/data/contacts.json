@@ -1,0 +1,58 @@
+[
+{
+    "id": 1,
+    "type": 0,
+    "firstName": "azeae",
+    "surname": "Agten",
+    "emailAddress": "mikeagten2@gmail.com",
+    "createdDateUtc": "2020-03-18T11:05:07.8943656"
+  },
+  {
+    "id": 2,
+    "type": 0,
+    "firstName": "Micheal",
+    "surname": "Coenen",
+    "emailAddress": "Test@gmail.com",
+    "createdDateUtc": "2020-03-18T11:05:55.1791206"
+  },
+  {
+    "id": 9,
+    "type": 1,
+    "firstName": "freddy",
+    "surname": "Klantje",
+    "emailAddress": "klantje@gmail.com",
+    "createdDateUtc": "2020-03-18T13:37:32.9409937"
+  },
+  {
+    "id": 10,
+    "type": 1,
+    "firstName": "Lyna",
+    "surname": "VanDenBosh",
+    "emailAddress": "wowDitIsCool@gmail.com",
+    "createdDateUtc": "2020-03-18T13:38:11.4325154"
+  },
+  {
+    "id": 11,
+    "type": 1,
+    "firstName": "Eline",
+    "surname": "Bleyen",
+    "emailAddress": "hmmm@gmail.com",
+    "createdDateUtc": "2020-03-18T13:38:50.8451191"
+  },
+  {
+    "id": 12,
+    "type": 1,
+    "firstName": "Lennert",
+    "surname": "Appelen",
+    "emailAddress": "LenApp@gmail.com",
+    "createdDateUtc": "2020-03-18T13:39:07.2909968"
+  },
+  {
+    "id": 13,
+    "type": 1,
+    "firstName": "Brent",
+    "surname": "Gielen",
+    "emailAddress": "BG@gmail.com",
+    "createdDateUtc": "2020-03-18T13:40:00.6295123"
+  }
+]
