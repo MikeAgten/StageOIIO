@@ -25,10 +25,13 @@ namespace AppointmentProj.Application.Commands.PutAppointment
             appointment.Description = request.Description;
             appointment.Longitude = request.Longitude;
             appointment.Latitude = request.Latitude;
+            appointment.Duration = request.Duration;
+            appointment.Date = request.Date;
             appointment.Start = request.Start;
             appointment.End = request.End;
             appointment.ClientId = request.ClientId;
             appointment.TenantId = request.TenantId;
+            appointment.PartDay = (Appointment.PartsOfDay)request.PartDay;
             appointment.CreatedDateUtc = DateTime.Now;
             appointmentRepository.PutAsync(appointment, cancellationToken);
             return appointment;

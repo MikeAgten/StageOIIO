@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Contact} from '../models/contact.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -28,6 +28,17 @@ export class ContactService {
 
     getContactById(id: number): Observable<Contact>{
       return this.http.get<Contact>(this.apiurl + 'api/contacts/' +id);
+    }
+
+    PostContact(toAddContact: Contact): Observable<Contact>{
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json'
+        })
+      };
+      let stringToAddContact = JSON.stringify(toAddContact);
+      console.log("Adding Contact =" + stringToAddContact);
+      return this.http.post<Contact>(this.apiurl + 'api/contacts', toAddContact, httpOptions);
     }
     /*
     getGiftsFirst(): Observable<Object[]>{
@@ -61,8 +72,7 @@ export class ContactService {
           contact.type,
           contact.firstName,
           contact.surname,
-          contact.emailAddress,
-          contact.createdDateUtc
+          contact.emailAddress
           );
       });
   }

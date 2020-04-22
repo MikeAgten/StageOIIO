@@ -47,7 +47,7 @@ namespace TravelingSalesmanProblemOIIO
                 options.AddPolicy(MyAllowSpecificOrigins,
                 builder =>
                 {
-                    builder.WithOrigins("*");
+                    builder.WithOrigins("*").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                 });
             });
         }

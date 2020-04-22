@@ -8,11 +8,13 @@ using ContactProj.Application.Commands.DeleteCustomerById;
 using ContactProj.Application.Commands.GetCustomerById;
 using ContactProj.Application.Commands.PutCustomer;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TravelingSalesmanProblemOIIO.Controllers
 {
+    [EnableCors("_myAllowSpecificOrigins")]
     [Route("api/[controller]")]
     [ApiController]
     public class ContactsController : ControllerBase

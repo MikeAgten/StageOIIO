@@ -1,0 +1,28 @@
+#appointmentDiv{
+  background-color: white;
+  box-shadow:2px 5px 8px darkgrey;
+  border-width: 4px;
+  margin-top: 20px;
+  padding: 5px;
+  width: 90%;
+  font-size: large;
+  font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+#titleDiv{
+  padding: 0px;
+  margin:0px;
+  border: 4px;
+}
+
+#titleDiv h2{
+  padding: 0px;
+  margin:0px;
+  border: 0px;
+}
+
+h3{
+  padding:0px;
+  margin:0px;
+  border: 0px;
+}

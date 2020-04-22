@@ -8,11 +8,13 @@ using AppointmentProj.Application.Commands.GetAppointmentById;
 using AppointmentProj.Application.Commands.GetAppointments;
 using AppointmentProj.Application.Commands.PutAppointment;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TravelingSalesmanProblemOIIO.Controllers
 {
+    [EnableCors("_myAllowSpecificOrigins")]
     [Route("api/[controller]")]
     [ApiController]
     public class AppointmentsController : ControllerBase
@@ -24,6 +26,7 @@ namespace TravelingSalesmanProblemOIIO.Controllers
             this.mediator = mediator;
         }
 
+        [EnableCors]
         [HttpPost]
         public async Task<IActionResult> CreateAppointment(CreateAppointmentCommand command)
         {

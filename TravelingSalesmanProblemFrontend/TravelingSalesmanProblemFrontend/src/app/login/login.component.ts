@@ -17,12 +17,14 @@ export class LoginComponent implements OnInit {
   constructor(private contactService: ContactService) { }
 
   ngOnInit() {
+    this.currentContactId = 1;
     this.contactType = 0;
     this.fetchContacts();
   }
 
   fetchContacts() {
-    this.contactService.getContactsByContactType(this.contactType).subscribe(data => { this.contacts = data; });
+    this.contactService.getContactsByContactType(this.contactType).subscribe(data => {
+      this.contacts = data; this.currentContactId = this.contacts[0].id; });
   }
 
   changeContactType(event: Event){
@@ -36,6 +38,11 @@ export class LoginComponent implements OnInit {
 
   changeCurrentContact(id: number){
     this.currentContactId = id;
+    console.log("changed to" + this.currentContactId);
+  }
+
+  changeCurrentContactByType(){
+    console.log("changed to" + this.currentContactId);
   }
 
   loginHandle(event: Event){

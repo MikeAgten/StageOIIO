@@ -22,10 +22,14 @@ namespace AppointmentProj.Application.Commands.CreateCommand
                 Description = request.Description,
                 Longitude = request.Longitude,
                 Latitude = request.Latitude,
+                Duration = request.Duration,
+                Date = request.Date,
                 Start = request.Start,
                 End = request.End,
                 ClientId = request.ClientId,
                 TenantId = request.TenantId,
+                PartDay = (Appointment.PartsOfDay)request.PartDay,
+
                 //CreatedDateUtc = DateTime.Now
             };
             return await appointmentRepository.SaveAsync(appointment, cancellationToken);

@@ -8,7 +8,7 @@
     <h1>Inloggen</h1>
   <div>
     <p>contactType</p>
-<select (change)="changeContactType($event)" id="ContactTypeSelect">
+<select (change)="changeContactType($event)" (change)="changeCurrentContactByType()" id="ContactTypeSelect">
   <option>Tenant</option>
   <option>Client</option>
 </select>
@@ -16,9 +16,8 @@
 <div>
 <p>naam</p>
 <select (change)="changeCurrentContact($event.target.value)">
-  <option *ngFor="let contact of contacts; let i = index" [value]="contact.id">{{contact.firstName + " " + contact.surName}}</option>
+  <option *ngFor="let contact of contacts; let i = index" [value]="contact.id">{{contact.firstName + " " + contact.surname}}</option>
 </select>
-<p>Selected option: {{ currentContactId}}</p>
 </div><br>
 <nav>
   <button (click)="loginHandle($event)" routerLink="/contact/{{currentContactId}}" [routerLinkActive]="'current'" title="clientHome">Login</button>

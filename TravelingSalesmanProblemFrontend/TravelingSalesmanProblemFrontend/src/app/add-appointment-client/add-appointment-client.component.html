@@ -1,0 +1,42 @@
+<html>
+  <body>
+    <app-top-layout [contact] = "contact"></app-top-layout>
+    <div id="newAppointmentDiv">
+      <form #form="ngForm" (ngSubmit)="submit(form)" novalidate>
+      <h1>nieuwe afspraak met</h1>
+      <select (change)="changeCurrentContact($event.target.value)">
+        <option *ngFor="let contact of contacts; let i = index" [value]="contact.id">{{contact.firstName + " " + contact.surname}}</option>
+      </select>
+      <div>
+        <p>Informatie afspraak</p>
+        <input type="text" name="title" placeholder="title"/><br/>
+        <input type="text" name="description" placeholder="description"/><br/>
+      </div>
+      <div>
+        <p>Locatie afspraak</p>
+        <input type="number" name="latitude" placeholder="latitude"/><br/>
+        <input type="number" name="longitude" placeholder="longitude"/><br/>
+    </div>
+    <div>
+      <p>Selecteer Afspraakduur</p>
+        <select type="text" name="Length" placeholder="title">
+          <option>15 minuten</option>
+          <option>30 minuten</option>
+          <option>45 minuten</option>
+          <option>60 minuten</option>
+        </select>
+    </div>
+    <div>
+      <p>Selecteer datum</p>
+      <input type="datetime-local" name="start">
+    </div>
+    <div>
+      <p>Selecteer dagdeel</p>
+      <button type="button">Voormiddag</button>
+      <button type="button">Namiddag</button>
+    </div>
+    <button type="submit">Bevestig</button>
+  </form>
+    </div>
+  </body>
+</html>

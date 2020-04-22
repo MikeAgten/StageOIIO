@@ -3,6 +3,8 @@ import { Contact } from '../models/contact.model';
 import { ContactService } from '../services/contact.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { AppointmentService } from '../services/appointment.service';
+import { Appointment } from '../models/appointment.model';
 
 @Component({
   selector: 'app-client-homepage',
@@ -11,21 +13,28 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ClientHomepageComponent implements OnInit {
 
-  constructor(private contactService: ContactService, private route: ActivatedRoute) { }
+  constructor(private contactService: ContactService,private appointmentService: AppointmentService, private route: ActivatedRoute) { }
   private routeSub: Subscription;
+  appointments: Appointment[];
   contact: Contact;
   contactId: number;
   ngOnInit(){
     this.routeSub = this.route.params.subscribe(params => {
-      this.contactId = params['id'];
+      var idParameter = params['id'];
+      this.contactId = Number(idParameter);
     });
-    this.fetchContactById(this.contactId);
+    this.fetchContactById();
+    this.fetchAppointments();
+    console.log("current contact = " + this.contact);
   }
 
 
-  fetchContactById(id: number) {
-    this.contactService.getContactById(id).subscribe(data => { this.contact = data; });
-    console.log("current contact" + this.contact);
+  fetchContactById() {
+    this.contactService.getContactById(this.contactId).subscribe(data => { this.contact = data; });
+  }
+
+  async fetchAppointments(){
+   await this.appointmentService.getAppointmentsByClientId(this.contactId).subscribe(data => { this.appointments = data; });
   }
 
 }

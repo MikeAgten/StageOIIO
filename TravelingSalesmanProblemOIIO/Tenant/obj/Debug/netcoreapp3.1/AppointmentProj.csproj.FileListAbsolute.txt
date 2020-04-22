@@ -17,3 +17,4 @@ C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.
 C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.AssemblyInfo.cs
 C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.dll
 C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.pdb
+C:\OIIORepo\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.csprojAssemblyReference.cache
