@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ContactService } from './services/contact.service';
+import { AppointmentService } from './services/appointment.service';
 import { ClientHomepageComponent } from './client-homepage/client-homepage.component';
 import { appRoutes } from './app.routes';
 import { RouterModule } from '@angular/router';
@@ -14,6 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppointmentClientComponent } from './appointment-client/appointment-client.component';
 import { AddAppointmentClientComponent } from './add-appointment-client/add-appointment-client.component';
 import { TopLayoutComponent } from './top-layout/top-layout.component';
+import { TenantHomepageComponent } from './tenant-homepage/tenant-homepage.component';
+import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { TopLayoutComponent } from './top-layout/top-layout.component';
     LoginPageComponent,
     AppointmentClientComponent,
     AddAppointmentClientComponent,
-    TopLayoutComponent
+    TopLayoutComponent,
+    TenantHomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +35,10 @@ import { TopLayoutComponent } from './top-layout/top-layout.component';
     HttpClientModule,
     FormsModule,
 		ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ScheduleModule, RecurrenceEditorModule
   ],
-  providers: [ContactService],
+  providers: [ContactService, AppointmentService, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

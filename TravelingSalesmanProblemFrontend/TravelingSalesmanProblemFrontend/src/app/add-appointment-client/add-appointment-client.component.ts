@@ -17,10 +17,12 @@ export class AddAppointmentClientComponent implements OnInit {
   contacts: Contact[];
   contact: Contact;
   contactId: number;
+  date: Date;
+  dateString: string;
   currentContactId: number;
   toAddAppointment: Appointment;
 
-  constructor(private contactService: ContactService, private appointmentService: AppointmentService, private route: ActivatedRoute) { }
+  constructor(private contactService: ContactService, private appointmentService: AppointmentService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
@@ -29,7 +31,9 @@ export class AddAppointmentClientComponent implements OnInit {
     });
     this.fetchContactById();
     this.fetchContactsByContactType(0);
+    this.toAddAppointment = new Appointment(null, null, null, null, null, null, null, null, null, null, null);
     this.toAddAppointment.clientId = this.contactId;
+    this.date = new Date();
   }
 
   fetchContactById() {
@@ -45,20 +49,24 @@ export class AddAppointmentClientComponent implements OnInit {
     this.currentContactId = id;
   }
 
-  submit(form): void {
-    let contact = new Contact(
-      null, 1, "Hubert", "Hermans", "mikea@gmail.com"
-    );
-    this.contactService.PostContact(contact).subscribe(
-      data => console.log("succes!", data),
-      error => console.error("Error!", error));
+  submit(appointmentform): void {
+    this.dateString = this.date.toISOString().slice(0,19);
     let appointment = new Appointment(
-      null, "posttest", "posttest", 55.9761276, 15.8207892, null, null, 10, 2
+      null,
+      this.toAddAppointment.title,
+      this.toAddAppointment.description,
+      this.toAddAppointment.latitude,
+      this.toAddAppointment.longitude,
+      Number(this.toAddAppointment.duration),
+      this.toAddAppointment.date,
+      '0001-01-01T00:00:00',
+      '0001-01-01T00:00:00',
+      this.contactId,
+      Number(this.toAddAppointment.tenantId)
     );
-    form.reset();
-    console.log(appointment);
     this.appointmentService.PostAppointment(appointment).subscribe(
       data => console.log("succes!", data),
       error => console.error("Error!", error));
+    appointmentform.reset();
   }
 }

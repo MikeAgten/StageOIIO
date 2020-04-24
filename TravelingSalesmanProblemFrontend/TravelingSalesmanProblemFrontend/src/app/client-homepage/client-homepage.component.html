@@ -4,9 +4,9 @@
     <div id="appointmentsDiv">
       <h1>aankomende afspraken</h1>
       <app-appointment-client *ngFor="let appointment of appointments" [appointment]="appointment"></app-appointment-client>
-      <nav>
-        <button routerLink="/addAppointment/{{contactId}}" [routerLinkActive]="'current'" title="addAppointentClient"><img src="../../assets/Images/plus-icon.png"></button>
-      </nav>
     </div>
+    <nav class="AddAppointment">
+      <button routerLink="/addAppointment/{{contactId}}" [routerLinkActive]="'current'" title="addAppointentClient"><img src="../../assets/Images/plus-icon.png"></button>
+    </nav>
   </body>
 </html>

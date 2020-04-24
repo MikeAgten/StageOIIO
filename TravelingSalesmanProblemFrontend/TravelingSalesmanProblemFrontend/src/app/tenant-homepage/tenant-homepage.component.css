@@ -8,50 +8,14 @@ html { background-color:  rgb(233, 230, 230);
   overflow: hidden;
 }
 
-#welkomDiv {
-  background-color: rgb(4, 124, 133);
-  padding-top: 0px;
-  margin: 0px;
-  border: 0px;
-  height: 100px;
-}
-
-#welkomDiv h1{
-  margin-top: 65px;
-  width: 800px;
-  margin-bottom: 0px;
-  float: left;
-  color: rgb(8, 19, 19);
-  text-align: left;
-  padding-left: 25px;
-}
-
-#welkomDiv img{
-  width: 15%;
-  float: left;
-  padding-top: 15px;
-}
-
-#welkomDiv button{
-  width: 10%;
-  height: 35px;
-  margin-top: 30px;
-  border-radius: 5px;
-  margin-right: 20px;
-  background-color: gray;
-  border-color: gray;
-  color: white;
-  font-size: large;
-  float: right;
-}
-
 #appointmentsDiv{
+  width: 45%;
+  overflow:scroll;
   display: inline-block;
   float: left;
   margin: 0px;
   padding: 20px;
-  width: 50%;
-  height: 700px;
+  height: 650px;
   background-color: rgb(233, 230, 230);
 }
 
@@ -62,10 +26,22 @@ html { background-color:  rgb(233, 230, 230);
   margin: 0px;
 }
 
-#appointmentsDiv img{
-  background-color: transparent;
-  height: 75px;
-  width: 75px;
+#algorithmDiv{
+  width: 45%;
+  overflow:scroll;
+  display: inline-block;
+  float: right;
+  margin: 0px;
+  padding: 20px;
+  height: 650px;
+  background-color: rgb(233, 230, 230);
+}
+
+#algorithmDiv h1{
+  margin: 0px;
+  width: 100%;
+  border: 0px;
+  margin: 0px;
 }
 
 .AddAppointment{
@@ -77,7 +53,7 @@ html { background-color:  rgb(233, 230, 230);
 .AddAppointment button{
   height: fit-content;
   width: fit-content;
-  background-color:rgb(233, 230, 230);
+  background-color:transparent;
   border: transparent;
 }
 
@@ -89,3 +65,22 @@ html { background-color:  rgb(233, 230, 230);
   height: 75px;
 }
 
+button{
+  font-size: large;
+  width: 150px;
+  height: 50px;
+  color: white;
+  background-color: darkturquoise;
+  border-color: darkturquoise;
+  text-align: center;
+}
+
+select{
+  width: 100%;
+  padding: 10px 20px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

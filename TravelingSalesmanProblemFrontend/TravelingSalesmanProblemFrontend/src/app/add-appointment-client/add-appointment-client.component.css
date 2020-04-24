@@ -1,4 +1,4 @@
-html { background-color: whitesmoke;
+html { background-color: rgb(233, 230, 230);
   background-size: cover;
 	position: absolute;
   height: 100%;
@@ -8,76 +8,91 @@ html { background-color: whitesmoke;
   overflow: hidden;
 }
 
-#welkomDiv {
-  background-color: rgb(4, 124, 133);
-  padding-top: 0px;
-  margin: 0px;
-  border: 0px;
+body{
+  height: 100%;
+  width: 100%;
+}
+
+label{
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+input{
+  width: 100%;
+  padding: 10px 20px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+select{
+  width: 100%;
+  padding: 10px 20px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.NewAppointmentDiv{
+  height: 100%;
+  width: 100%;
+  margin-left: 20px;
+}
+h2{
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.Description{
   height: 100px;
 }
 
-#welkomDiv h1{
-  margin-top: 65px;
-  width: 800px;
-  margin-bottom: 0px;
+.TenantDiv{
+  width: 100%;
+}
+.TenantDiv label{
+  display: block;
+  font-size: 30px;
+  font-weight: bold;
   float: left;
-  font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
-  color: rgb(8, 19, 19);
-  text-align: left;
-  padding-left: 25px;
 }
 
-#welkomDiv img{
-  width: 15%;
+.TenantDiv select{
+  display: block;
+  width: 25%;
   float: left;
-  padding-top: 15px;
 }
 
-#welkomDiv button{
-  width: 10%;
-  height: 35px;
-  margin-top: 30px;
-  font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
-  border-radius: 5px;
-  margin-right: 20px;
+.InformationDiv{
+  width: 32%;
+  height: 100%;
+}
+
+.TimeDiv{
+  width: 32%;
+  height: 100%;
+}
+
+button{
+  font-size: large;
+  width: 150px;
+  height: 50px;
+  color: white;
+  margin-left: 10px;
+  background-color: darkturquoise;
+  border-color: darkturquoise;
+  text-align: center;
+  margin-top: 20px;
+}
+
+button[disabled]
+{
   background-color: gray;
   border-color: gray;
-  color: white;
-  font-size: large;
-  float: right;
-}
-
-#appointmentsDiv{
-  font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
-  display: inline-block;
-  margin: 0px;
-  padding: 20px;
-  width: 100%;
-  height: 700px;
-  background-color: rgb(233, 230, 230);
-}
-
-#appointmentsDiv h1{
-  margin: 0px;
-  width: 100%;
-  border: 0px;
-  margin: 0px;
-}
-
-#appointmentsDiv button{
-  background-color: transparent;
-  float: right;
-  margin-right: 50px;
-  border-radius: 25px;
-  border: transparent;
-  margin-top: 385px;
-  position: relative;
-  height: 75px;
-  width: 75px;
-}
-
-#appointmentsDiv img{
-  background-color: transparent;
-  height: 75px;
-  width: 75px;
 }

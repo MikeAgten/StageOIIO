@@ -1,0 +1,19 @@
+<html>
+  <body>
+    <app-top-layout [contact] = "contact"></app-top-layout>
+    <div id="appointmentsDiv">
+      <h1>aankomende afspraken</h1>
+      <app-appointment-client *ngFor="let appointment of appointments" [appointment]="appointment"></app-appointment-client>
+    </div>
+    <div id="algorithmDiv">
+      <h1>Berekenen route</h1>
+      <h2>Sorteer op dag</h2>
+      <select><option *ngFor="let date of distinctDates" value="{{date}}">{{date}}</option> </select>
+      <h2>Bereken dag</h2>
+      <button>Bereken</button>
+    </div>
+    <nav class="AddAppointment">
+      <button routerLink="/addAppointment/{{tenantId}}" [routerLinkActive]="'current'" title="addAppointentClient"><img src="../../assets/Images/plus-icon.png"></button>
+    </nav>
+  </body>
+</html>

@@ -20,8 +20,12 @@ export class AppointmentClientComponent implements OnInit {
   appointment: Appointment;
 
   ngOnInit(): void {
-    this.dateString = this.appointment.start.toString().substr(0,10);
+    this.dateString = this.appointment.date.toString().substr(0,10);
     this.startHour = this.appointment.start.toString().substr(11,5);
     this.endHour = this.appointment.end.toString().substr(11,5);
+    if(this.startHour = "00:00"){
+      this.startHour = "..."
+      this.endHour = "..."
+    }
   }
 }

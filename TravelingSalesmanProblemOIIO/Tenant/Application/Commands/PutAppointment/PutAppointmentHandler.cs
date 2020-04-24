@@ -31,7 +31,6 @@ namespace AppointmentProj.Application.Commands.PutAppointment
             appointment.End = request.End;
             appointment.ClientId = request.ClientId;
             appointment.TenantId = request.TenantId;
-            appointment.PartDay = (Appointment.PartsOfDay)request.PartDay;
             appointment.CreatedDateUtc = DateTime.Now;
             appointmentRepository.PutAsync(appointment, cancellationToken);
             return appointment;

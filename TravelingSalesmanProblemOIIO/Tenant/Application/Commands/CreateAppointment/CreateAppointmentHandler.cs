@@ -28,9 +28,7 @@ namespace AppointmentProj.Application.Commands.CreateCommand
                 End = request.End,
                 ClientId = request.ClientId,
                 TenantId = request.TenantId,
-                PartDay = (Appointment.PartsOfDay)request.PartDay,
-
-                //CreatedDateUtc = DateTime.Now
+                CreatedDateUtc = DateTime.Now
             };
             return await appointmentRepository.SaveAsync(appointment, cancellationToken);
         }

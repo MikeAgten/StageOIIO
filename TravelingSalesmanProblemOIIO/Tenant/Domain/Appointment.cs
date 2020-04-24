@@ -17,13 +17,7 @@ namespace AppointmentProj.Domain
         public DateTime End { get; set; }
         public int ClientId { get; set; }
         public int TenantId { get; set; }
-        public PartsOfDay PartDay { get; set; }
 
-        public enum PartsOfDay
-        {
-            Morning = 0,
-            Afternoon = 1
-        }
         public DateTime CreatedDateUtc { get; set; }
 
 

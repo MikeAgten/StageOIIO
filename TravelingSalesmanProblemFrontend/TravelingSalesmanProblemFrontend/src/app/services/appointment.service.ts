@@ -3,10 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Appointment } from '../models/appointment.model';
-import { AppointmentPost } from '../models/appointmentPost.model';
 
 @Injectable({providedIn: 'root'})
 export class AppointmentService {
+
     private apiurl: string = 'https://localhost:5001/';
     constructor(private http: HttpClient) { }
 
@@ -27,6 +27,14 @@ export class AppointmentService {
       );
     }
 
+    getAppointmentsByTenantId(tenantId: number): Observable<Appointment[]>{
+      return this.http.get<Appointment[]>(this.apiurl + 'api/appointments').pipe(
+        map(this.parseAppointments),
+        map((appointments: Appointment[]) => {
+          return tenantId !== null ? this.filterByTenantIdAppointments(appointments, tenantId) : appointments;
+        })
+      );
+    }
     getAppointmentById(id: number): Observable<Appointment>{
       return this.http.get<Appointment>(this.apiurl + 'api/appointments/' + id);
     }
@@ -34,14 +42,7 @@ export class AppointmentService {
 
 
     PostAppointment(toAddAppointment: Appointment): Observable<Appointment>{
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/json'
-        })
-      };
-      let stringToAddAppointment = JSON.stringify(toAddAppointment);
-      console.log("Adding appointment =" + stringToAddAppointment);
-      return this.http.post<Appointment>(this.apiurl + 'api/appointments', toAddAppointment, httpOptions);
+      return this.http.post<Appointment>(this.apiurl + 'api/appointments', toAddAppointment);
     }
     /*
     getGiftsFirst(): Observable<Object[]>{
@@ -76,6 +77,8 @@ export class AppointmentService {
           appointment.description,
           appointment.latitude,
           appointment.longitude,
+          appointment.duration,
+          appointment.date,
           appointment.start,
           appointment.end,
           appointment.clientId,
@@ -88,6 +91,18 @@ export class AppointmentService {
     console.log(appointments);
     return appointments.filter(appointment => appointment.clientId === clientId);
   }
+
+  filterByTenantIdAppointments(appointments: Appointment[], tenantId: number): Appointment[] {
+    console.log(appointments);
+    return appointments.filter(appointment => appointment.tenantId === tenantId);
+  }
+
+  filterByDistinctDateAppointments(appointments: Appointment[]): String[] {
+    console.log(appointments);
+    return appointments.map(item => item.date)
+    .filter((value, index, self) => self.indexOf(value) === index);
+  }
+
 }
 
 

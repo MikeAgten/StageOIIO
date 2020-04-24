@@ -19,6 +19,5 @@ namespace AppointmentProj.Application.Commands.PutAppointment
         public DateTime End { get; set; }
         public int ClientId { get; set; }
         public int TenantId { get; set; }
-        public int PartDay { get; set; }
     }
 }

@@ -1,41 +1,40 @@
 <html>
   <body>
     <app-top-layout [contact] = "contact"></app-top-layout>
-    <div id="newAppointmentDiv">
-      <form #form="ngForm" (ngSubmit)="submit(form)" novalidate>
-      <h1>nieuwe afspraak met</h1>
-      <select (change)="changeCurrentContact($event.target.value)">
-        <option *ngFor="let contact of contacts; let i = index" [value]="contact.id">{{contact.firstName + " " + contact.surname}}</option>
+    <div class="NewAppointmentDiv">
+      <form #appointmentForm="ngForm" (ngSubmit)="submit(appointmentForm)" novalidate>
+    <div class="TenantDiv">
+      <label>nieuwe afspraak met:</label>
+      <select type="number" (change)="changeCurrentContact($event.target.value)" [(ngModel)]="toAddAppointment.tenantId" name="tenantId" #tenantId="ngModel" required>
+        <option *ngFor="let contact of contacts; let i = index" type="number" [value]="contact.id">{{contact.firstName + " " + contact.surname}}</option>
       </select>
+    </div>
+      <div class="InformationDiv">
+        <h2>Informatie afspraak</h2>
+        <input type="text" id="title" placeholder="title" [(ngModel)]="toAddAppointment.title" name="title" #title="ngModel" required/><br/>
+        <input type="text" name="description" class="Description" placeholder="description" [(ngModel)]="toAddAppointment.description" name="description" #description="ngModel" required/><br/>
       <div>
-        <p>Informatie afspraak</p>
-        <input type="text" name="title" placeholder="title"/><br/>
-        <input type="text" name="description" placeholder="description"/><br/>
+        <h2>Locatie afspraak</h2>
+        <input type="number" name="latitude" placeholder="latitude" [(ngModel)]="toAddAppointment.latitude" name="latitude" #latitude="ngModel" required/><br/>
+        <input type="number" name="longitude" placeholder="longitude" [(ngModel)]="toAddAppointment.longitude" name="longitude" #longitude="ngModel" required/><br/>
       </div>
-      <div>
-        <p>Locatie afspraak</p>
-        <input type="number" name="latitude" placeholder="latitude"/><br/>
-        <input type="number" name="longitude" placeholder="longitude"/><br/>
     </div>
-    <div>
-      <p>Selecteer Afspraakduur</p>
-        <select type="text" name="Length" placeholder="title">
-          <option>15 minuten</option>
-          <option>30 minuten</option>
-          <option>45 minuten</option>
-          <option>60 minuten</option>
+    <div class="TimeDiv">
+      <h2>Selecteer Afspraakduur</h2>
+        <select type="number" name="duration" placeholder="duur" [(ngModel)]="toAddAppointment.duration" name="duration" #duration="ngModel" required>
+          <option value="15">15 minuten</option>
+          <option value="30">30 minuten</option>
+          <option value="45">45 minuten</option>
+          <option value="60">60 minuten</option>
         </select>
+      <div>
+      <h2>Selecteer datum</h2>
+      <input type="date" name="date" [(ngModel)]="toAddAppointment.date" name="date" #date="ngModel" required>
+      </div>
     </div>
-    <div>
-      <p>Selecteer datum</p>
-      <input type="datetime-local" name="start">
-    </div>
-    <div>
-      <p>Selecteer dagdeel</p>
-      <button type="button">Voormiddag</button>
-      <button type="button">Namiddag</button>
-    </div>
-    <button type="submit">Bevestig</button>
+    <button type="submit" [disabled]="!appointmentForm.form.valid">Bevestig</button>
+    <button type="button" routerLink="/contact/{{contactId}}" [routerLinkActive]="'current'" title="clientHomePage">Terug</button>
+    <p *ngIf="!appointmentForm.form.valid" class="error"> Gelieve alle velden in te vullen</p>
   </form>
     </div>
   </body>

@@ -29,19 +29,16 @@
 }
 
 #formDiv h1{
-  font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
   width: 100%;
   text-align: center;
 }
 #formDiv p{
-  font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: large;
   width: 100%;
   text-align: center;
 }
 
 #formDiv select{
-  font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: large;
   width: 150px;
   margin-left: 285px;
@@ -49,7 +46,6 @@
 }
 
 #formDiv button{
-  font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: large;
   margin-left: 285px;
   width: 150px;

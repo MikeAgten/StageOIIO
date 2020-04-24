@@ -13,7 +13,7 @@ import { Appointment } from '../models/appointment.model';
 })
 export class ClientHomepageComponent implements OnInit {
 
-  constructor(private contactService: ContactService,private appointmentService: AppointmentService, private route: ActivatedRoute) { }
+  constructor(private contactService: ContactService, private appointmentService: AppointmentService, private route: ActivatedRoute) { }
   private routeSub: Subscription;
   appointments: Appointment[];
   contact: Contact;
@@ -27,7 +27,6 @@ export class ClientHomepageComponent implements OnInit {
     this.fetchAppointments();
     console.log("current contact = " + this.contact);
   }
-
 
   fetchContactById() {
     this.contactService.getContactById(this.contactId).subscribe(data => { this.contact = data; });
