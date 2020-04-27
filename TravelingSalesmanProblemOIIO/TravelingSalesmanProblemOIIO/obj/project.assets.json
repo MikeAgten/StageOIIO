@@ -8850,11 +8850,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\TravelingSalesmanProblemOIIO\\TravelingSalesmanProblemOIIO.csproj",
+      "projectUniqueName": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\TravelingSalesmanProblemOIIO\\TravelingSalesmanProblemOIIO.csproj",
       "projectName": "TravelingSalesmanProblemOIIO",
-      "projectPath": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\TravelingSalesmanProblemOIIO\\TravelingSalesmanProblemOIIO.csproj",
+      "projectPath": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\TravelingSalesmanProblemOIIO\\TravelingSalesmanProblemOIIO.csproj",
       "packagesPath": "C:\\Users\\11600438\\.nuget\\packages\\",
-      "outputPath": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\TravelingSalesmanProblemOIIO\\obj\\",
+      "outputPath": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\TravelingSalesmanProblemOIIO\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -8875,11 +8875,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Customer\\ContactProj.csproj": {
-              "projectPath": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Customer\\ContactProj.csproj"
+            "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\Customer\\ContactProj.csproj": {
+              "projectPath": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\Customer\\ContactProj.csproj"
             },
-            "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj": {
-              "projectPath": "C:\\OIIORepo\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj"
+            "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj": {
+              "projectPath": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj"
             }
           }
         }

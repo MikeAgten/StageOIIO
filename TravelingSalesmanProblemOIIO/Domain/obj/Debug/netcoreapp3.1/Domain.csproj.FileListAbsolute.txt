@@ -1,8 +1,0 @@
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Domain\bin\Debug\netcoreapp3.1\Domain.deps.json
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Domain\bin\Debug\netcoreapp3.1\Domain.dll
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Domain\bin\Debug\netcoreapp3.1\Domain.pdb
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Domain\obj\Debug\netcoreapp3.1\Domain.csprojAssemblyReference.cache
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfoInputs.cache
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfo.cs
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Domain\obj\Debug\netcoreapp3.1\Domain.dll
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Domain\obj\Debug\netcoreapp3.1\Domain.pdb

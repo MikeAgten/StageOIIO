@@ -1,8 +1,0 @@
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Appointment\bin\Debug\netcoreapp3.1\Appointment.deps.json
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Appointment\bin\Debug\netcoreapp3.1\Appointment.dll
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Appointment\obj\Debug\netcoreapp3.1\Appointment.csprojAssemblyReference.cache
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Appointment\obj\Debug\netcoreapp3.1\Appointment.AssemblyInfoInputs.cache
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Appointment\obj\Debug\netcoreapp3.1\Appointment.AssemblyInfo.cs
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Appointment\bin\Debug\netcoreapp3.1\Appointment.pdb
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Appointment\obj\Debug\netcoreapp3.1\Appointment.dll
-C:\Users\11600438\source\repos\TravelingSalesmanProblemOIIO\Appointment\obj\Debug\netcoreapp3.1\Appointment.pdb
