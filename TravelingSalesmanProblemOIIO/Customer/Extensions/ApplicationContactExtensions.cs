@@ -1,11 +1,7 @@
-﻿using AppointmentProj.Persistance;
-using ContactProj.Persistance;
+﻿using ContactProj.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ContactProj.Extensions
 {

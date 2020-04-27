@@ -2452,7 +2452,6 @@
       },
       "ContactProj/1.0.0": {
         "dependencies": {
-          "AppointmentProj": "1.0.0",
           "MediatR": "8.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.2",
           "Microsoft.EntityFrameworkCore.Sqlite": "3.1.2",
