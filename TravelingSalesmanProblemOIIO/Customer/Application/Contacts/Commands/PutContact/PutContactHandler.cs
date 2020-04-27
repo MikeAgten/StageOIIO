@@ -1,4 +1,5 @@
 ﻿using ContactProj.Domain;
+using ContactProj.Domain.Enums;
 using ContactProj.Persistance;
 using MediatR;
 using System;
@@ -20,7 +21,7 @@ namespace ContactProj.Application.Commands.PutCustomer
         public async Task<Unit> Handle(PutContactCommand request, CancellationToken cancellationToken)
         {
             var contact = await contactRepository.GetByIdAsync(request.Id, cancellationToken);
-            contact.Type = (Contact.ContactType)request.ContactType;
+            contact.Type = (ContactType)request.ContactType;
             contact.FirstName = request.FirstName;
             contact.Surname = request.Surname;
             contact.EmailAddress = request.EmailAddress;

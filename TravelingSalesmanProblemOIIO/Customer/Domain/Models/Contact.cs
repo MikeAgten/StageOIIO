@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ContactProj.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,11 +13,5 @@ namespace ContactProj.Domain
         public string Surname { get; set; }
         public string EmailAddress { get; set; }
         public DateTime CreatedDateUtc { get; set; }
-
-        public enum ContactType
-        {
-            Tenant = 0,
-            Customer = 1
-        }
     }
 }
