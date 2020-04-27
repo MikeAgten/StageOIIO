@@ -8,9 +8,11 @@
     <div id="algorithmDiv">
       <h1>Berekenen route</h1>
       <h2>Sorteer op dag</h2>
-      <select><option *ngFor="let date of distinctDates" value="{{date}}">{{date}}</option> </select>
+      <select (change)="changeSortingDate($event.target.value)">
+        <option> Alle afspraken </option>
+        <option *ngFor="let date of distinctDates" value="{{date}}">{{date}}</option> </select>
       <h2>Bereken dag</h2>
-      <button>Bereken</button>
+      <button (click)="calculateDay($event)" >Bereken</button>
     </div>
     <nav class="AddAppointment">
       <button routerLink="/addAppointment/{{tenantId}}" [routerLinkActive]="'current'" title="addAppointentClient"><img src="../../assets/Images/plus-icon.png"></button>

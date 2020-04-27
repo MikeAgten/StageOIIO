@@ -35,6 +35,21 @@ export class AppointmentService {
         })
       );
     }
+
+    getAppointmentsByDate(date: string): Observable<Appointment[]>{
+      if(!date.includes("-")){
+        return this.http.get<Appointment[]>(this.apiurl + 'api/appointments').pipe(
+          map(this.parseAppointments));
+      }else{
+      return this.http.get<Appointment[]>(this.apiurl + 'api/appointments').pipe(
+        map(this.parseAppointments),
+        map((appointments: Appointment[]) => {
+          return date !== null ? this.filterByDateppointments(appointments, date) : appointments;
+        })
+      );
+      }
+    }
+
     getAppointmentById(id: number): Observable<Appointment>{
       return this.http.get<Appointment>(this.apiurl + 'api/appointments/' + id);
     }
@@ -99,8 +114,13 @@ export class AppointmentService {
 
   filterByDistinctDateAppointments(appointments: Appointment[]): String[] {
     console.log(appointments);
-    return appointments.map(item => item.date)
+    return appointments.map(item => item.date.substring(0,10))
     .filter((value, index, self) => self.indexOf(value) === index);
+  }
+
+  filterByDateppointments(appointments: Appointment[], date: string): Appointment[] {
+    console.log(appointments);
+    return appointments.filter(appointment => appointment.date.substr(0,10) === date);
   }
 
 }

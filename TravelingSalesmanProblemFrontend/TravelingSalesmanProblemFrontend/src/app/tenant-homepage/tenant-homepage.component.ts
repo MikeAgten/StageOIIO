@@ -17,6 +17,7 @@ export class TenantHomepageComponent implements OnInit {
     private routeSub: Subscription;
     appointments: Appointment[];
     distinctDates: String[];
+    sortingDate: string;
     contact: Contact;
     tenantId: number;
     ngOnInit(){
@@ -39,9 +40,17 @@ export class TenantHomepageComponent implements OnInit {
 
     async fetchAppointments(){
      await this.appointmentService.getAppointmentsByTenantId(this.tenantId).subscribe(data => { this.appointments = data;
-      console.log("getting dates" + this.appointments);
-      this.distinctDates = this.appointmentService.filterByDistinctDateAppointments(this.appointments);
-      console.log("HELLO");});
+      this.distinctDates = this.appointmentService.filterByDistinctDateAppointments(this.appointments);});
+    }
+
+    async changeSortingDate(date: string){
+      console.log("changed to " + date);
+      this.sortingDate = date;
+      await this.appointmentService.getAppointmentsByDate(date).subscribe(data => { this.appointments = data;});
+    }
+
+    calculateDay(event: Event){
+      console.log("calculating route for day " + this.sortingDate);
     }
 
   }
