@@ -96,11 +96,11 @@ namespace TestProject.ContactTests.Handlers
         {
             //Arrange
             var dateTimeNow = DateTime.Now;
-            var command = new GetContactCommand();
+            var command = new GetContactsCommand();
             var mockContactRepository = new Mock<ContactRepository>(null);
             //Act
             mockContactRepository.Setup(x => x.GetAsync(It.IsAny<CancellationToken>())).ReturnsAsync(It.IsAny<List<Contact>>);
-            var sut = new GetContactHandler(mockContactRepository.Object);
+            var sut = new GetContactsHandler(mockContactRepository.Object);
             var result = await sut.Handle(command, CancellationToken.None);
             //Act
             mockContactRepository.Verify(x => x.GetAsync(It.IsAny<CancellationToken>()), Times.Once);

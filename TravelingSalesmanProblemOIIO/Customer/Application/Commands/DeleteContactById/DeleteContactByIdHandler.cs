@@ -19,7 +19,7 @@ namespace ContactProj.Application.Commands.DeleteCustomerById
         }
         public async Task<Unit> Handle(DeleteContactByIdCommand request, CancellationToken cancellationToken)
         {
-            contactRepository.DeleteByIdAsync(request.Id, cancellationToken);
+            await contactRepository.DeleteByIdAsync(request.Id, cancellationToken);
             return Unit.Value;
         }
     }

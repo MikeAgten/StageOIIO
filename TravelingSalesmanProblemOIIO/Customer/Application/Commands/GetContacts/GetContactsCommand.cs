@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ContactProj.Application.Commands.CreateCustomer
 {
-    public class GetContactCommand : IRequest<List<Contact>>
+    public class GetContactsCommand : IRequest<List<Contact>>
     {
     }
 }

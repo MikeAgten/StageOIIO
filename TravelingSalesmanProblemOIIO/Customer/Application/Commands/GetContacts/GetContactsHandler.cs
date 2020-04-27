@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace ContactProj.Application.Commands.CreateCustomer
 {
-    public class GetContactHandler : IRequestHandler<GetContactCommand, List<Contact>>
+    public class GetContactsHandler : IRequestHandler<GetContactsCommand, List<Contact>>
     {
         private readonly ContactRepository contactRepository;
 
-        public GetContactHandler(ContactRepository contactRepository)
+        public GetContactsHandler(ContactRepository contactRepository)
         {
             this.contactRepository = contactRepository;
         }
-        public async Task<List<Contact>> Handle(GetContactCommand request, CancellationToken cancellationToken)
+        public async Task<List<Contact>> Handle(GetContactsCommand request, CancellationToken cancellationToken)
         {
 
             var contact = await contactRepository.GetAsync(cancellationToken);

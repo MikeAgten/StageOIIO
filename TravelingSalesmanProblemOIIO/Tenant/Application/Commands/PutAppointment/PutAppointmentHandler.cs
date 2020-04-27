@@ -32,7 +32,7 @@ namespace AppointmentProj.Application.Commands.PutAppointment
             appointment.ClientId = request.ClientId;
             appointment.TenantId = request.TenantId;
             appointment.CreatedDateUtc = DateTime.Now;
-            appointmentRepository.PutAsync(appointment, cancellationToken);
+            await appointmentRepository.PutAsync(appointment, cancellationToken);
             return appointment;
         }
     }

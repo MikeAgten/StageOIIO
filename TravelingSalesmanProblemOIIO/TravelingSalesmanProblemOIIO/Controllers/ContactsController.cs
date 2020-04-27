@@ -50,7 +50,7 @@ namespace TravelingSalesmanProblemOIIO.Controllers
         [HttpGet]
         public async Task<IActionResult> GetContacts()
         {
-            var contacts = await mediator.Send(new GetContactCommand());
+            var contacts = await mediator.Send(new GetContactsCommand());
             return Ok(contacts);
         }
 

@@ -25,7 +25,7 @@ namespace ContactProj.Application.Commands.PutCustomer
             contact.Surname = request.Surname;
             contact.EmailAddress = request.EmailAddress;
             contact.CreatedDateUtc = request.CreatedDateUtc;
-            contactRepository.PutAsync(contact, cancellationToken);
+            await contactRepository.PutAsync(contact, cancellationToken);
             return Unit.Value;
         }
     }

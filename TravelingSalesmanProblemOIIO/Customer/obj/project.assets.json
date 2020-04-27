@@ -1509,22 +1509,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "AppointmentProj/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "MediatR": "8.0.1",
-          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.2",
-          "Microsoft.EntityFrameworkCore.Sqlite": "3.1.2",
-          "Microsoft.Extensions.Logging.Console": "3.1.2"
-        },
-        "compile": {
-          "bin/placeholder/AppointmentProj.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/AppointmentProj.dll": {}
-        }
       }
     }
   },
@@ -5484,16 +5468,10 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
-    },
-    "AppointmentProj/1.0.0": {
-      "type": "project",
-      "path": "../Tenant/AppointmentProj.csproj",
-      "msbuildProject": "../Tenant/AppointmentProj.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "AppointmentProj >= 1.0.0",
       "MediatR >= 8.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.2",
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.2",
@@ -5534,11 +5512,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {
-            "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj": {
-              "projectPath": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
