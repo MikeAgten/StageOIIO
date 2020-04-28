@@ -60,7 +60,7 @@ namespace TestProject.AppointmentTests.Repository
         }
 
         [Fact]
-        public void PutAsync_Updates_AppointmentAsync()
+        public async Task PutAsync_Updates_AppointmentAsync()
         {
             using (var dbContext = AppointmentDbContextInMemory.CreateInMemoryDbContext())
             {
@@ -74,7 +74,7 @@ namespace TestProject.AppointmentTests.Repository
 
                 //Act
                 var sut = new AppointmentRepository(dbContext);
-                sut.PutAsync(appointment1, It.IsAny<CancellationToken>());
+                await sut.PutAsync(appointment1, It.IsAny<CancellationToken>());
                 var result = sut.GetByIdAsync(id, It.IsAny<CancellationToken>());
 
                 //Assert
@@ -83,7 +83,7 @@ namespace TestProject.AppointmentTests.Repository
         }
 
         [Fact]
-        public void DeleteByIdAsync_Deletes_Appointment()
+        public async Task DeleteByIdAsync_Deletes_AppointmentAsync()
         {
             using (var dbContext = AppointmentDbContextInMemory.CreateInMemoryDbContext())
             {
@@ -99,7 +99,7 @@ namespace TestProject.AppointmentTests.Repository
 
                 //Act
                 var sut = new AppointmentRepository(dbContext);
-                sut.DeleteByIdAsync(9, It.IsAny<CancellationToken>());
+                await sut.DeleteByIdAsync(9, It.IsAny<CancellationToken>());
                 var result = sut.GetByIdAsync(9,It.IsAny<CancellationToken>());
 
                 //Assert
@@ -109,7 +109,7 @@ namespace TestProject.AppointmentTests.Repository
 
 
         [Fact]
-        public void AddAsync_Adds_Appointment()
+        public async Task AddAsync_Adds_AppointmentAsync()
         {
             using (var dbContext = AppointmentDbContextInMemory.CreateInMemoryDbContext())
             {
@@ -120,9 +120,9 @@ namespace TestProject.AppointmentTests.Repository
 
                 //Act
                 var sut = new AppointmentRepository(dbContext);
-                sut.SaveAsync(appointment1, It.IsAny<CancellationToken>());
-                sut.SaveAsync(appointment2, It.IsAny<CancellationToken>());
-                sut.SaveAsync(appointment3, It.IsAny<CancellationToken>());
+                await sut.SaveAsync(appointment1, It.IsAny<CancellationToken>());
+                await sut.SaveAsync(appointment2, It.IsAny<CancellationToken>());
+                await sut.SaveAsync(appointment3, It.IsAny<CancellationToken>());
                 var result = sut.GetAsync(It.IsAny<CancellationToken>());
 
                 //Assert
