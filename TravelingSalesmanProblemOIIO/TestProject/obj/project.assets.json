@@ -9863,9 +9863,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\TestProject\\TestProject.csproj",
-      "projectName": "TestProject",
-      "projectPath": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\TestProject\\TestProject.csproj",
+      "projectUniqueName": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\TestProject\\AppointmentTestProject.csproj",
+      "projectName": "AppointmentTestProject",
+      "projectPath": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\TestProject\\AppointmentTestProject.csproj",
       "packagesPath": "C:\\Users\\11600438\\.nuget\\packages\\",
       "outputPath": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\TestProject\\obj\\",
       "projectStyle": "PackageReference",
