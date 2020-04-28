@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AppointmentProj.Application.Appointments.Commands.CalculateRoute;
 using AppointmentProj.Application.Commands.CreateCommand;
 using AppointmentProj.Application.Commands.DeleteAppointmentById;
 using AppointmentProj.Application.Commands.GetAppointmentById;
@@ -32,6 +33,13 @@ namespace TravelingSalesmanProblemOIIO.Controllers
         {
             var createdAppointmentId = await mediator.Send(command);
             return Created(new Uri("https://localhost:5001/api/Appointments/" + createdAppointmentId), createdAppointmentId);
+        }
+
+        [HttpPost("calculateroute")]
+        public async void CalculateRoute(CalculateRouteCommand command)
+        {
+            Console.WriteLine("visiting calculateRoute");
+            await mediator.Send(command);
         }
 
         [HttpPut]
