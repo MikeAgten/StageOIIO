@@ -33,4 +33,3 @@ C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\n
 C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.AssemblyInfo.cs
 C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.dll
 C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.pdb
-C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.csprojAssemblyReference.cache

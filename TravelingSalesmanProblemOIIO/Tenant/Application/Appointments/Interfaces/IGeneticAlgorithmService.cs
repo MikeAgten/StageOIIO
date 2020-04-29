@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AppointmentProj.Application.Appointments.Interfaces
 {
-    interface IGeneticAlgorithmService
+    public interface IGeneticAlgorithmService
     {
         void Calculate(List<Appointment> appointments);
         void CalculateCostMatrix();
