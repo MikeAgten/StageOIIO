@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj": {}
+    "C:\\OIIORepo\\OIIOTSP\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj": {}
   },
   "projects": {
-    "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj": {
+    "C:\\OIIORepo\\OIIOTSP\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj",
+        "projectUniqueName": "C:\\OIIORepo\\OIIOTSP\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj",
         "projectName": "AppointmentProj",
-        "projectPath": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj",
+        "projectPath": "C:\\OIIORepo\\OIIOTSP\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\AppointmentProj.csproj",
         "packagesPath": "C:\\Users\\11600438\\.nuget\\packages\\",
-        "outputPath": "C:\\OIIORepo\\OIIOProj\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\obj\\",
+        "outputPath": "C:\\OIIORepo\\OIIOTSP\\StageOIIO\\TravelingSalesmanProblemOIIO\\Tenant\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -43,6 +43,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "BenchmarkDotNet": {
+              "target": "Package",
+              "version": "[0.12.1, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[8.0.1, )"

@@ -34,3 +34,13 @@ C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\n
 C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.dll
 C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.pdb
 C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.csprojAssemblyReference.cache
+C:\OIIORepo\OIIOTSP\StageOIIO\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\ContactProj.deps.json
+C:\OIIORepo\OIIOTSP\StageOIIO\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\ContactProj.runtimeconfig.json
+C:\OIIORepo\OIIOTSP\StageOIIO\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\ContactProj.runtimeconfig.dev.json
+C:\OIIORepo\OIIOTSP\StageOIIO\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\ContactProj.dll
+C:\OIIORepo\OIIOTSP\StageOIIO\TravelingSalesmanProblemOIIO\Customer\bin\Debug\netcoreapp3.1\ContactProj.pdb
+C:\OIIORepo\OIIOTSP\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.csprojAssemblyReference.cache
+C:\OIIORepo\OIIOTSP\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.AssemblyInfoInputs.cache
+C:\OIIORepo\OIIOTSP\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.AssemblyInfo.cs
+C:\OIIORepo\OIIOTSP\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.dll
+C:\OIIORepo\OIIOTSP\StageOIIO\TravelingSalesmanProblemOIIO\Customer\obj\Debug\netcoreapp3.1\ContactProj.pdb

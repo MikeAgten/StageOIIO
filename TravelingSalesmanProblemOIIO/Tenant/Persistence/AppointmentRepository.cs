@@ -38,6 +38,11 @@ namespace AppointmentProj.Persistance
                 return await dbContext.Appointments.ToListAsync(cancellationToken);
         }
 
+        public virtual async Task<List<Appointment>> GetByTenantIdAndDateAsync(int tenantId, DateTime date, CancellationToken cancellationToken)
+        {
+            return await dbContext.Appointments.Where(c => c.TenantId == tenantId && c.Date.Date == date.Date).ToListAsync(cancellationToken);
+        }
+
         public virtual async Task<Appointment> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
                 return await dbContext.Appointments.Where(c => c.Id == id).FirstOrDefaultAsync(cancellationToken);

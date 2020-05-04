@@ -34,6 +34,7 @@ namespace TravelingSalesmanProblemOIIO
         {
             services.AddMediatR(typeof(ContactRepository));
             services.AddMediatR(typeof(AppointmentRepository));
+            services.AddScoped<AppointmentRepository>();
             services.AddControllers();
             services.AddRazorPages();
             services.AddServerSideBlazor();

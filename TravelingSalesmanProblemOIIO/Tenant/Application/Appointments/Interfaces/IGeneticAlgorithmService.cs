@@ -5,21 +5,21 @@ using System.Text;
 
 namespace AppointmentProj.Application.Appointments.Interfaces
 {
-    interface IGeneticAlgorithmService
+    public interface IGeneticAlgorithmService
     {
-        void Calculate(List<Appointment> appointments);
-        void CalculateCostMatrix();
+        List<Appointment> Calculate(List<Appointment> appointments, int populationSize, int amountGenerations);
+        double[][] CalculateCostMatrix();
         double CalculateDistanceBetweenTwo(Appointment firstAppointment, Appointment secondAppointment);
-        void GeneratePopulation();
+        int[][] GeneratePopulation();
         void CalculateShortestOfPopulation();
         double CalcRouteCost(List<Appointment> appointments, int[] order);
         void NextGeneration();
         int[] CrossOver(int[] orderA, int[] orderB);
-        void Mutate(int[] order, int mutationRate);
-        void Selection(int[][] population, double[] probability);
+        int[] Mutate(int[] order, int mutationRate);
+        int[] Selection(int[][] population, double[] probability);
         int[] ShuffleInitialPopulation(int[] order, int amountShuffles);
-        void SwapAppointments(int[] order, int numberOne, int numberTwo);
-        void CalculateFitness();
-        void NormalizeFitness();
+        int[] SwapAppointments(int[] order, int numberOne, int numberTwo);
+        void CalculateFitness(List<Appointment> appointments, int[][] population);
+        double[] NormalizeFitness(double[] fitness);
     }
 }

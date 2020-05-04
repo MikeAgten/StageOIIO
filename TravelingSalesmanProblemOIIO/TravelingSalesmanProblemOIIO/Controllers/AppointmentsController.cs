@@ -36,7 +36,7 @@ namespace TravelingSalesmanProblemOIIO.Controllers
         }
 
         [HttpPost("calculateroute")]
-        public async void CalculateRoute(CalculateRouteCommand command)
+        public async Task CalculateRoute(CalculateRouteCommand command)
         {
             Console.WriteLine("visiting calculateRoute");
             await mediator.Send(command);

@@ -11,7 +11,6 @@ namespace AppointmentProj.Extensions
     {
         public static void RegisterDependencies(this IServiceCollection services)
         {
-            services.AddScoped<AppointmentRepository>();
         }
     }
 }
