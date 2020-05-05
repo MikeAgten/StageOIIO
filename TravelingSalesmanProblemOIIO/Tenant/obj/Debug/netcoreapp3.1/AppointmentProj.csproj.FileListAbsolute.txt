@@ -23,7 +23,6 @@ C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\net
 C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.runtimeconfig.dev.json
 C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.dll
 C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\bin\Debug\netcoreapp3.1\AppointmentProj.pdb
-C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.csprojAssemblyReference.cache
 C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.AssemblyInfoInputs.cache
 C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.AssemblyInfo.cs
 C:\OIIORepo\OIIOProj\StageOIIO\TravelingSalesmanProblemOIIO\Tenant\obj\Debug\netcoreapp3.1\AppointmentProj.dll

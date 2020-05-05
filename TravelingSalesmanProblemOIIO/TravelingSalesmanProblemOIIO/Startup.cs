@@ -41,8 +41,8 @@ namespace TravelingSalesmanProblemOIIO
             services.RegisterContactDependencies(Configuration);
             services.RegisterAppointmentDependencies(Configuration);
             services.AddMvc();
-            services.AddDbContext<ContactDbContext>();
-            services.AddDbContext<AppointmentDbContext>();
+            //services.AddDbContext<ContactDbContext>();
+            //services.AddDbContext<AppointmentDbContext>();
             services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
