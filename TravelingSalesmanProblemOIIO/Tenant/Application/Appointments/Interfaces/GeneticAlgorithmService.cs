@@ -32,6 +32,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             this.appointments = appointments;
             this.populationSize = populationSize;
             this.amountGenerations = amountGenerations;
+            sortedAppointments = new List<Appointment>();
             rand = new Random();
             costMatrix = CalculateCostMatrix();
             printMatrix(costMatrix);
@@ -40,7 +41,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             CalculateShortestOfPopulation();
             startAlgorithmLoop();
             sortAppointments();
-            return null;
+            return sortedAppointments;
         }
 
         private void sortAppointments()

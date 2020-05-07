@@ -25,8 +25,14 @@ namespace AppointmentProj.Application.Appointments.Handlers.CalculateRoute
 
         public async Task<Unit> Handle(CalculateRouteCommand request, CancellationToken cancellationToken)
         {
-            List<Appointment> appointments = await appointmentRepository.GetByTenantIdAndDateAsync(request.TenantId, request.Date, cancellationToken);
-            List <Appointment> sortedAppointments =  geneticAlgorithmService.Calculate(appointments, 100, 100000);
+            AppointmentScheduler appointmentScheduler = new AppointmentScheduler();
+            var appointments = await appointmentRepository.GetByTenantIdAndDateAsync(request.TenantId, request.Date, cancellationToken);
+            var sortedAppointments =  geneticAlgorithmService.Calculate(appointments, 100, 100000);
+            var scheduledAppointments = appointmentScheduler.scheduleAppointments(sortedAppointments);
+            foreach(Appointment appointment in scheduledAppointments)
+            {
+                await appointmentRepository.PutAsync(appointment, cancellationToken);
+            }
             return Unit.Value;
         }
     }

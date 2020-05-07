@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Appointment } from '../models/appointment.model';
+import { CalculateInfo } from '../models/calculateInfo.model';
 
 @Injectable({providedIn: 'root'})
 export class AppointmentService {
@@ -58,6 +59,11 @@ export class AppointmentService {
 
     PostAppointment(toAddAppointment: Appointment): Observable<Appointment>{
       return this.http.post<Appointment>(this.apiurl + 'api/appointments', toAddAppointment);
+    }
+
+    CalculateRoute(toCalculateInfo: CalculateInfo): Observable<CalculateInfo>{
+      console.log("berekenen van " + toCalculateInfo);
+      return this.http.post<CalculateInfo>(this.apiurl + 'api/Appointments/calculateroute', toCalculateInfo);
     }
     /*
     getGiftsFirst(): Observable<Object[]>{

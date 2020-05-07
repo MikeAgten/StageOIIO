@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Appointment } from '../models/appointment.model';
 import { Contact } from '../models/contact.model';
+import { CalculateInfo } from '../models/calculateInfo.model';
 
 @Component({
   selector: 'app-tenant-homepage',
@@ -20,6 +21,7 @@ export class TenantHomepageComponent implements OnInit {
     sortingDate: string;
     contact: Contact;
     tenantId: number;
+    toCalculateInfo: CalculateInfo;
     ngOnInit(){
       this.routeSub = this.route.params.subscribe(params => {
         var idParameter = params['id'];
@@ -50,6 +52,10 @@ export class TenantHomepageComponent implements OnInit {
     }
 
     calculateDay(event: Event){
+      this.toCalculateInfo = new CalculateInfo(this.sortingDate, this.tenantId);
+      this.appointmentService.CalculateRoute(this.toCalculateInfo).subscribe(
+        data => console.log("succes!", data),
+        error => console.error("Error!", error));
       console.log("calculating route for day " + this.sortingDate);
     }
 
