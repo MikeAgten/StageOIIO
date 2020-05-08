@@ -29,9 +29,11 @@ export class AppointmentService {
     }
 
     getAppointmentsByTenantId(tenantId: number): Observable<Appointment[]>{
+      console.log("getting appointments for " + tenantId)
       return this.http.get<Appointment[]>(this.apiurl + 'api/appointments').pipe(
         map(this.parseAppointments),
         map((appointments: Appointment[]) => {
+          console.log("before map " + appointments)
           return tenantId !== null ? this.filterByTenantIdAppointments(appointments, tenantId) : appointments;
         })
       );

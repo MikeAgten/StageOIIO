@@ -6,23 +6,34 @@ using System.Threading;
 using System.Threading.Tasks;
 using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
+using AppointmentProj.Domain.Models;
+using static AppointmentProj.Application.Commands.GetAppointmentById.GetAppointmentByIdHandler;
 
 namespace AppointmentProj.Application.Commands.GetAppointmentById
 {
-    public class GetAppointmentByIdHandler : IRequestHandler<GetAppointmentByIdCommand, Appointment>
+    public class GetAppointmentByIdHandler : IRequestHandler<GetAppointmentByIdCommand, GetAppointmentByIdDto>
     {
         private readonly AppointmentRepository appointmentRepository;
+        private readonly AddressBook addressBook;
 
-        public GetAppointmentByIdHandler(AppointmentRepository appointmentRepository)
+        public GetAppointmentByIdHandler(AppointmentRepository appointmentRepository, AddressBook addressBook)
         {
             this.appointmentRepository = appointmentRepository;
+            this.addressBook = addressBook;
         }
-        public async Task<Appointment> Handle(GetAppointmentByIdCommand request, CancellationToken cancellationToken)
+        public async Task<GetAppointmentByIdDto> Handle(GetAppointmentByIdCommand request, CancellationToken cancellationToken)
         {
-
             var appointment = await appointmentRepository.GetByIdAsync(request.Id, cancellationToken);
-            return appointment;
+            var address = addressBook.GetAddress(appointment.Latitude, appointment.Longitude);
+            var appointmentDto = new GetAppointmentByIdDto { appointment = appointment, address = address };
+            return appointmentDto;
         }
+        public class GetAppointmentByIdDto
+        {
+            public Appointment appointment { get; set; }
+            public Address address { get; set; }
+        }
+
     }
 }
 
