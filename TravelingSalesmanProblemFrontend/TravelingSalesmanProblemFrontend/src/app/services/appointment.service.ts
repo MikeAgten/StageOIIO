@@ -34,17 +34,12 @@ export class AppointmentService {
     }
 
     getAppointmentDtosByDate(date: string): Observable<AppointmentDto[]>{
-      if(!date.includes("-")){
-        return this.http.get<AppointmentDto[]>(this.apiurl + 'api/appointments').pipe(
-          map(this.parseAppointmentsDto));
-      }else{
       return this.http.get<AppointmentDto[]>(this.apiurl + 'api/appointments').pipe(
         map(this.parseAppointmentsDto),
         map((appointments: AppointmentDto[]) => {
           return date !== null ? this.filterByDateppointmentDtos(appointments, date) : appointments;
         })
       );
-      }
     }
 
     getAppointmentById(id: number): Observable<Appointment>{

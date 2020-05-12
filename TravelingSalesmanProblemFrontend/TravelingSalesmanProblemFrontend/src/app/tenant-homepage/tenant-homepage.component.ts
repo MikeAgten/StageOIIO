@@ -35,7 +35,7 @@ export class TenantHomepageComponent implements OnInit {
     }
 
     fetchDatesDistinct() {
-      
+
     }
 
     fetchContactById() {
@@ -50,7 +50,11 @@ export class TenantHomepageComponent implements OnInit {
     async changeSortingDate(date: string){
       console.log("changed to " + date);
       this.sortingDate = date;
-      await this.appointmentService.getAppointmentDtosByDate(date).subscribe(data => { this.appointmentDtos = data; });
+      if(!date.includes("-")){
+        this.fetchAppointments();
+      } else{
+        await this.appointmentService.getAppointmentDtosByDate(date).subscribe(data => { this.appointmentDtos = data; });
+      }
     }
 
     calculateDay(event: Event){

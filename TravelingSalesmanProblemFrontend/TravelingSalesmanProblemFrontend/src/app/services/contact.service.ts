@@ -77,9 +77,9 @@ export class ContactService {
       });
   }
 
-  filterByContactTypeContacts(contacts: Contact[], contactType: number): Contact[] {
+  filterByContactTypeContacts(contacts: Contact[], type: number): Contact[] {
     console.log(contacts);
-    return contacts.filter(contact => contact.contactType === contactType);
+    return contacts.filter(contact => contact.type === type);
   }
 }
 
