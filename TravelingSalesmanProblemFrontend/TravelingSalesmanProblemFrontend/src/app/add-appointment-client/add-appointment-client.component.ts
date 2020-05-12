@@ -22,6 +22,7 @@ export class AddAppointmentClientComponent implements OnInit {
   date: Date;
   dateString: string;
   currentContactId: number;
+  currentContactType: number;
   toAddAppointment: Appointment;
   currentAddress: Address;
 
@@ -34,14 +35,16 @@ export class AddAppointmentClientComponent implements OnInit {
     });
     this.fillAddresses();
     this.fetchContactById();
-    this.fetchContactsByContactType(0);
+    console.log(this.currentContactType);
+    this.fetchContactsByContactType(this.currentContactType);
     this.toAddAppointment = new Appointment(null, null, null, null, null, null, null, null, null, null, null);
     this.toAddAppointment.clientId = this.contactId;
     this.date = new Date();
   }
 
   fetchContactById() {
-    this.contactService.getContactById(this.contactId).subscribe(data => { this.contact = data; });
+    this.contactService.getContactById(this.contactId).subscribe(data => { this.contact = data;
+      this.currentContactType = data.contactType;});
   }
   fetchContactsByContactType(contactType: number) {
     this.contactService.getContactsByContactType(contactType).subscribe(data => {
@@ -54,10 +57,12 @@ export class AddAppointmentClientComponent implements OnInit {
   }
 
   changeCurrentAddress(address: Address){
-    console.log("changed to" + this.currentAddress.number);
+    //this.currentAddress = address;
+    console.log("changed to" + address.latitude);
   }
 
   submit(appointmentform): void {
+    console.log("current address : " + this.currentAddress.number);
     this.dateString = this.date.toISOString().slice(0,19);
     let appointment = new Appointment(
       null,

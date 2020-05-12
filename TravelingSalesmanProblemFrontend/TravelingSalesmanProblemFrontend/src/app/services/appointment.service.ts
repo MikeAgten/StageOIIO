@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Appointment } from '../models/appointment.model';
 import { CalculateInfo } from '../models/calculateInfo.model';
+import { AppointmentDto } from '../models/appointmentDto.model';
 
 @Injectable({providedIn: 'root'})
 export class AppointmentService {
@@ -11,43 +12,36 @@ export class AppointmentService {
     private apiurl: string = 'https://localhost:5001/';
     constructor(private http: HttpClient) { }
 
-
-    getAppointments(): Observable<Appointment[]>{
-      return this.http.get<Appointment[]>(this.apiurl + 'api/appointments').pipe(
-        map(this.parseAppointments));
-    }
-
-
-    getAppointmentsByClientId(clientId: number): Observable<Appointment[]>{
-      return this.http.get<Appointment[]>(this.apiurl + 'api/appointments').pipe(
-        map(this.parseAppointments),
-        map((appointments: Appointment[]) => {
-          return clientId !== null ? this.filterByClientIdAppointments(appointments, clientId) : appointments;
+    getAppointmentsDtoByClientId(clientId: number): Observable<AppointmentDto[]>{
+      return this.http.get<AppointmentDto[]>(this.apiurl + 'api/appointments').pipe(
+        map(this.parseAppointmentsDto),
+        map((appointments: AppointmentDto[]) => {
+          return clientId !== null ? this.filterByClientIdAppointmentsDto(appointments, clientId) : appointments;
         })
 
       );
     }
 
-    getAppointmentsByTenantId(tenantId: number): Observable<Appointment[]>{
+    getAppointmentDtosByTenantId(tenantId: number): Observable<AppointmentDto[]>{
       console.log("getting appointments for " + tenantId)
-      return this.http.get<Appointment[]>(this.apiurl + 'api/appointments').pipe(
-        map(this.parseAppointments),
-        map((appointments: Appointment[]) => {
+      return this.http.get<AppointmentDto[]>(this.apiurl + 'api/appointments').pipe(
+        map(this.parseAppointmentsDto),
+        map((appointments: AppointmentDto[]) => {
           console.log("before map " + appointments)
-          return tenantId !== null ? this.filterByTenantIdAppointments(appointments, tenantId) : appointments;
+          return tenantId !== null ? this.filterByTenantIdAppointmentDtos(appointments, tenantId) : appointments;
         })
       );
     }
 
-    getAppointmentsByDate(date: string): Observable<Appointment[]>{
+    getAppointmentDtosByDate(date: string): Observable<AppointmentDto[]>{
       if(!date.includes("-")){
-        return this.http.get<Appointment[]>(this.apiurl + 'api/appointments').pipe(
-          map(this.parseAppointments));
+        return this.http.get<AppointmentDto[]>(this.apiurl + 'api/appointments').pipe(
+          map(this.parseAppointmentsDto));
       }else{
-      return this.http.get<Appointment[]>(this.apiurl + 'api/appointments').pipe(
-        map(this.parseAppointments),
-        map((appointments: Appointment[]) => {
-          return date !== null ? this.filterByDateppointments(appointments, date) : appointments;
+      return this.http.get<AppointmentDto[]>(this.apiurl + 'api/appointments').pipe(
+        map(this.parseAppointmentsDto),
+        map((appointments: AppointmentDto[]) => {
+          return date !== null ? this.filterByDateppointmentDtos(appointments, date) : appointments;
         })
       );
       }
@@ -57,90 +51,43 @@ export class AppointmentService {
       return this.http.get<Appointment>(this.apiurl + 'api/appointments/' + id);
     }
 
-
-
     PostAppointment(toAddAppointment: Appointment): Observable<Appointment>{
       return this.http.post<Appointment>(this.apiurl + 'api/appointments', toAddAppointment);
     }
 
     CalculateRoute(toCalculateInfo: CalculateInfo): Observable<CalculateInfo>{
-      console.log("berekenen van " + toCalculateInfo);
       return this.http.post<CalculateInfo>(this.apiurl + 'api/Appointments/calculateroute', toCalculateInfo);
     }
-    /*
-    getGiftsFirst(): Observable<Object[]>{
-      return this.http.get<Object[]>('api/gifts/1');
-    }
 
-    PostGifts(toAddGift: Appointment): void{
-      this.http.post('api/gifts', toAddGift);
-    }
-
-    putGifts(toUpdateGift: Appointment): void{
-      this.http.put('api/gifts', toUpdateGift);
-    }
-
-    deleteGiftsFirst(id: number): Observable<any> {
-      console.log( this.http.delete('/api/gifts/' + id));
-      return this.http.delete('/api/gifts/' + id);
-    }
-
-    getCategories(): Observable<Appointment[]>{
-      return this.http.get<Appointment[]>('api/categories').pipe(
-        map(this.parseCategories)
-      );
-    }*/
-
-    parseAppointments(rawAppointments: any[]): Appointment[] {
-      return Object.keys(rawAppointments).map(key => {
-        let appointment = rawAppointments[key];
-        return new Appointment(
-          appointment.id,
-          appointment.title,
-          appointment.description,
-          appointment.latitude,
-          appointment.longitude,
-          appointment.duration,
-          appointment.date,
-          appointment.start,
-          appointment.end,
-          appointment.clientId,
-          appointment.tenantId,
-          );
-      });
+  parseAppointmentsDto(rawAppointmentsDto: any[]): AppointmentDto[] {
+    return Object.keys(rawAppointmentsDto).map(key => {
+      let appointmentDto = rawAppointmentsDto[key];
+      return new AppointmentDto(
+        appointmentDto.appointment,
+        appointmentDto.address
+        );
+    });
   }
 
-  filterByClientIdAppointments(appointments: Appointment[], clientId: number): Appointment[] {
+  filterByClientIdAppointmentsDto(appointments: AppointmentDto[], clientId: number): AppointmentDto[] {
     console.log(appointments);
-    return appointments.filter(appointment => appointment.clientId === clientId);
+    return appointments.filter(appointment => appointment.appointment.clientId === clientId);
   }
 
-  filterByTenantIdAppointments(appointments: Appointment[], tenantId: number): Appointment[] {
+  filterByTenantIdAppointmentDtos(appointments: AppointmentDto[], tenantId: number): AppointmentDto[] {
     console.log(appointments);
-    return appointments.filter(appointment => appointment.tenantId === tenantId);
+    return appointments.filter(appointment => appointment.appointment.tenantId === tenantId);
   }
 
-  filterByDistinctDateAppointments(appointments: Appointment[]): String[] {
+  filterByDistinctDateAppointmentDtos(appointments: AppointmentDto[]): String[] {
     console.log(appointments);
-    return appointments.map(item => item.date.substring(0,10))
+    return appointments.map(item => item.appointment.date.substring(0,10))
     .filter((value, index, self) => self.indexOf(value) === index);
   }
 
-  filterByDateppointments(appointments: Appointment[], date: string): Appointment[] {
+  filterByDateppointmentDtos(appointments: AppointmentDto[], date: string): AppointmentDto[] {
     console.log(appointments);
-    return appointments.filter(appointment => appointment.date.substr(0,10) === date);
+    return appointments.filter(appointment => appointment.appointment.date.substr(0,10) === date);
   }
 
 }
-
-
-
-/*
- GET /api/gifts                  // alle gift objecten
- GET /api/gifts?description=j    // gifts waarbij description 'j' bevat
- GET /api/gifts/1                // gift met als id=1
- POST /api/gifts                 // gift object toevoegen
- PUT /api/gifts                  // gift object updaten
- DELETE /api/gifts/1             // delete gift met als id=1
- GET /api/categories             // alle category objecten
- */

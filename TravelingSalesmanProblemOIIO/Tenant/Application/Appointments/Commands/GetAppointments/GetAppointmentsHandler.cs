@@ -26,16 +26,16 @@ namespace AppointmentProj.Application.Commands.GetAppointments
             foreach(Appointment appointment in appointments)
             {
                 appointmentDtos.Add(new GetAppointmentsDto {
-                    appointment = appointment, 
-                    address = addressBook.GetAddress(appointment.Latitude, appointment.Longitude) });
+                    Appointment = appointment, 
+                    Address = addressBook.GetAddress(appointment.Latitude, appointment.Longitude) });
             }
             return appointmentDtos;
         }
 
         public class GetAppointmentsDto
         {
-            public Appointment appointment { get; set; }
-            public Address address { get; set; }
+            public Appointment Appointment { get; set; }
+            public Address Address { get; set; }
         }
     }
 }

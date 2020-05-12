@@ -15,8 +15,8 @@
         <input type="text" name="description" class="Description" placeholder="description" [(ngModel)]="toAddAppointment.description" name="description" #description="ngModel" required/><br/>
       <div>
         <h2>Locatie afspraak</h2>
-        <select [ngModel]="currentAddress" (ngModelChange)="changeCurrentAddress($event.target.value)">
-          <option  *ngFor="let address of addresses;" [value]="address">{{address.street + " " + address.number + " - " + address.city + " " + address.postal}}</option>
+        <select [(ngModel)]="currentAddress" name="currentAddress" >
+          <option  *ngFor="let address of addresses;" [ngValue]="address">{{address.street + " " + address.number + " - " + address.city + " " + address.postal}}</option>
         </select>
       </div>
     </div>

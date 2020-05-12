@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { AppointmentService } from '../services/appointment.service';
 import { Appointment } from '../models/appointment.model';
+import { AppointmentDto } from '../models/appointmentDto.model';
 
 @Component({
   selector: 'app-client-homepage',
@@ -15,7 +16,7 @@ export class ClientHomepageComponent implements OnInit {
 
   constructor(private contactService: ContactService, private appointmentService: AppointmentService, private route: ActivatedRoute) { }
   private routeSub: Subscription;
-  appointments: Appointment[];
+  appointmentDtos: AppointmentDto[];
   contact: Contact;
   contactId: number;
   ngOnInit(){
@@ -33,7 +34,7 @@ export class ClientHomepageComponent implements OnInit {
   }
 
   async fetchAppointments(){
-   await this.appointmentService.getAppointmentsByClientId(this.contactId).subscribe(data => { this.appointments = data; });
+   await this.appointmentService.getAppointmentsDtoByClientId(this.contactId).subscribe(data => { this.appointmentDtos = data; });
   }
 
 }

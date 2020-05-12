@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Appointment } from '../models/appointment.model';
 import { Contact } from '../models/contact.model';
 import { CalculateInfo } from '../models/calculateInfo.model';
+import { AppointmentDto } from '../models/appointmentDto.model';
 
 @Component({
   selector: 'app-tenant-homepage',
@@ -16,7 +17,7 @@ export class TenantHomepageComponent implements OnInit {
 
     constructor(private contactService: ContactService, private appointmentService: AppointmentService, private route: ActivatedRoute) { }
     private routeSub: Subscription;
-    appointments: Appointment[];
+    appointmentDtos: AppointmentDto[];
     distinctDates: String[];
     sortingDate: string;
     contact: Contact;
@@ -34,6 +35,7 @@ export class TenantHomepageComponent implements OnInit {
     }
 
     fetchDatesDistinct() {
+      
     }
 
     fetchContactById() {
@@ -41,14 +43,14 @@ export class TenantHomepageComponent implements OnInit {
     }
 
     async fetchAppointments(){
-     await this.appointmentService.getAppointmentsByTenantId(this.tenantId).subscribe(data => { this.appointments = data;
-      this.distinctDates = this.appointmentService.filterByDistinctDateAppointments(this.appointments);});
+     await this.appointmentService.getAppointmentDtosByTenantId(this.tenantId).subscribe(data => { this.appointmentDtos = data;
+      this.distinctDates = this.appointmentService.filterByDistinctDateAppointmentDtos(this.appointmentDtos); });
     }
 
     async changeSortingDate(date: string){
       console.log("changed to " + date);
       this.sortingDate = date;
-      await this.appointmentService.getAppointmentsByDate(date).subscribe(data => { this.appointments = data;});
+      await this.appointmentService.getAppointmentDtosByDate(date).subscribe(data => { this.appointmentDtos = data; });
     }
 
     calculateDay(event: Event){

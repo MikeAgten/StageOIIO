@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Contact } from '../models/contact.model';
-import { Appointment } from '../models/appointment.model';
-import { AppointmentService } from '../services/appointment.service';
 import { ContactService } from '../services/contact.service';
+import { AppointmentDto } from '../models/appointmentDto.model';
 
 @Component({
   selector: 'app-appointment-client',
@@ -20,14 +19,14 @@ export class AppointmentClientComponent implements OnInit {
   constructor(private contactService: ContactService) { }
 
   @Input()
-  appointment: Appointment;
+  appointmentDto: AppointmentDto;
 
   ngOnInit(): void {
-    this.dateString = this.appointment.date.toString().substr(0,10);
-    this.startHour = this.appointment.start.toString().substr(11,5);
-    this.endHour = this.appointment.end.toString().substr(11,5);
-    this.fetchClientById(this.appointment.clientId);
-    this.fetchTenantById(this.appointment.tenantId);
+    this.dateString = this.appointmentDto.appointment.date.toString().substr(0,10);
+    this.startHour = this.appointmentDto.appointment.start.toString().substr(11,5);
+    this.endHour = this.appointmentDto.appointment.end.toString().substr(11,5);
+    this.fetchClientById(this.appointmentDto.appointment.clientId);
+    this.fetchTenantById(this.appointmentDto.appointment.tenantId);
     if(this.startHour === "00:00"){
       this.startHour = "...";
       this.endHour = "...";
