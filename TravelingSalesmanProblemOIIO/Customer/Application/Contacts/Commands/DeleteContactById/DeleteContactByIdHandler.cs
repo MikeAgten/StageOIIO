@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using ContactProj.Domain;
 using ContactProj.Persistance;
 
-namespace ContactProj.Application.Commands.DeleteCustomerById
+namespace ContactProj.Application.Queries.DeleteContactById
 {
     public class DeleteContactByIdHandler : IRequestHandler<DeleteContactByIdCommand, Unit>
     {

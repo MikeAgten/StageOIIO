@@ -6,14 +6,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
+using AppointmentProj.Application.Commands.DeleteAppointmentById;
 
-namespace AppointmentProj.Application.Commands.DeleteAppointmentById
+namespace AppointmentProj.Application.Handlers.DeleteAppointmentById
 {
-    public class DeleteAppointmentByIdHandler : IRequestHandler<DeleteAppointmentByIdCommand, Unit>
+    public class DeleteAppointmentByIdCommandHandler : IRequestHandler<DeleteAppointmentByIdCommand, Unit>
     {
         private readonly AppointmentRepository appointmentRepository;
 
-        public DeleteAppointmentByIdHandler(AppointmentRepository appointmentRepository)
+        public DeleteAppointmentByIdCommandHandler(AppointmentRepository appointmentRepository)
         {
             this.appointmentRepository = appointmentRepository;
         }

@@ -6,14 +6,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
+using AppointmentProj.Application.Commands.PutAppointment;
 
-namespace AppointmentProj.Application.Commands.PutAppointment
+namespace AppointmentProj.Application.Handlers.PutAppointment
 {
-    public class PutAppointmentHandler : IRequestHandler<PutAppointmentCommand, Appointment>
+    public class PutAppointmentCommandHandler : IRequestHandler<PutAppointmentCommand, Appointment>
     {
         private readonly AppointmentRepository appointmentRepository;
 
-        public PutAppointmentHandler(AppointmentRepository appointmentRepository)
+        public PutAppointmentCommandHandler(AppointmentRepository appointmentRepository)
         {
             this.appointmentRepository = appointmentRepository;
         }

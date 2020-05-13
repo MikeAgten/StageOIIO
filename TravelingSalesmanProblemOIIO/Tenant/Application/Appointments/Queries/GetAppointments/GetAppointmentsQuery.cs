@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using AppointmentProj.Domain;
-using static AppointmentProj.Application.Commands.GetAppointments.GetAppointmentsHandler;
+using static AppointmentProj.Application.Handlers.GetAppointments.GetAppointmentsQueryHandler;
 
 namespace AppointmentProj.Application.Commands.GetAppointments
 {
-    public class GetAppointmentsCommand : IRequest<List<GetAppointmentsDto>>
+    public class GetAppointmentsQuery : IRequest<List<GetAppointmentsDto>>
     {
     }
 }

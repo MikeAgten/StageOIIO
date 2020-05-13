@@ -114,7 +114,7 @@ namespace TestProject.AppointmentTests.Handlers
         {
             //Arrange
             var dateTimeNow = DateTime.Now;
-            var command = new GetAppointmentsCommand();
+            var command = new GetAppointmentsQuery();
             var mockAppointmentRepository = new Mock<AppointmentRepository>(null);
             //Act
             mockAppointmentRepository.Setup(x => x.GetAsync(It.IsAny<CancellationToken>())).ReturnsAsync(It.IsAny<List<Appointment>>);
@@ -133,7 +133,7 @@ namespace TestProject.AppointmentTests.Handlers
             //Arrange
             var getId = 0;
             Appointment result = new Appointment();
-            var command = new GetAppointmentByIdCommand(getId);
+            var command = new GetAppointmentByIdQuery(getId);
             var mockAppointmentRepository = new Mock<AppointmentRepository>(null);
             //Act
             mockAppointmentRepository.Setup(x => x.GetByIdAsync(getId, It.IsAny<CancellationToken>())).ReturnsAsync(result);

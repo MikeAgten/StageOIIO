@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 using ContactProj.Domain;
 using ContactProj.Persistance;
 
-namespace ContactProj.Application.Commands.GetCustomerById
+namespace ContactProj.Application.Queries.GetContactById
 {
-    public class GetContactByIdHandler : IRequestHandler<GetContactByIdCommand, Contact>
+    public class GetContactByIdQueryHandler : IRequestHandler<GetContactByIdQuery, Contact>
     {
         private readonly ContactRepository contactRepository;
 
-        public GetContactByIdHandler(ContactRepository contactRepository)
+        public GetContactByIdQueryHandler(ContactRepository contactRepository)
         {
             this.contactRepository = contactRepository;
         }
-        public async Task<Contact> Handle(GetContactByIdCommand request, CancellationToken cancellationToken)
+        public async Task<Contact> Handle(GetContactByIdQuery request, CancellationToken cancellationToken)
         {
 
             var contact = await contactRepository.GetByIdAsync(request.Id, cancellationToken);

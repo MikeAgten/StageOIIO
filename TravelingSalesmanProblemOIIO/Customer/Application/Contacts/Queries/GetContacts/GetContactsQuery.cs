@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ContactProj.Application.Commands.CreateCustomer
+namespace ContactProj.Application.Queries.CreateContact
 {
-    public class GetContactsCommand : IRequest<List<Contact>>
+    public class GetContactsQuery : IRequest<List<Contact>>
     {
     }
 }

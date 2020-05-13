@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace AppointmentProj.Application.Appointments.Handlers.CalculateRoute
 {
-    public class CalculateRouteHandler : IRequestHandler<CalculateRouteCommand, Unit>
+    public class CalculateRouteCommandHandler : IRequestHandler<CalculateRouteCommand, Unit>
     {
         AppointmentRepository appointmentRepository;
         IGeneticAlgorithmService geneticAlgorithmService;
 
-        public CalculateRouteHandler(AppointmentRepository appointmentRepository, IGeneticAlgorithmService geneticAlgorithmService)
+        public CalculateRouteCommandHandler(AppointmentRepository appointmentRepository, IGeneticAlgorithmService geneticAlgorithmService)
         {
             this.appointmentRepository = appointmentRepository;
             this.geneticAlgorithmService = geneticAlgorithmService;

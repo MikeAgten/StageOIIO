@@ -5,21 +5,22 @@ using System.Threading.Tasks;
 using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
 using AppointmentProj.Domain.Models;
-using static AppointmentProj.Application.Commands.GetAppointments.GetAppointmentsHandler;
+using static AppointmentProj.Application.Handlers.GetAppointments.GetAppointmentsQueryHandler;
+using AppointmentProj.Application.Commands.GetAppointments;
 
-namespace AppointmentProj.Application.Commands.GetAppointments
+namespace AppointmentProj.Application.Handlers.GetAppointments
 {
-    public class GetAppointmentsHandler : IRequestHandler<GetAppointmentsCommand, List<GetAppointmentsDto>>
+    public partial class GetAppointmentsQueryHandler : IRequestHandler<GetAppointmentsQuery, List<GetAppointmentsDto>>
     {
         private readonly AppointmentRepository appointmentRepository;
         private readonly AddressBook addressBook;
 
-        public GetAppointmentsHandler(AppointmentRepository appointmentRepository, AddressBook addressBook)
+        public GetAppointmentsQueryHandler(AppointmentRepository appointmentRepository, AddressBook addressBook)
         {
             this.appointmentRepository = appointmentRepository;
             this.addressBook = addressBook;
         }
-        public async Task<List<GetAppointmentsDto>> Handle(GetAppointmentsCommand request, CancellationToken cancellationToken)
+        public async Task<List<GetAppointmentsDto>> Handle(GetAppointmentsQuery request, CancellationToken cancellationToken)
         {
             List<GetAppointmentsDto> appointmentDtos = new List<GetAppointmentsDto>();
             var appointments = await appointmentRepository.GetAsync(cancellationToken);
@@ -30,12 +31,6 @@ namespace AppointmentProj.Application.Commands.GetAppointments
                     Address = addressBook.GetAddress(appointment.Latitude, appointment.Longitude) });
             }
             return appointmentDtos;
-        }
-
-        public class GetAppointmentsDto
-        {
-            public Appointment Appointment { get; set; }
-            public Address Address { get; set; }
         }
     }
 }

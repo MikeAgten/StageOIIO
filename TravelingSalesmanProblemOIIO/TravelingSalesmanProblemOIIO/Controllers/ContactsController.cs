@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ContactProj.Application.Commands.CreateCommand;
-using ContactProj.Application.Commands.CreateCustomer;
-using ContactProj.Application.Commands.DeleteCustomerById;
-using ContactProj.Application.Commands.GetCustomerById;
-using ContactProj.Application.Commands.PutCustomer;
+using ContactProj.Application.Commands.CreateContact;
+using ContactProj.Application.Commands.PutContact;
+using ContactProj.Application.Queries.CreateContact;
+using ContactProj.Application.Queries.DeleteContactById;
+using ContactProj.Application.Queries.GetContactById;
 using MediatR;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
@@ -43,14 +43,14 @@ namespace TravelingSalesmanProblemOIIO.Controllers
         [HttpGet("{contactid:int}")]
         public async Task<IActionResult> GetContactById(int contactid)
         {
-            var contact = await mediator.Send(new GetContactByIdCommand(contactid));
+            var contact = await mediator.Send(new GetContactByIdQuery(contactid));
             return Ok(contact);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetContacts()
         {
-            var contacts = await mediator.Send(new GetContactsCommand());
+            var contacts = await mediator.Send(new GetContactsQuery());
             return Ok(contacts);
         }
 

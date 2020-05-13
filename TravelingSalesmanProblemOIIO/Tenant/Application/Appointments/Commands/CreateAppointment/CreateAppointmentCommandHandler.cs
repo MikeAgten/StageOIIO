@@ -5,14 +5,15 @@ using System.Threading.Tasks;
 using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
 using System.Collections.Generic;
+using AppointmentProj.Application.Commands.CreateCommand;
 
-namespace AppointmentProj.Application.Commands.CreateCommand
+namespace AppointmentProj.Application.Handlers.CreateHandler
 {
-    public class CreateAppointmentHandler : IRequestHandler<CreateAppointmentCommand, int>
+    public class CreateAppointmentCommandHandler : IRequestHandler<CreateAppointmentCommand, int>
     {
         private readonly AppointmentRepository appointmentRepository;
 
-        public CreateAppointmentHandler(AppointmentRepository appointmentRepository)
+        public CreateAppointmentCommandHandler(AppointmentRepository appointmentRepository)
         {
             this.appointmentRepository = appointmentRepository;
         }

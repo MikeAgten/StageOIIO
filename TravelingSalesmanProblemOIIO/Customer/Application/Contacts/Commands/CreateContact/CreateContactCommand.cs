@@ -3,7 +3,7 @@ using MediatR;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ContactProj.Application.Commands.CreateCommand
+namespace ContactProj.Application.Commands.CreateContact
 {
     public class CreateContactCommand : IRequest<int>
     {

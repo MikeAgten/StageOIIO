@@ -4,7 +4,7 @@ using System.Text;
 using ContactProj.Domain;
 using MediatR;
 
-namespace ContactProj.Application.Commands.DeleteCustomerById
+namespace ContactProj.Application.Queries.DeleteContactById
 {
     public class DeleteContactByIdCommand : IRequest<Unit>
     {

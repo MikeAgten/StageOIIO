@@ -52,14 +52,14 @@ namespace TravelingSalesmanProblemOIIO.Controllers
         [HttpGet("{appointmentid:int}")]
         public async Task<IActionResult> GetAppointmentById(int appointmentid)
         {
-            var appointment = await mediator.Send(new GetAppointmentByIdCommand(appointmentid));
+            var appointment = await mediator.Send(new GetAppointmentByIdQuery(appointmentid));
             return Ok(appointment);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAppointments()
         {
-            var appointments = await mediator.Send(new GetAppointmentsCommand());
+            var appointments = await mediator.Send(new GetAppointmentsQuery());
             return Ok(appointments);
         }
 

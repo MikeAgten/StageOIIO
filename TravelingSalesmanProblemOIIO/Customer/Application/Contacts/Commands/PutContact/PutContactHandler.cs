@@ -1,4 +1,5 @@
-﻿using ContactProj.Domain;
+﻿using ContactProj.Application.Commands.PutContact;
+using ContactProj.Domain;
 using ContactProj.Domain.Enums;
 using ContactProj.Persistance;
 using MediatR;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ContactProj.Application.Commands.PutCustomer
+namespace ContactProj.Application.Commands.PutContact
 {
     public class PutContactHandler : IRequestHandler<PutContactCommand, Unit>
     {

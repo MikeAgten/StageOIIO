@@ -4,11 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ContactProj.Application.Commands.GetCustomerById
+namespace ContactProj.Application.Queries.GetContactById
 {
-    public class GetContactByIdCommand : IRequest<Contact>
+    public class GetContactByIdQuery : IRequest<Contact>
     {
-        public GetContactByIdCommand(int id)
+        public GetContactByIdQuery(int id)
         {
             this.Id = id;
         }

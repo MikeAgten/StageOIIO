@@ -17,16 +17,16 @@ namespace ContactProj.Persistance
         {
             this.dbContext = dbContext;
         }
-        public virtual async Task<int> SaveAsync(Contact customer, CancellationToken cancellationToken)
+        public virtual async Task<int> SaveAsync(Contact contact, CancellationToken cancellationToken)
         {
-            var result = await dbContext.Contacts.AddAsync(customer, cancellationToken);
+            var result = await dbContext.Contacts.AddAsync(contact, cancellationToken);
             await dbContext.SaveChangesAsync(cancellationToken);
             return result.Entity.Id;
         }
 
-        public virtual async Task PutAsync(Contact customer, CancellationToken cancellationToken)
+        public virtual async Task PutAsync(Contact contact, CancellationToken cancellationToken)
         {
-            dbContext.Contacts.Update(customer);
+            dbContext.Contacts.Update(contact);
             await dbContext.SaveChangesAsync(cancellationToken);
         }
 
@@ -42,8 +42,8 @@ namespace ContactProj.Persistance
 
         public virtual async Task DeleteByIdAsync(int id, CancellationToken cancellationToken)
         {
-            var customer = await dbContext.Contacts.Where(c => c.Id == id).FirstOrDefaultAsync(cancellationToken);
-            dbContext.Contacts.Remove(customer);
+            var contact = await dbContext.Contacts.Where(c => c.Id == id).FirstOrDefaultAsync(cancellationToken);
+            dbContext.Contacts.Remove(contact);
             await dbContext.SaveChangesAsync(cancellationToken);
         }
     }

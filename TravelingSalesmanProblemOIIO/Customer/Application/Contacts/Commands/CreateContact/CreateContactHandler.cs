@@ -1,4 +1,5 @@
-﻿using ContactProj.Domain;
+﻿using ContactProj.Application.Commands.CreateContact;
+using ContactProj.Domain;
 using ContactProj.Domain.Enums;
 using ContactProj.Persistance;
 using MediatR;
@@ -6,7 +7,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ContactProj.Application.Commands.CreateCommand
+namespace ContactProj.Application.Commands.CreateContact
 {
     public class CreateContactHandler : IRequestHandler<CreateContactCommand, int>
     {

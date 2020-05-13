@@ -5,35 +5,29 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AppointmentProj.Persistance;
-using AppointmentProj.Domain;
 using AppointmentProj.Domain.Models;
-using static AppointmentProj.Application.Commands.GetAppointmentById.GetAppointmentByIdHandler;
+using AppointmentProj.Application.Commands.GetAppointmentById;
+using static AppointmentProj.Application.Handlers.GetAppointmentById.GetAppointmentByIdQueryHandler;
 
-namespace AppointmentProj.Application.Commands.GetAppointmentById
+namespace AppointmentProj.Application.Handlers.GetAppointmentById
 {
-    public class GetAppointmentByIdHandler : IRequestHandler<GetAppointmentByIdCommand, GetAppointmentByIdDto>
+    public partial class GetAppointmentByIdQueryHandler : IRequestHandler<GetAppointmentByIdQuery, GetAppointmentByIdDto>
     {
         private readonly AppointmentRepository appointmentRepository;
         private readonly AddressBook addressBook;
 
-        public GetAppointmentByIdHandler(AppointmentRepository appointmentRepository, AddressBook addressBook)
+        public GetAppointmentByIdQueryHandler(AppointmentRepository appointmentRepository, AddressBook addressBook)
         {
             this.appointmentRepository = appointmentRepository;
             this.addressBook = addressBook;
         }
-        public async Task<GetAppointmentByIdDto> Handle(GetAppointmentByIdCommand request, CancellationToken cancellationToken)
+        public async Task<GetAppointmentByIdDto> Handle(GetAppointmentByIdQuery request, CancellationToken cancellationToken)
         {
             var appointment = await appointmentRepository.GetByIdAsync(request.Id, cancellationToken);
             var address = addressBook.GetAddress(appointment.Latitude, appointment.Longitude);
             var appointmentDto = new GetAppointmentByIdDto { appointment = appointment, address = address };
             return appointmentDto;
         }
-        public class GetAppointmentByIdDto
-        {
-            public Appointment appointment { get; set; }
-            public Address address { get; set; }
-        }
-
     }
 }
 

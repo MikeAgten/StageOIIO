@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ContactProj.Application.Commands.PutCustomer
+namespace ContactProj.Application.Commands.PutContact
 {
     public class PutContactCommand : IRequest<Unit>
     {
