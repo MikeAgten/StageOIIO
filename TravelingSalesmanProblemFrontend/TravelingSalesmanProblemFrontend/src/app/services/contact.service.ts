@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class ContactService {
-    private apiurl: string = 'https://localhost:5001/';
-    private localUrl: string = '../assets/data/contacts.json';
+    private apiurl = 'https://localhost:5001/';
+    private localUrl = '../assets/data/contacts.json';
     constructor(private http: HttpClient) { }
 
 
@@ -27,7 +27,7 @@ export class ContactService {
     }
 
     getContactById(id: number): Observable<Contact>{
-      return this.http.get<Contact>(this.apiurl + 'api/contacts/' +id);
+      return this.http.get<Contact>(this.apiurl + 'api/contacts/' + id);
     }
 
     PostContact(toAddContact: Contact): Observable<Contact>{
@@ -36,8 +36,8 @@ export class ContactService {
           'Content-Type':  'application/json'
         })
       };
-      let stringToAddContact = JSON.stringify(toAddContact);
-      console.log("Adding Contact =" + stringToAddContact);
+      const stringToAddContact = JSON.stringify(toAddContact);
+      console.log('Adding Contact =' + stringToAddContact);
       return this.http.post<Contact>(this.apiurl + 'api/contacts', toAddContact, httpOptions);
     }
     /*
@@ -66,13 +66,12 @@ export class ContactService {
 
     parseContacts(rawContacts: any[]): Contact[] {
       return Object.keys(rawContacts).map(key => {
-        let contact = rawContacts[key];
+        const contact = rawContacts[key];
         return new Contact(
           contact.id,
           contact.type,
           contact.firstName,
-          contact.surname,
-          contact.emailAddress
+          contact.surname
           );
       });
   }

@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
 using AppointmentProj.Domain.Models;
-using static AppointmentProj.Application.Handlers.GetAppointments.GetAppointmentsQueryHandler;
-using AppointmentProj.Application.Commands.GetAppointments;
 
-namespace AppointmentProj.Application.Handlers.GetAppointments
+namespace AppointmentProj.Application.Queries.GetAppointments
 {
     public partial class GetAppointmentsQueryHandler : IRequestHandler<GetAppointmentsQuery, List<GetAppointmentsDto>>
     {

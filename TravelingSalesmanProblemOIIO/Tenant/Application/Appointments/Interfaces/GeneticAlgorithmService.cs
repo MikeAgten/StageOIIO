@@ -41,7 +41,19 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             CalculateShortestOfPopulation();
             startAlgorithmLoop();
             sortAppointments();
+            calculateCostArray();
             return sortedAppointments;
+        }
+
+        public double[] calculateCostArray()
+        {
+            var costArray = new double[appointments.Count];
+            for (int appointmentIndex = 0; appointmentIndex < bestPathEver.Length -1; appointmentIndex++)
+            {
+                costArray[appointmentIndex] = costMatrix[bestPathEver[appointmentIndex]][bestPathEver[appointmentIndex + 1]] / 0.0075;
+            }
+            costArray[costArray.Length - 1] = costMatrix[bestPathEver[costArray.Length - 1]][bestPathEver[0]] / 0.0065;
+            return costArray;
         }
 
         private void sortAppointments()

@@ -9,7 +9,7 @@ import { AppointmentDto } from '../models/appointmentDto.model';
 @Injectable({providedIn: 'root'})
 export class AppointmentService {
 
-    private apiurl: string = 'https://localhost:5001/';
+    private apiurl = 'https://localhost:5001/';
     constructor(private http: HttpClient) { }
 
     getAppointmentsDtoByClientId(clientId: number): Observable<AppointmentDto[]>{
@@ -23,11 +23,11 @@ export class AppointmentService {
     }
 
     getAppointmentDtosByTenantId(tenantId: number): Observable<AppointmentDto[]>{
-      console.log("getting appointments for " + tenantId)
+      console.log('getting appointments for ' + tenantId);
       return this.http.get<AppointmentDto[]>(this.apiurl + 'api/appointments').pipe(
         map(this.parseAppointmentsDto),
         map((appointments: AppointmentDto[]) => {
-          console.log("before map " + appointments)
+          console.log('before map ' + appointments);
           return tenantId !== null ? this.filterByTenantIdAppointmentDtos(appointments, tenantId) : appointments;
         })
       );
@@ -56,7 +56,7 @@ export class AppointmentService {
 
   parseAppointmentsDto(rawAppointmentsDto: any[]): AppointmentDto[] {
     return Object.keys(rawAppointmentsDto).map(key => {
-      let appointmentDto = rawAppointmentsDto[key];
+      const appointmentDto = rawAppointmentsDto[key];
       return new AppointmentDto(
         appointmentDto.appointment,
         appointmentDto.address
@@ -74,15 +74,15 @@ export class AppointmentService {
     return appointments.filter(appointment => appointment.appointment.tenantId === tenantId);
   }
 
-  filterByDistinctDateAppointmentDtos(appointments: AppointmentDto[]): String[] {
+  filterByDistinctDateAppointmentDtos(appointments: AppointmentDto[]): string[] {
     console.log(appointments);
-    return appointments.map(item => item.appointment.date.substring(0,10))
+    return appointments.map(item => item.appointment.date.substring(0, 10))
     .filter((value, index, self) => self.indexOf(value) === index);
   }
 
   filterByDateppointmentDtos(appointments: AppointmentDto[], date: string): AppointmentDto[] {
     console.log(appointments);
-    return appointments.filter(appointment => appointment.appointment.date.substr(0,10) === date);
+    return appointments.filter(appointment => appointment.appointment.date.substr(0, 10) === date);
   }
 
 }

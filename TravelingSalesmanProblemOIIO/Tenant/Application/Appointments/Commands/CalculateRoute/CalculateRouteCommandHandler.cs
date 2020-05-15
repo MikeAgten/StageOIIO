@@ -28,7 +28,8 @@ namespace AppointmentProj.Application.Appointments.Handlers.CalculateRoute
             AppointmentScheduler appointmentScheduler = new AppointmentScheduler();
             var appointments = await appointmentRepository.GetByTenantIdAndDateAsync(request.TenantId, request.Date, cancellationToken);
             var sortedAppointments =  geneticAlgorithmService.Calculate(appointments, 100, 100000);
-            var scheduledAppointments = appointmentScheduler.scheduleAppointments(sortedAppointments);
+            var costArray = geneticAlgorithmService.calculateCostArray();
+            var scheduledAppointments = appointmentScheduler.scheduleAppointments(sortedAppointments, costArray);
             foreach(Appointment appointment in scheduledAppointments)
             {
                 await appointmentRepository.PutAsync(appointment, cancellationToken);

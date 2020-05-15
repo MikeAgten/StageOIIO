@@ -1,4 +1,5 @@
 ﻿using ContactProj.Application.Commands.CreateContact;
+using ContactProj.Application.Contacts.Queries.GetContacts;
 using ContactProj.Domain;
 using ContactProj.Persistance;
 using MediatR;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ContactProj.Application.Queries.CreateContact
 {
-    public class GetContactsQueryHandler : IRequestHandler<GetContactsQuery, List<Contact>>
+    public class GetContactsQueryHandler : IRequestHandler<GetContactsQuery, List<GetContactsQueryDto>>
     {
         private readonly ContactRepository contactRepository;
 
@@ -16,11 +17,15 @@ namespace ContactProj.Application.Queries.CreateContact
         {
             this.contactRepository = contactRepository;
         }
-        public async Task<List<Contact>> Handle(GetContactsQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetContactsQueryDto>> Handle(GetContactsQuery request, CancellationToken cancellationToken)
         {
-
-            var contact = await contactRepository.GetAsync(cancellationToken);
-            return contact;
+            List<GetContactsQueryDto> ContactsDto = new List<GetContactsQueryDto>();
+            var contacts = await contactRepository.GetAsync(cancellationToken);
+            foreach(Contact contact in contacts)
+            {
+                ContactsDto.Add(new GetContactsQueryDto { Id = contact.Id, Type = contact.Type, FirstName = contact.FirstName, Surname = contact.Surname });
+            }
+            return ContactsDto;
         }
     }
 }

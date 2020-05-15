@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using AppointmentProj.Domain;
 using AppointmentProj.Domain.Models;
-using static AppointmentProj.Application.Handlers.GetAppointmentById.GetAppointmentByIdQueryHandler;
+using AppointmentProj.Application.Handlers.GetAppointmentById;
 
-namespace AppointmentProj.Application.Commands.GetAppointmentById
+namespace AppointmentProj.Application.Queries.GetAppointmentById
 {
     public class GetAppointmentByIdQuery : IRequest<GetAppointmentByIdDto>
     {

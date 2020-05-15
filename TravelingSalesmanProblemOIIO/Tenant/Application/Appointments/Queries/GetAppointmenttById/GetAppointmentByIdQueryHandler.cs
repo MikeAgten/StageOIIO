@@ -6,10 +6,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using AppointmentProj.Persistance;
 using AppointmentProj.Domain.Models;
-using AppointmentProj.Application.Commands.GetAppointmentById;
-using static AppointmentProj.Application.Handlers.GetAppointmentById.GetAppointmentByIdQueryHandler;
+using AppointmentProj.Application.Handlers.GetAppointmentById;
 
-namespace AppointmentProj.Application.Handlers.GetAppointmentById
+namespace AppointmentProj.Application.Queries.GetAppointmentById
 {
     public partial class GetAppointmentByIdQueryHandler : IRequestHandler<GetAppointmentByIdQuery, GetAppointmentByIdDto>
     {
@@ -25,7 +24,7 @@ namespace AppointmentProj.Application.Handlers.GetAppointmentById
         {
             var appointment = await appointmentRepository.GetByIdAsync(request.Id, cancellationToken);
             var address = addressBook.GetAddress(appointment.Latitude, appointment.Longitude);
-            var appointmentDto = new GetAppointmentByIdDto { appointment = appointment, address = address };
+            var appointmentDto = new GetAppointmentByIdDto { Appointment = appointment, Address = address };
             return appointmentDto;
         }
     }

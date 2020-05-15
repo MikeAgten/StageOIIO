@@ -6,10 +6,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using ContactProj.Domain;
 using ContactProj.Persistance;
+using ContactProj.Application.Contacts.Queries.GetContactById;
 
 namespace ContactProj.Application.Queries.GetContactById
 {
-    public class GetContactByIdQueryHandler : IRequestHandler<GetContactByIdQuery, Contact>
+    public class GetContactByIdQueryHandler : IRequestHandler<GetContactByIdQuery, GetContactByIdQueryDto>
     {
         private readonly ContactRepository contactRepository;
 
@@ -17,11 +18,12 @@ namespace ContactProj.Application.Queries.GetContactById
         {
             this.contactRepository = contactRepository;
         }
-        public async Task<Contact> Handle(GetContactByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GetContactByIdQueryDto> Handle(GetContactByIdQuery request, CancellationToken cancellationToken)
         {
 
             var contact = await contactRepository.GetByIdAsync(request.Id, cancellationToken);
-            return contact;
+            var contactByIdDto = new GetContactByIdQueryDto { Id = contact.Id, Type = contact.Type, FirstName = contact.FirstName, Surname = contact.Surname};
+            return contactByIdDto;
         }
     }
 }
