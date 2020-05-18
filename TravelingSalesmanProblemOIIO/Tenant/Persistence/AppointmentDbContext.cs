@@ -9,6 +9,7 @@ namespace AppointmentProj.Persistance
         public AppointmentDbContext(DbContextOptions<AppointmentDbContext> options) : base(options)
         { }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<AppointmentRequest> AppointmentRequests { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

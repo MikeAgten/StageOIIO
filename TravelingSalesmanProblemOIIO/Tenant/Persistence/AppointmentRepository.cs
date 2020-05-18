@@ -28,7 +28,6 @@ namespace AppointmentProj.Persistance
 
         public virtual async Task PutAsync(Appointment appointment, CancellationToken cancellationToken)
         {
-
             dbContext.Appointments.Update(appointment);
             await dbContext.SaveChangesAsync(cancellationToken);
         }
@@ -38,10 +37,10 @@ namespace AppointmentProj.Persistance
                 return await dbContext.Appointments.ToListAsync(cancellationToken);
         }
 
-        public virtual async Task<List<Appointment>> GetByTenantIdAndDateAsync(int tenantId, DateTime date, CancellationToken cancellationToken)
+        /*public virtual async Task<List<Appointment>> GetByTenantIdAndDateAsync(int tenantId, DateTime date, CancellationToken cancellationToken)
         {
             return await dbContext.Appointments.Where(c => c.TenantId == tenantId && c.Date.Date == date.Date).ToListAsync(cancellationToken);
-        }
+        }*/
 
         public virtual async Task<Appointment> GetByIdAsync(int id, CancellationToken cancellationToken)
         {

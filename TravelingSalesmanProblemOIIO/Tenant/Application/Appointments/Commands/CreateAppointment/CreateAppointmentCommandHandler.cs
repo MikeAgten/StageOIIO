@@ -7,7 +7,7 @@ using AppointmentProj.Domain;
 using System.Collections.Generic;
 using AppointmentProj.Application.Commands.CreateCommand;
 
-namespace AppointmentProj.Application.Handlers.CreateHandler
+namespace AppointmentProj.Application.Commands.CreateHandler
 {
     public class CreateAppointmentCommandHandler : IRequestHandler<CreateAppointmentCommand, int>
     {

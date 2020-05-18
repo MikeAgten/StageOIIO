@@ -8,7 +8,7 @@ using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
 using AppointmentProj.Application.Commands.DeleteAppointmentById;
 
-namespace AppointmentProj.Application.Handlers.DeleteAppointmentById
+namespace AppointmentProj.Application.Commands.DeleteAppointmentById
 {
     public class DeleteAppointmentByIdCommandHandler : IRequestHandler<DeleteAppointmentByIdCommand, Unit>
     {

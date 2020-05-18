@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using AppointmentProj.Application.Appointments.Interfaces;
 using AppointmentProj.Domain.Models;
+using AppointmentProj.Persistence;
 
 namespace AppointmentProj.Extensions
 {
@@ -17,7 +18,9 @@ namespace AppointmentProj.Extensions
         {
             string connectionString = configuration.GetConnectionString("TSPAppointmentDatabase");
             services.AddScoped<AppointmentRepository>();
+            services.AddScoped<AppointmentRequestRepository>();
             services.AddSingleton<AddressBook>();
+            services.AddSingleton<TenantAddressBook>();
             services.AddDbContext<AppointmentDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
             services.AddTransient<IGeneticAlgorithmService, GeneticAlgorithmService>();
         }

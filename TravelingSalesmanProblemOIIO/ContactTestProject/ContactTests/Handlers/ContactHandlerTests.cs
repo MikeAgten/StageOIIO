@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 using Xunit;
 using TravelingSalesmanProblemOIIO.Controllers;
 using ContactProj.Domain;
-using ContactProj.Application.Commands.CreateCommand;
-using ContactProj.Application.Commands.PutCustomer;
 using ContactProj.Persistance;
-using ContactProj.Application.Commands.GetCustomerById;
-using ContactProj.Application.Commands.CreateCustomer;
-using ContactProj.Application.Commands.DeleteCustomerById;
+using ContactProj.Application.Commands.CreateContact;
+using ContactProj.Application.Commands.PutContact;
+using ContactProj.Application.Queries.DeleteContactById;
+using ContactProj.Application.Queries.CreateContact;
+using ContactProj.Application.Queries.GetContactById;
+using ContactProj.Application.Contacts.Queries.GetContactById;
 
 namespace TestProject.ContactTests.Handlers
 {
@@ -96,11 +97,11 @@ namespace TestProject.ContactTests.Handlers
         {
             //Arrange
             var dateTimeNow = DateTime.Now;
-            var command = new GetContactsCommand();
+            var command = new GetContactsQuery();
             var mockContactRepository = new Mock<ContactRepository>(null);
             //Act
             mockContactRepository.Setup(x => x.GetAsync(It.IsAny<CancellationToken>())).ReturnsAsync(It.IsAny<List<Contact>>);
-            var sut = new GetContactsHandler(mockContactRepository.Object);
+            var sut = new GetContactsQueryHandler(mockContactRepository.Object);
             var result = await sut.Handle(command, CancellationToken.None);
             //Act
             mockContactRepository.Verify(x => x.GetAsync(It.IsAny<CancellationToken>()), Times.Once);
@@ -115,15 +116,16 @@ namespace TestProject.ContactTests.Handlers
             //Arrange
             var getId = 0;
             Contact result = new Contact();
-            var command = new GetContactByIdCommand(getId);
+            GetContactByIdQueryDto resultDto = new GetContactByIdQueryDto();
+            var command = new GetContactByIdQuery(getId);
             var mockContactRepository = new Mock<ContactRepository>(null);
             //Act
             mockContactRepository.Setup(x => x.GetByIdAsync(getId, It.IsAny<CancellationToken>())).ReturnsAsync(result);
-            var sut = new GetContactByIdHandler(mockContactRepository.Object);
-            result = await sut.Handle(command, CancellationToken.None);
+            var sut = new GetContactByIdQueryHandler(mockContactRepository.Object);
+            resultDto = await sut.Handle(command, CancellationToken.None);
             //Act
             Assert.NotNull(result);
-            Assert.Equal(result.Id, getId);
+            Assert.Equal(resultDto.Id, getId);
             mockContactRepository.Verify(x => x.GetByIdAsync(getId, It.IsAny<CancellationToken>()), Times.Once);
             mockContactRepository.VerifyNoOtherCalls();
         }

@@ -8,7 +8,7 @@ using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
 using AppointmentProj.Application.Commands.PutAppointment;
 
-namespace AppointmentProj.Application.Handlers.PutAppointment
+namespace AppointmentProj.Application.Commands.PutAppointment
 {
     public class PutAppointmentCommandHandler : IRequestHandler<PutAppointmentCommand, Appointment>
     {

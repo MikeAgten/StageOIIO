@@ -35,6 +35,12 @@ namespace CustomerProj.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("float");
+
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 

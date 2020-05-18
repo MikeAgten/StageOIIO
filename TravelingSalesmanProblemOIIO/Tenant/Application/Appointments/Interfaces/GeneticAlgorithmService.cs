@@ -16,8 +16,8 @@ namespace AppointmentProj.Application.Appointments.Interfaces
         int currentGeneration = 0;
         double recordRouteCost = 99999999; //represents infinite to start with
 
-        private List<Appointment> appointments;
-        private List<Appointment> sortedAppointments;
+        private List<AppointmentRequest> appointmentRequests;
+        private List<AppointmentRequest> sortedAppointmentRequests;
 
         private int[] bestPathEver;
         private double[][] costMatrix;
@@ -27,12 +27,12 @@ namespace AppointmentProj.Application.Appointments.Interfaces
 
         Random rand;
 
-        public List<Appointment> Calculate(List<Appointment> appointments, int populationSize, int amountGenerations)
+        public List<AppointmentRequest> Calculate(List<AppointmentRequest> appointmentRequests, int populationSize, int amountGenerations)
         {
-            this.appointments = appointments;
+            this.appointmentRequests = appointmentRequests;
             this.populationSize = populationSize;
             this.amountGenerations = amountGenerations;
-            sortedAppointments = new List<Appointment>();
+            sortedAppointmentRequests = new List<AppointmentRequest>();
             rand = new Random();
             costMatrix = CalculateCostMatrix();
             printMatrix(costMatrix);
@@ -40,14 +40,30 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             printPopulationMatrix(population);
             CalculateShortestOfPopulation();
             startAlgorithmLoop();
+            bestPathEver = shiftAppointments(bestPathEver);
             sortAppointments();
-            calculateCostArray();
-            return sortedAppointments;
+            return sortedAppointmentRequests;
+        }
+
+        private int[] shiftAppointments(int[] bestPathEver)
+        {
+            int[] currentPath = bestPathEver;
+            int[] shiftedPath = new int[bestPathEver.Length];
+            while (currentPath[0] != 0) 
+            {
+                for (int i = 0; i < currentPath.Length - 1; i++)
+                {
+                    shiftedPath[i] = currentPath[i + 1];
+                }
+                shiftedPath[shiftedPath.Length - 1] = currentPath[0];
+                currentPath = shiftedPath;
+            }
+            return shiftedPath;
         }
 
         public double[] calculateCostArray()
         {
-            var costArray = new double[appointments.Count];
+            var costArray = new double[appointmentRequests.Count];
             for (int appointmentIndex = 0; appointmentIndex < bestPathEver.Length -1; appointmentIndex++)
             {
                 costArray[appointmentIndex] = costMatrix[bestPathEver[appointmentIndex]][bestPathEver[appointmentIndex + 1]] / 0.0075;
@@ -60,7 +76,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
         {
             for(int appointmentIndex = 0; appointmentIndex < bestPathEver.Length; appointmentIndex++)
             {
-                sortedAppointments.Add(appointments[bestPathEver[appointmentIndex]]);
+                sortedAppointmentRequests.Add(appointmentRequests[bestPathEver[appointmentIndex]]);
             }
         }
 
@@ -68,7 +84,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
         {
             while (amountGenerations > currentGeneration)
             {
-                CalculateFitness(appointments, population);
+                CalculateFitness(appointmentRequests, population);
                 fitness = NormalizeFitness(fitness);
                 NextGeneration();
                 CalculateShortestOfPopulation();
@@ -77,7 +93,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             Console.WriteLine("Reached the end of the algorithm with routecost: " + recordRouteCost);
         }
 
-        public double CalcRouteCost(List<Appointment> appointments, int[] order)
+        public double CalcRouteCost(List<AppointmentRequest> appointments, int[] order)
         {
             var sum = 0d;
             for (int orderIndex = 0; orderIndex < order.Length - 1; orderIndex++)
@@ -95,20 +111,20 @@ namespace AppointmentProj.Application.Appointments.Interfaces
 
         public double[][] CalculateCostMatrix()
         {
-            var costMatrix = new Double[appointments.Count][];
-            for (int row = 0; row < appointments.Count; row++)
+            var costMatrix = new Double[appointmentRequests.Count][];
+            for (int row = 0; row < appointmentRequests.Count; row++)
             {
-                var costFromPoint = new Double[appointments.Count];
-                for (int column = 0; column < appointments.Count; column++)
+                var costFromPoint = new Double[appointmentRequests.Count];
+                for (int column = 0; column < appointmentRequests.Count; column++)
                 {
-                    costFromPoint[column] = CalculateDistanceBetweenTwo(appointments[row], appointments[column]);
+                    costFromPoint[column] = CalculateDistanceBetweenTwo(appointmentRequests[row], appointmentRequests[column]);
                 }
                 costMatrix[row] = costFromPoint;
             }
             return costMatrix;
         }
 
-        public double CalculateDistanceBetweenTwo(Appointment firstAppointment, Appointment secondAppointment)
+        public double CalculateDistanceBetweenTwo(AppointmentRequest firstAppointment, AppointmentRequest secondAppointment)
         {
             return Math.Sqrt(Math.Pow(firstAppointment.Longitude - secondAppointment.Longitude, 2) + Math.Pow(firstAppointment.Latitude - secondAppointment.Latitude, 2));
         }
@@ -117,7 +133,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
         {
             for (int populationIndex = 0; populationIndex < population.Length; populationIndex++)
             {
-                var routeCost = CalcRouteCost(appointments, population[populationIndex]);
+                var routeCost = CalcRouteCost(appointmentRequests, population[populationIndex]);
                 if (routeCost < recordRouteCost)
                 {
                     recordRouteCost = routeCost;
@@ -153,8 +169,8 @@ namespace AppointmentProj.Application.Appointments.Interfaces
         public int[][] GeneratePopulation()
         {
             var population = new int[populationSize][];
-            order = new int[appointments.Count];
-            var shuffledOrder = new int[appointments.Count];
+            order = new int[appointmentRequests.Count];
+            var shuffledOrder = new int[appointmentRequests.Count];
             for (int orderIndex = 0; orderIndex < order.Length; orderIndex++)
             {
                 //filling the order with 1,2,3,4,5,...
@@ -174,7 +190,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             for (int i = 0; i < mutationRate; i++)
             {
                 var indexA = rand.Next(0, order.Length);
-                var indexB = (indexA + 1) % appointments.Count;
+                var indexB = (indexA + 1) % appointmentRequests.Count;
                 swappedOrder = SwapAppointments(order, indexA, indexB);
             }
             return swappedOrder;
@@ -194,7 +210,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             population = newPopulation;
         }
 
-        public void CalculateFitness(List<Appointment> appointments, int[][] population)
+        public void CalculateFitness(List<AppointmentRequest> appointments, int[][] population)
         {
             fitness = new double[appointments.Count];
             for (var populationIndex = 0; populationIndex < appointments.Count; populationIndex++)
@@ -272,7 +288,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             Console.WriteLine("First 20 orders of population: ");
             for (int row = 0; row < 20; row++)
             {
-                for (int column = 0; column < appointments.Count; column++)
+                for (int column = 0; column < appointmentRequests.Count; column++)
                 {
                     Console.Write(matrix[row][column] + " --- ");
                 }
