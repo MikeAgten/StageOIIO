@@ -115,9 +115,29 @@ namespace AppointmentProj.Domain.Models
                 city = "Mol",
                 country = "België"
             };
+            var address11 = new Address
+            {
+                latitude = 51.140873,
+                longitude = 5.5974333,
+                street = "Markt",
+                number = 1,
+                postal = "3960",
+                city = "Bree",
+                country = "België"
+            };
+            var address12 = new Address
+            {
+                latitude = 51.0418056,
+                longitude = 5.1865303,
+                street = "PaalseSteenweg",
+                number = 201,
+                postal = "3583",
+                city = "Paal",
+                country = "België"
+            };
 
 
-            return new List<Address> { address1, address2, address3, address4, address5, address6, address7, address8, address9, address10 };
+            return new List<Address> { address1, address2, address3, address4, address5, address6, address7, address8, address9, address10, address11, address12 };
         }
     }
 }

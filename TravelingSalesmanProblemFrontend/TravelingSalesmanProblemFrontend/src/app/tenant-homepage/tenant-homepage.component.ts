@@ -18,20 +18,21 @@ export class TenantHomepageComponent implements OnInit {
     constructor(private contactService: ContactService, private appointmentService: AppointmentService, private route: ActivatedRoute) { }
     private routeSub: Subscription;
     appointmentDtos: AppointmentDto[];
-    distinctDates: String[];
+    distinctDates: string[];
     sortingDate: string;
     contact: Contact;
     tenantId: number;
+    calculating = false;
     toCalculateInfo: CalculateInfo;
     ngOnInit(){
       this.routeSub = this.route.params.subscribe(params => {
-        var idParameter = params['id'];
+        const idParameter = params.id;
         this.tenantId = Number(idParameter);
       });
       this.fetchContactById();
       this.fetchAppointments();
       this.fetchDatesDistinct();
-      console.log("current contact = " + this.contact);
+      console.log('current contact = ' + this.contact);
     }
 
     fetchDatesDistinct() {
@@ -43,26 +44,31 @@ export class TenantHomepageComponent implements OnInit {
     }
 
     async fetchAppointments(){
-     await this.appointmentService.getAppointmentDtosByTenantId(this.tenantId).subscribe(data => { this.appointmentDtos = data;
-      this.distinctDates = this.appointmentService.filterByDistinctDateAppointmentDtos(this.appointmentDtos); });
+     this.appointmentService.getAppointmentDtosByTenantId(this.tenantId).subscribe(data => { this.appointmentDtos = data;
+                                                                                             this.distinctDates = this.appointmentService.filterByDistinctDateAppointmentDtos(this.appointmentDtos); });
+    }
+
+    async fetchAppointmentsByDate(date){
+      await this.appointmentService.getAppointmentDtosByDate(date).subscribe(data => { this.appointmentDtos = data; });
     }
 
     async changeSortingDate(date: string){
-      console.log("changed to " + date);
+      console.log('changed to ' + date);
       this.sortingDate = date;
-      if(!date.includes("-")){
+      if (!date.includes('-')){
         this.fetchAppointments();
       } else{
-        await this.appointmentService.getAppointmentDtosByDate(date).subscribe(data => { this.appointmentDtos = data; });
+        this.fetchAppointmentsByDate(date);
       }
     }
 
     calculateDay(event: Event){
+      this.calculating = true;
       this.toCalculateInfo = new CalculateInfo(this.sortingDate, this.tenantId);
       this.appointmentService.CalculateRoute(this.toCalculateInfo).subscribe(
-        data => console.log("succes!", data),
-        error => console.error("Error!", error));
-      console.log("calculating route for day " + this.sortingDate);
+        data => {console.log('succes!', data); this.fetchAppointmentsByDate(this.sortingDate); this.calculating = false;},
+        error => console.error('Error!', error));
+      console.log('calculating route for day ' + this.sortingDate);
     }
 
   }

@@ -18,7 +18,6 @@ export class AppointmentService {
         map((appointments: AppointmentDto[]) => {
           return clientId !== null ? this.filterByClientIdAppointmentsDto(appointments, clientId) : appointments;
         })
-
       );
     }
 
@@ -58,10 +57,20 @@ export class AppointmentService {
     return Object.keys(rawAppointmentsDto).map(key => {
       const appointmentDto = rawAppointmentsDto[key];
       return new AppointmentDto(
-        appointmentDto.appointment,
-        appointmentDto.address
+        new Appointment(appointmentDto.id,
+           appointmentDto.title,
+           appointmentDto.description,
+           appointmentDto.latitude,
+           appointmentDto.longitude,
+           appointmentDto.duration,
+           appointmentDto.date,
+           appointmentDto.start,
+           appointmentDto.end,
+           appointmentDto.clientId,
+           appointmentDto.tenantId),
+           appointmentDto.address
         );
-    });
+    }).sort((a, b) => a.appointment.start.localeCompare(b.appointment.start));
   }
 
   filterByClientIdAppointmentsDto(appointments: AppointmentDto[], clientId: number): AppointmentDto[] {

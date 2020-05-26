@@ -1,9 +1,13 @@
 <div id="appointmentDiv">
 <div id="titleDiv">
-<h2>{{appointmentDto.appointment.title}}</h2>
-<h3>{{client.firstName + " " + client.surname + " - " + tenant.firstName + " " + tenant.surname}}</h3>
+<h1>{{appointmentDto.appointment.title}}</h1>
 </div>
-<h3>{{dateString +" van "+ startHour+" tot "+endHour}}</h3><br>
-<h3>{{"Locatie: " + appointmentDto.address.street + " " + appointmentDto.address.number + ", " + appointmentDto.address.postal + " " + appointmentDto.address.city}}</h3>
+<div id="informationDiv">
+<h3><img src="../../assets/Images/calendar.png">{{dateString +" van "+ startHour+" tot "+endHour}}</h3>
+<h3><img src="../../assets/Images/pin.png">{{appointmentDto.address.street + " " + appointmentDto.address.number + ", " + appointmentDto.address.postal + " " + appointmentDto.address.city}}</h3>
+<h3><img src="../../assets/Images/group.png">{{client.firstName + " " + client.surname + " - " + tenant.firstName + " " + tenant.surname}}</h3>
+</div>
+<div id="descriptionDiv">
 <p>{{appointmentDto.appointment.description}}</p>
+</div>
 </div>

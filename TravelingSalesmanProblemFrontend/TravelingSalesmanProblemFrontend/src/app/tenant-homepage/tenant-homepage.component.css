@@ -68,6 +68,7 @@ html { background-color:  rgb(233, 230, 230);
 button{
   font-size: large;
   width: 150px;
+  float: left;
   height: 50px;
   color: white;
   background-color: darkturquoise;
@@ -83,4 +84,24 @@ select{
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.CalculatingDiv{
+  margin-left: 50px;
+  float: left;
+}
+
+.CalculatingDiv mat-spinner{
+  float: right;
+  margin-left: 20px;
+  height: 50px;
+}
+
+.CalculatingDiv h3{
+  margin-top: 10px;
+  float: left;
+}
+
+:host ::ng-deep .custom-spinner circle{
+  stroke: darkturquoise;
 }

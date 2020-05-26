@@ -49,14 +49,14 @@ namespace AppointmentProj.Application.Appointments.Interfaces
         {
             int[] currentPath = bestPathEver;
             int[] shiftedPath = new int[bestPathEver.Length];
-            while (currentPath[0] != 0) 
+            while (currentPath[0] != 0)
             {
                 for (int i = 0; i < currentPath.Length - 1; i++)
                 {
                     shiftedPath[i] = currentPath[i + 1];
                 }
                 shiftedPath[shiftedPath.Length - 1] = currentPath[0];
-                currentPath = shiftedPath;
+                currentPath = (int[])shiftedPath.Clone();
             }
             return shiftedPath;
         }
@@ -64,7 +64,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
         public double[] calculateCostArray()
         {
             var costArray = new double[appointmentRequests.Count];
-            for (int appointmentIndex = 0; appointmentIndex < bestPathEver.Length -1; appointmentIndex++)
+            for (int appointmentIndex = 0; appointmentIndex < bestPathEver.Length - 1; appointmentIndex++)
             {
                 costArray[appointmentIndex] = costMatrix[bestPathEver[appointmentIndex]][bestPathEver[appointmentIndex + 1]] / 0.0075;
             }
@@ -74,7 +74,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
 
         private void sortAppointments()
         {
-            for(int appointmentIndex = 0; appointmentIndex < bestPathEver.Length; appointmentIndex++)
+            for (int appointmentIndex = 0; appointmentIndex < bestPathEver.Length; appointmentIndex++)
             {
                 sortedAppointmentRequests.Add(appointmentRequests[bestPathEver[appointmentIndex]]);
             }

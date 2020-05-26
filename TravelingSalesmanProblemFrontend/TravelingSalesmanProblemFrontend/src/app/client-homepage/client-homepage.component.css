@@ -48,6 +48,7 @@ html { background-color:  rgb(233, 230, 230);
 #appointmentsDiv{
   display: inline-block;
   float: left;
+  overflow:scroll;
   margin: 0px;
   padding: 20px;
   width: 50%;

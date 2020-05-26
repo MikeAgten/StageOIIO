@@ -21,12 +21,12 @@ export class ClientHomepageComponent implements OnInit {
   contactId: number;
   ngOnInit(){
     this.routeSub = this.route.params.subscribe(params => {
-      var idParameter = params['id'];
+      const idParameter = params.id;
       this.contactId = Number(idParameter);
     });
     this.fetchContactById();
     this.fetchAppointments();
-    console.log("current contact = " + this.contact);
+    console.log('current contact = ' + this.contact);
   }
 
   fetchContactById() {

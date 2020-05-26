@@ -3,26 +3,45 @@
   box-shadow:2px 5px 8px darkgrey;
   border-width: 4px;
   margin-top: 20px;
-  padding: 5px;
+  padding: 0px;
   width: 95%;
   font-size: large;
   font-family: 'Futura Next Book','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
-#titleDiv{
-  padding: 0px;
-  margin:0px;
-  border: 4px;
+#informationDiv{
+  padding-left: 10px;
 }
 
-#titleDiv h2{
+#descriptionDiv{
+  padding-left: 10px;
+}
+
+#titleDiv{
+  padding-left: 10px;
+  margin:0px;
+  border: 0px;
+  background-color: rgb(4, 124, 133);
+}
+
+#titleDiv h1{
+  color: whitesmoke;
+  font-weight: 200;
   padding: 0px;
   margin:0px;
   border: 0px;
+}
+
+img{
+  height: 30px;
+  width: 30px;
+  padding-right: 10px;
+  margin-top: 5px;
 }
 
 h3{
   padding:0px;
   margin:0px;
   border: 0px;
+  height: 30px;
 }

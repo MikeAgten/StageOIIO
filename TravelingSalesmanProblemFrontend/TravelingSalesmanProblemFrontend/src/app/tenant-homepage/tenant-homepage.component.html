@@ -3,16 +3,22 @@
     <app-top-layout [contact] = "contact"></app-top-layout>
     <div id="appointmentsDiv">
       <h1>aankomende afspraken</h1>
+      <ng-container>
       <app-appointment-client *ngFor="let appointmentDto of appointmentDtos" [appointmentDto]="appointmentDto"></app-appointment-client>
+      </ng-container>
     </div>
     <div id="algorithmDiv">
       <h1>Berekenen route</h1>
       <h2>Sorteer op dag</h2>
-      <select (change)="changeSortingDate($event.target.value)">
+      <select (change)="changeSortingDate($event.target.value)" [(ngModel)]="sortingDate">
         <option> Alle afspraken </option>
         <option *ngFor="let date of distinctDates" value="{{date}}">{{date}}</option> </select>
       <h2>Bereken dag</h2>
       <button (click)="calculateDay($event)" >Bereken</button>
+      <div class="CalculatingDiv" *ngIf="calculating">
+      <h3>Route berekenen voor {{sortingDate}}</h3>
+      <mat-spinner class="custom-spinner" diameter="50"></mat-spinner>
+      </div>
     </div>
     <nav class="AddAppointment">
       <button routerLink="/addAppointment/{{tenantId}}" [routerLinkActive]="'current'" title="addAppointentClient"><img src="../../assets/Images/plus-icon.png"></button>

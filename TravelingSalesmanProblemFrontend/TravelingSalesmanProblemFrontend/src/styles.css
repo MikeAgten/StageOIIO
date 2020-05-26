@@ -20,7 +20,7 @@ body{
   height: 0px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2c6167;
+  background: rgb(4, 124, 133);
   border: 0px none #ffffff;
   border-radius: 50px;
 }
@@ -44,3 +44,6 @@ body{
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

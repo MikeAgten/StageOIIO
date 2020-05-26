@@ -15,8 +15,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppointmentClientComponent } from './appointment-client/appointment-client.component';
 import { AddAppointmentClientComponent } from './add-appointment-client/add-appointment-client.component';
 import { TopLayoutComponent } from './top-layout/top-layout.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TenantHomepageComponent } from './tenant-homepage/tenant-homepage.component';
 import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,10 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWe
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-		ReactiveFormsModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
     RouterModule.forRoot(appRoutes),
-    ScheduleModule, RecurrenceEditorModule
+    ScheduleModule, RecurrenceEditorModule, BrowserAnimationsModule
   ],
   providers: [ContactService, AppointmentService, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],
   bootstrap: [AppComponent]

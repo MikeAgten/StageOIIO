@@ -33,19 +33,47 @@ namespace AppointmentProj.Application.Appointments.Commands.CalculateRoute
             AppointmentScheduler appointmentScheduler = new AppointmentScheduler();
             var appointmentRequests = await appointmentRequestRepository.GetByTenantIdAndDateAsync(request.TenantId, request.Date, cancellationToken);
             var tenantAddress = tenantAddressBook.GetAddress(request.TenantId);
-            var tenantAppointmentRequest = new AppointmentRequest {Title = "TenantAddress", Latitude = tenantAddress.Latitude, Longitude = tenantAddress.Longitude };
+            var tenantAppointmentRequest = new AppointmentRequest { Title = "TenantAddress", Latitude = tenantAddress.Latitude, Longitude = tenantAddress.Longitude };
             appointmentRequests.Insert(0, tenantAppointmentRequest);
-            var sortedAppointmentRequests =  geneticAlgorithmService.Calculate(appointmentRequests, 100, 100000);
+            var sortedAppointmentRequests = geneticAlgorithmService.Calculate(appointmentRequests, 100, getAmountGenerations(appointmentRequests.Count-1));
             var costArray = geneticAlgorithmService.calculateCostArray();
             var scheduledAppointments = appointmentScheduler.scheduleAppointments(sortedAppointmentRequests, costArray);
-            foreach(Appointment appointment in scheduledAppointments)
+            int appointmentId;
+            foreach (Appointment appointment in scheduledAppointments)
             {
-                await appointmentRepository.SaveAsync(appointment, cancellationToken);
+                appointmentId = await appointmentRepository.SaveAsync(new Appointment
+                {
+                    Title = appointment.Title,
+                    Description = appointment.Description,
+                    Longitude = appointment.Longitude,
+                    Latitude = appointment.Latitude,
+                    Duration = appointment.Duration,
+                    Date = appointment.Date,
+                    Start = appointment.Start,
+                    End = appointment.End,
+                    ClientId = appointment.ClientId,
+                    TenantId = appointment.TenantId,
+                    CreatedDateUtc = DateTime.Now
+                }, cancellationToken);
                 var appointmentRequestToChange = await appointmentRequestRepository.GetByIdAsync(appointment.Id, cancellationToken);
-                appointmentRequestToChange.AppointmentId = appointment.Id;
+                appointmentRequestToChange.AppointmentId = appointmentId;
                 await appointmentRequestRepository.PutAsync(appointmentRequestToChange, cancellationToken);
             }
             return Unit.Value;
+        }
+
+        public int getAmountGenerations(int amountAddresses)
+        {
+            double fact = 0.00025; //used for scaling down the factorial graph
+            for (int i = 1; i <= amountAddresses; i++)
+            {
+                fact = (fact * i);
+            }
+            if(fact < 10)
+            {
+                fact = 10;
+            }
+            return Convert.ToInt32(Math.Ceiling(fact));
         }
     }
 }

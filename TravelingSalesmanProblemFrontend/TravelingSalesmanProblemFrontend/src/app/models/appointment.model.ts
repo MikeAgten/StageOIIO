@@ -5,14 +5,14 @@ export class Appointment {
   latitude: number;
   longitude: number;
   duration: number;
-  date: String;
-  start: String;
-  end: String;
+  date: string;
+  start: string;
+  end: string;
   clientId: number;
   tenantId: number;
 
-  constructor(id: number, title: string, description: string, latitude: number, longitude: number, duration: number, date: String,
-              start: String, end: String, clientId: number, tenantId: number){
+  constructor(id: number, title: string, description: string, latitude: number, longitude: number, duration: number, date: string,
+              start: string, end: string, clientId: number, tenantId: number){
     this.id = id;
     this.title = title;
     this.description = description;
