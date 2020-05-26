@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Appointment } from '../models/appointment.model';
 import { CalculateInfo } from '../models/calculateInfo.model';
 import { AppointmentDto } from '../models/appointmentDto.model';
+import { AppointmentRequest } from '../models/appointmentRequest.model';
 
 @Injectable({providedIn: 'root'})
 export class AppointmentService {
@@ -45,8 +46,8 @@ export class AppointmentService {
       return this.http.get<Appointment>(this.apiurl + 'api/appointments/' + id);
     }
 
-    PostAppointment(toAddAppointment: Appointment): Observable<Appointment>{
-      return this.http.post<Appointment>(this.apiurl + 'api/appointments', toAddAppointment);
+    PostAppointment(toAddAppointmentRequest: AppointmentRequest): Observable<AppointmentRequest>{
+      return this.http.post<AppointmentRequest>(this.apiurl + 'api/appointments', toAddAppointmentRequest);
     }
 
     CalculateRoute(toCalculateInfo: CalculateInfo): Observable<CalculateInfo>{

@@ -14,7 +14,9 @@
 }
 
 #descriptionDiv{
+  padding-top: 20px;
   padding-left: 10px;
+  height: 75px;
 }
 
 #titleDiv{
@@ -36,7 +38,6 @@ img{
   height: 30px;
   width: 30px;
   padding-right: 10px;
-  margin-top: 5px;
 }
 
 h3{

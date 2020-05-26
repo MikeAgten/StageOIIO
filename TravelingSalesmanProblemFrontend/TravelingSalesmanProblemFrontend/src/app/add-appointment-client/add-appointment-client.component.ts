@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Appointment } from '../models/appointment.model';
 import { AppointmentService } from '../services/appointment.service';
 import { Address } from '../models/address.model';
+import { AppointmentRequest } from '../models/appointmentRequest.model';
 
 
 @Component({
@@ -68,7 +69,7 @@ export class AddAppointmentClientComponent implements OnInit {
   submit(appointmentform): void {
     console.log('current address : ' + this.currentAddress.number);
     this.dateString = this.date.toISOString().slice(0, 19);
-    const appointment = new Appointment(
+    const appointment = new AppointmentRequest(
       null,
       this.toAddAppointment.title,
       this.toAddAppointment.description,
@@ -76,8 +77,6 @@ export class AddAppointmentClientComponent implements OnInit {
       this.currentAddress.longitude,
       Number(this.toAddAppointment.duration),
       this.toAddAppointment.date,
-      '0001-01-01T00:00:00',
-      '0001-01-01T00:00:00',
       this.contactId,
       Number(this.toAddAppointment.tenantId)
     );

@@ -19,7 +19,7 @@ export class TenantHomepageComponent implements OnInit {
     private routeSub: Subscription;
     appointmentDtos: AppointmentDto[];
     distinctDates: string[];
-    sortingDate: string;
+    sortingDate = 'Alle afspraken';
     contact: Contact;
     tenantId: number;
     calculating = false;

@@ -6,32 +6,31 @@ using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
 using System.Collections.Generic;
 using AppointmentProj.Application.Commands.CreateCommand;
+using AppointmentProj.Persistence;
 
 namespace AppointmentProj.Application.Commands.CreateHandler
 {
     public class CreateAppointmentCommandHandler : IRequestHandler<CreateAppointmentCommand, int>
     {
-        private readonly AppointmentRepository appointmentRepository;
+        private readonly AppointmentRequestRepository appointmentRequestRepository;
 
-        public CreateAppointmentCommandHandler(AppointmentRepository appointmentRepository)
+        public CreateAppointmentCommandHandler(AppointmentRequestRepository appointmentRequestRepository)
         {
-            this.appointmentRepository = appointmentRepository;
+            this.appointmentRequestRepository = appointmentRequestRepository;
         }
         public async Task<int> Handle(CreateAppointmentCommand request, CancellationToken cancellationToken)
         {
-            var appointment = new Appointment() { Title = request.Title,
+            var appointmentRequest = new AppointmentRequest() { Title = request.Title,
                 Description = request.Description,
                 Longitude = request.Longitude,
                 Latitude = request.Latitude,
                 Duration = request.Duration,
                 Date = request.Date,
-                Start = request.Start,
-                End = request.End,
                 ClientId = request.ClientId,
                 TenantId = request.TenantId,
                 CreatedDateUtc = DateTime.Now
             };
-            return await appointmentRepository.SaveAsync(appointment, cancellationToken);
+            return await appointmentRequestRepository.SaveAsync(appointmentRequest, cancellationToken);
         }
     }
 }
