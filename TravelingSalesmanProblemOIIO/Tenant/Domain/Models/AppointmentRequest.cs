@@ -13,9 +13,7 @@ namespace AppointmentProj.Domain
         public DateTime Date { get; set; }
         public int ClientId { get; set; }
         public int TenantId { get; set; }
-
         public int? AppointmentId { get; set; }
-
         public DateTime CreatedDateUtc { get; set; }
 
     }

@@ -7,7 +7,6 @@ namespace AppointmentProj.Application.Appointments.Interfaces
 {
     public interface IAppointmentScheduler
     {
-        List<Appointment> scheduleAppointments(List<AppointmentRequest> appointments, double[] costArray);
-
+        List<Appointment> ScheduleAppointments(List<AppointmentRequest> appointments, double[] costArray);
     }
 }

@@ -9,7 +9,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
     {
         List<AppointmentRequest> Calculate(List<AppointmentRequest> appointments, int populationSize, int amountGenerations);
         double[][] CalculateCostMatrix();
-        double[] calculateCostArray();
+        double[] CalculateCostArray();
         double CalculateDistanceBetweenTwo(AppointmentRequest firstAppointment, AppointmentRequest secondAppointment);
         int[][] GeneratePopulation();
         void CalculateShortestOfPopulation();

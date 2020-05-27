@@ -26,46 +26,34 @@ namespace AppointmentProj.Application.Queries.GetAppointments
         {
             List<GetAppointmentsDto> appointmentDtos = new List<GetAppointmentsDto>();
             var appointmentRequests = await appointmentRequestRepository.GetAsync(cancellationToken);
+            DateTime? start = null;
+            DateTime? end = null;
             foreach (AppointmentRequest appointmentRequest in appointmentRequests)
             {
                 if (appointmentRequest.AppointmentId != null)
                 {
-                    var appointment = await appointmentRepository.GetByIdAsync(appointmentRequest.AppointmentId.Value ,cancellationToken);
-                    appointmentDtos.Add(new GetAppointmentsDto
-                    {
-                        Id = appointment.Id,
-                        Title = appointment.Title,
-                        Description = appointment.Description,
-                        Latitude = appointment.Latitude,
-                        Longitude = appointment.Longitude,
-                        Duration = appointment.Duration,
-                        Date = appointment.Date,
-                        Start = appointment.Start,
-                        End = appointment.End,
-                        ClientId = appointment.ClientId,
-                        TenantId = appointment.TenantId,
-                        Address = addressBook.GetAddress(appointmentRequest.Latitude, appointmentRequest.Longitude)
-                    });
-                } else
-                {
-                    appointmentDtos.Add(new GetAppointmentsDto
-                    {
-                        Id = appointmentRequest.Id,
-                        Title = appointmentRequest.Title,
-                        Description = appointmentRequest.Description,
-                        Latitude = appointmentRequest.Latitude,
-                        Longitude = appointmentRequest.Longitude,
-                        Duration = appointmentRequest.Duration,
-                        Date = appointmentRequest.Date,
-                        Start = DateTime.MinValue,
-                        End = DateTime.MinValue,
-                        ClientId = appointmentRequest.ClientId,
-                        TenantId = appointmentRequest.TenantId,
-                        Address = addressBook.GetAddress(appointmentRequest.Latitude, appointmentRequest.Longitude)
-                    });
+                    var appointment = await appointmentRepository.GetByIdAsync(appointmentRequest.AppointmentId.Value, cancellationToken);
+                    start = appointment.Start;
+                    end = appointment.End;
                 }
+                appointmentDtos.Add(new GetAppointmentsDto
+                {
+                    Id = appointmentRequest.Id,
+                    Title = appointmentRequest.Title,
+                    Description = appointmentRequest.Description,
+                    Latitude = appointmentRequest.Latitude,
+                    Longitude = appointmentRequest.Longitude,
+                    Duration = appointmentRequest.Duration,
+                    Date = appointmentRequest.Date,
+                    Start = start,
+                    End = end,
+                    ClientId = appointmentRequest.ClientId,
+                    TenantId = appointmentRequest.TenantId,
+                    Address = addressBook.GetAddress(appointmentRequest.Latitude, appointmentRequest.Longitude)
+                });
             }
             return appointmentDtos;
         }
     }
 }
+

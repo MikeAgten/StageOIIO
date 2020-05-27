@@ -26,7 +26,7 @@ namespace TravelingSalesmanProblemOIIO
             Configuration = configuration;
         }
 
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        private readonly string myAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -45,7 +45,7 @@ namespace TravelingSalesmanProblemOIIO
             services.AddDbContext<AppointmentDbContext>();
             services.AddCors(options =>
             {
-                options.AddPolicy(MyAllowSpecificOrigins,
+                options.AddPolicy(myAllowSpecificOrigins,
                 builder =>
                 {
                     builder.WithOrigins("*").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
@@ -70,7 +70,7 @@ namespace TravelingSalesmanProblemOIIO
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseCors(MyAllowSpecificOrigins);
+            app.UseCors(myAllowSpecificOrigins);
 
             app.UseAuthorization();
 

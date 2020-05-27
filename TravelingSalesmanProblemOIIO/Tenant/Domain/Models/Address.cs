@@ -6,13 +6,13 @@ namespace AppointmentProj.Domain.Models
 {
     public class Address
     {
-        public double latitude { get; set; }
-        public double longitude { get; set; }
-        public string street { get; set; }
-        public int number { get; set; }
-        public string postal { get; set; }
-        public string city { get; set; }
-        public string country { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string Street { get; set; }
+        public int Number { get; set; }
+        public string Postal { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
 
     }
 }

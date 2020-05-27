@@ -3,18 +3,17 @@ using CompareAlgorithmsApplication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AppointmentProj.Application.Appointments.Interfaces
 {
     public class GeneticAlgorithmService : IGeneticAlgorithmService
     {
         int populationSize;
-        int amountShuffles = 30;
+        readonly int amountShuffles = 30;
         int amountGenerations;
 
         int currentGeneration = 0;
-        double recordRouteCost = 99999999; //represents infinite to start with
+        double recordRouteCost = double.MaxValue; //represents infinite to start with
 
         private List<AppointmentRequest> appointmentRequests;
         private List<AppointmentRequest> sortedAppointmentRequests;
@@ -35,17 +34,17 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             sortedAppointmentRequests = new List<AppointmentRequest>();
             rand = new Random();
             costMatrix = CalculateCostMatrix();
-            printMatrix(costMatrix);
+            PrintMatrix(costMatrix);
             population = GeneratePopulation();
-            printPopulationMatrix(population);
+            PrintPopulationMatrix(population);
             CalculateShortestOfPopulation();
-            startAlgorithmLoop();
-            bestPathEver = shiftAppointments(bestPathEver);
-            sortAppointments();
+            StartAlgorithmLoop();
+            bestPathEver = ShiftAppointments(bestPathEver);
+            SortAppointments();
             return sortedAppointmentRequests;
         }
 
-        private int[] shiftAppointments(int[] bestPathEver)
+        private int[] ShiftAppointments(int[] bestPathEver)
         {
             int[] currentPath = bestPathEver;
             int[] shiftedPath = new int[bestPathEver.Length];
@@ -55,24 +54,24 @@ namespace AppointmentProj.Application.Appointments.Interfaces
                 {
                     shiftedPath[i] = currentPath[i + 1];
                 }
-                shiftedPath[shiftedPath.Length - 1] = currentPath[0];
+                shiftedPath[^1] = currentPath[0];
                 currentPath = (int[])shiftedPath.Clone();
             }
             return shiftedPath;
         }
 
-        public double[] calculateCostArray()
+        public double[] CalculateCostArray()
         {
             var costArray = new double[appointmentRequests.Count];
             for (int appointmentIndex = 0; appointmentIndex < bestPathEver.Length - 1; appointmentIndex++)
             {
                 costArray[appointmentIndex] = costMatrix[bestPathEver[appointmentIndex]][bestPathEver[appointmentIndex + 1]] / 0.0075;
             }
-            costArray[costArray.Length - 1] = costMatrix[bestPathEver[costArray.Length - 1]][bestPathEver[0]] / 0.0065;
+            costArray[^1] = costMatrix[bestPathEver[costArray.Length - 1]][bestPathEver[0]] / 0.0065;
             return costArray;
         }
 
-        private void sortAppointments()
+        private void SortAppointments()
         {
             for (int appointmentIndex = 0; appointmentIndex < bestPathEver.Length; appointmentIndex++)
             {
@@ -80,7 +79,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             }
         }
 
-        private void startAlgorithmLoop()
+        private void StartAlgorithmLoop()
         {
             while (amountGenerations > currentGeneration)
             {
@@ -104,7 +103,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
                 sum += costForIndex;
             }
             var firstAddress = order[0];
-            var finalAddress = order[order.Length - 1];
+            var finalAddress = order[^1];
             sum += costMatrix[firstAddress][finalAddress];
             return sum;
         }
@@ -170,7 +169,6 @@ namespace AppointmentProj.Application.Appointments.Interfaces
         {
             var population = new int[populationSize][];
             order = new int[appointmentRequests.Count];
-            var shuffledOrder = new int[appointmentRequests.Count];
             for (int orderIndex = 0; orderIndex < order.Length; orderIndex++)
             {
                 //filling the order with 1,2,3,4,5,...
@@ -178,7 +176,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             }
             for (int populationIndex = 0; populationIndex < population.Length; populationIndex++)
             {
-                shuffledOrder = ShuffleInitialPopulation(order, amountShuffles);
+                var shuffledOrder = ShuffleInitialPopulation(order, amountShuffles);
                 population[populationIndex] = Cloner.DeepClone(shuffledOrder);
             }
             return population;
@@ -201,8 +199,8 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             var newPopulation = new int[populationSize][];
             for (var i = 0; i < population.Length; i++)
             {
-                var orderA = Selection(population, fitness); //pak een oplossing uit de populatie
-                var orderB = Selection(population, fitness); //pak een oplossing uit de populatie
+                var orderA = Selection(population, fitness);
+                var orderB = Selection(population, fitness);
                 var order = CrossOver(orderA, orderB);
                 order = Mutate(order, 1);
                 newPopulation[i] = order;
@@ -244,7 +242,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             double r = rand.NextDouble();
             while (r > 0)
             {
-                r = r - probability[index];
+                r -= probability[index];
                 index++;
             }
             index--;
@@ -271,7 +269,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             return order;
         }
 
-        public void printMatrix(double[][] matrix)
+        public void PrintMatrix(double[][] matrix)
         {
             for (int row = 0; row < matrix.Length; row++)
             {
@@ -283,7 +281,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
             }
         }
 
-        public void printPopulationMatrix(int[][] matrix)
+        public void PrintPopulationMatrix(int[][] matrix)
         {
             Console.WriteLine("First 20 orders of population: ");
             for (int row = 0; row < 20; row++)

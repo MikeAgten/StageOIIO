@@ -10,7 +10,7 @@ export class AppointmentRequest {
   tenantId: number;
 
   constructor(id: number, title: string, description: string, latitude: number, longitude: number, duration: number, date: string,
-              clientId: number, tenantId: number){
+               clientId: number, tenantId: number){
     this.id = id;
     this.title = title;
     this.description = description;

@@ -66,7 +66,7 @@ namespace TravelingSalesmanProblemOIIO.Controllers
         [HttpDelete("{appointmentid:int}")]
         public async Task<IActionResult> DeleteAppointmentById(int appointmentid)
         {
-            var appointment = await mediator.Send(new DeleteAppointmentByIdCommand(appointmentid));
+            await mediator.Send(new DeleteAppointmentByIdCommand(appointmentid));
             return Ok();
         }
     }

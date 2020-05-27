@@ -20,8 +20,8 @@ export class Appointment {
     this.longitude = longitude;
     this.duration = duration;
     this.date = date;
-    this.start = start;
-    this.end = end;
+    this.start = start || '00:00';
+    this.end = end || '00:00';
     this.clientId = clientId;
     this.tenantId = tenantId;
   }

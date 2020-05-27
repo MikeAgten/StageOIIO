@@ -7,8 +7,8 @@ namespace AppointmentProj.Application.Appointments.Interfaces
 {
     class AppointmentScheduler : IAppointmentScheduler
     {
-        DateTime startTime;
-        public List<Appointment> scheduleAppointments(List<AppointmentRequest> appointmentRequests, double[] costArray)
+        private DateTime startTime;
+        public List<Appointment> ScheduleAppointments(List<AppointmentRequest> appointmentRequests, double[] costArray)
         {
             startTime = appointmentRequests[1].Date;
             TimeSpan ts = new TimeSpan(8, 0, 0);
@@ -41,18 +41,6 @@ namespace AppointmentProj.Application.Appointments.Interfaces
                 ts = ts.Add(toNextAppointment);
             }
             return appointments;
-            /*for (int appointmentIndex = 0; appointmentIndex < appointments.Count; appointmentIndex++)
-            {
-                var appointment = appointments[appointmentIndex];
-                appointment.Start = appointment.Date.Date + ts;
-                TimeSpan toEnd = new TimeSpan(0, appointment.Duration,0);
-                ts = ts.Add(toEnd);
-                appointment.End = appointment.Date.Date + ts;
-                Console.WriteLine("from: " + appointment.Start + " until " + appointment.End);
-                TimeSpan toNextAppointment = new TimeSpan(0, Convert.ToInt32(Math.Round((costArray[appointmentIndex] + 4) / 5) * 5), 0);
-                ts = ts.Add(toNextAppointment);
-            }
-            return appointments;*/
         }
     }
 }

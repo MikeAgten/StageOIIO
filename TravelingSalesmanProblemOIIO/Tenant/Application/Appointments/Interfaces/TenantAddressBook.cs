@@ -10,8 +10,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
     {
         public TenantAddress GetAddress(int tenantId)
         {
-            var tenantAddress = this.GetAll().Where(x => x.TenantId == tenantId).First();
-            return tenantAddress;
+            return this.GetAll().Where(x => x.TenantId == tenantId).First();
         }
 
         public List<TenantAddress> GetAll()

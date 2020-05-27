@@ -15,10 +15,10 @@ namespace AppointmentProj.Application.Appointments.Commands.CalculateRoute
 {
     public class CalculateRouteCommandHandler : IRequestHandler<CalculateRouteCommand, Unit>
     {
-        AppointmentRepository appointmentRepository;
-        AppointmentRequestRepository appointmentRequestRepository;
-        TenantAddressBook tenantAddressBook;
-        IGeneticAlgorithmService geneticAlgorithmService;
+        private readonly AppointmentRepository appointmentRepository;
+        private readonly AppointmentRequestRepository appointmentRequestRepository;
+        private readonly TenantAddressBook tenantAddressBook;
+        private readonly IGeneticAlgorithmService geneticAlgorithmService;
 
         public CalculateRouteCommandHandler(AppointmentRepository appointmentRepository, AppointmentRequestRepository appointmentRequestRepository, TenantAddressBook tenantAddressBook, IGeneticAlgorithmService geneticAlgorithmService)
         {
@@ -35,9 +35,9 @@ namespace AppointmentProj.Application.Appointments.Commands.CalculateRoute
             var tenantAddress = tenantAddressBook.GetAddress(request.TenantId);
             var tenantAppointmentRequest = new AppointmentRequest { Title = "TenantAddress", Latitude = tenantAddress.Latitude, Longitude = tenantAddress.Longitude };
             appointmentRequests.Insert(0, tenantAppointmentRequest);
-            var sortedAppointmentRequests = geneticAlgorithmService.Calculate(appointmentRequests, 100, getAmountGenerations(appointmentRequests.Count-1));
-            var costArray = geneticAlgorithmService.calculateCostArray();
-            var scheduledAppointments = appointmentScheduler.scheduleAppointments(sortedAppointmentRequests, costArray);
+            var sortedAppointmentRequests = geneticAlgorithmService.Calculate(appointmentRequests, 100, GetAmountGenerations(appointmentRequests.Count-1));
+            var costArray = geneticAlgorithmService.CalculateCostArray();
+            var scheduledAppointments = appointmentScheduler.ScheduleAppointments(sortedAppointmentRequests, costArray);
             int appointmentId;
             foreach (Appointment appointment in scheduledAppointments)
             {
@@ -62,7 +62,7 @@ namespace AppointmentProj.Application.Appointments.Commands.CalculateRoute
             return Unit.Value;
         }
 
-        public int getAmountGenerations(int amountAddresses)
+        public int GetAmountGenerations(int amountAddresses)
         {
             double fact = 0.00025; //used for scaling down the factorial graph
             for (int i = 1; i <= amountAddresses; i++)

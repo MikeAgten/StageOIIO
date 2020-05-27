@@ -27,7 +27,8 @@ export class AppointmentClientComponent implements OnInit {
     this.endHour = this.appointmentDto.appointment.end.toString().substr(11, 5);
     this.fetchClientById(this.appointmentDto.appointment.clientId);
     this.fetchTenantById(this.appointmentDto.appointment.tenantId);
-    if (this.startHour === '00:00'){
+    console.log(this.appointmentDto.appointment.start);
+    if (this.appointmentDto.appointment.start === '00:00'){
       this.startHour = '...';
       this.endHour = '...';
     }

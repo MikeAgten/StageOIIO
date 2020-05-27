@@ -37,7 +37,7 @@ namespace ContactProj.Persistance
             public ContactDbContext CreateDbContext(string[] args)
             {
                 var optionsBuilder = new DbContextOptionsBuilder<ContactDbContext>();
-                optionsBuilder.UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = TSPContactDatabase; Trusted_Connection = True;"); // todo - vervang connectionstring
+                optionsBuilder.UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = TSPContactDatabase; Trusted_Connection = True;");
                 return new ContactDbContext(optionsBuilder.Options);
             }
         }
