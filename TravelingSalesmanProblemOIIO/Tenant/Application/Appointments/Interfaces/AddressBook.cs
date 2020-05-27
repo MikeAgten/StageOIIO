@@ -10,8 +10,7 @@ namespace AppointmentProj.Domain.Models
     {
         public Address GetAddress(double latitude, double longitude)
         {
-            var address = this.GetAll().Where(x => x.latitude == latitude && x.longitude == longitude).First();
-            return address;
+            return this.GetAll().Where(x => x.latitude == latitude && x.longitude == longitude).First();
         }
         public List<Address> GetAll()
         {
