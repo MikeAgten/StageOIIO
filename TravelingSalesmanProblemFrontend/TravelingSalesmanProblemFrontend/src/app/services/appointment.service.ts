@@ -71,7 +71,7 @@ export class AppointmentService {
            appointmentDto.tenantId),
            appointmentDto.address
         );
-    }).sort((a, b) => a.appointment.start.localeCompare(b.appointment.start));
+    }).sort((a, b) => a.appointment.date.localeCompare(b.appointment.date)).sort((a, b) => a.appointment.start.localeCompare(b.appointment.start));
   }
 
   filterByClientIdAppointmentsDto(appointments: AppointmentDto[], clientId: number): AppointmentDto[] {

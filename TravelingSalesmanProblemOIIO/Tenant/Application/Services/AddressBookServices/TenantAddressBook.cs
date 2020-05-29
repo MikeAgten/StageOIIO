@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AppointmentProj.Application.Appointments.Interfaces
+namespace AppointmentProj.Application.Services.AddressBookServices
 {
     public class TenantAddressBook
     {

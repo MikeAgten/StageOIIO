@@ -1,10 +1,10 @@
-﻿using AppointmentProj.Domain;
-using CompareAlgorithmsApplication;
+﻿using AppointmentProj.Application.Extensions;
+using AppointmentProj.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AppointmentProj.Application.Appointments.Interfaces
+namespace AppointmentProj.Application.Services.AlgorithmServices
 {
     public class GeneticAlgorithmService : IGeneticAlgorithmService
     {
@@ -46,7 +46,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
 
         private int[] ShiftAppointments(int[] bestPathEver)
         {
-            int[] currentPath = bestPathEver;
+            int[] currentPath = (int[])bestPathEver.Clone();
             int[] shiftedPath = new int[bestPathEver.Length];
             while (currentPath[0] != 0)
             {
@@ -57,7 +57,7 @@ namespace AppointmentProj.Application.Appointments.Interfaces
                 shiftedPath[^1] = currentPath[0];
                 currentPath = (int[])shiftedPath.Clone();
             }
-            return shiftedPath;
+            return currentPath;
         }
 
         public double[] CalculateCostArray()

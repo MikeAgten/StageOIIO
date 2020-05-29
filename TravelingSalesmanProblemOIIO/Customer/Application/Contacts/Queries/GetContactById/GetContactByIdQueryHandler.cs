@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ContactProj.Domain;
 using ContactProj.Persistance;
 using ContactProj.Application.Contacts.Queries.GetContactById;
+using System.Linq;
 
 namespace ContactProj.Application.Queries.GetContactById
 {
@@ -20,10 +21,8 @@ namespace ContactProj.Application.Queries.GetContactById
         }
         public async Task<GetContactByIdQueryDto> Handle(GetContactByIdQuery request, CancellationToken cancellationToken)
         {
-
-            var contact = await contactRepository.GetByIdAsync(request.Id, cancellationToken);
-            var contactByIdDto = new GetContactByIdQueryDto { Id = contact.Id, Type = contact.Type, FirstName = contact.FirstName, Surname = contact.Surname};
-            return contactByIdDto;
+            var contact = await contactRepository.GetByIdAsync( request.Id ,cancellationToken);
+            return GetContactByIdQueryDto.MapToDto(contact);
         }
     }
 }

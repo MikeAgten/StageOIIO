@@ -18,5 +18,22 @@ namespace AppointmentProj.Application.Queries.GetAppointments
         public int ClientId { get; set; }
         public int TenantId { get; set; }
         public Address Address { get; set; }
-        }
+
+
+        public static Func<Appointment, Address, GetAppointmentsDto> MapToDto = (appointment, address) => new GetAppointmentsDto
+        {
+            Id = appointment.Id,
+            Title = appointment.Title,
+            Description = appointment.Description,
+            Latitude = appointment.Latitude,
+            Longitude = appointment.Longitude,
+            Duration = appointment.Duration,
+            Date = appointment.Date,
+            Start = appointment.Start,
+            End = appointment.End,
+            ClientId = appointment.ClientId,
+            TenantId = appointment.TenantId,
+            Address = address
+        };
+    }
 }

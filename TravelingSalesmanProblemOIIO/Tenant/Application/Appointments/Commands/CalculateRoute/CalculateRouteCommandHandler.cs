@@ -1,12 +1,13 @@
-﻿using AppointmentProj.Application.Appointments.Commands.CalculateRoute;
-using AppointmentProj.Application.Appointments.Interfaces;
+﻿using AppointmentProj.Application.Services.AddressBookServices;
+using AppointmentProj.Application.Services.AlgorithmServices;
+using AppointmentProj.Application.Services.SchedulerServices;
 using AppointmentProj.Domain;
 using AppointmentProj.Persistance;
 using AppointmentProj.Persistence;
-using BenchmarkDotNet.Running;
 using MediatR;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,20 +18,21 @@ namespace AppointmentProj.Application.Appointments.Commands.CalculateRoute
     {
         private readonly AppointmentRepository appointmentRepository;
         private readonly AppointmentRequestRepository appointmentRequestRepository;
+        private readonly AppointmentScheduler appointmentScheduler;
         private readonly TenantAddressBook tenantAddressBook;
         private readonly IGeneticAlgorithmService geneticAlgorithmService;
 
-        public CalculateRouteCommandHandler(AppointmentRepository appointmentRepository, AppointmentRequestRepository appointmentRequestRepository, TenantAddressBook tenantAddressBook, IGeneticAlgorithmService geneticAlgorithmService)
+        public CalculateRouteCommandHandler(AppointmentRepository appointmentRepository, AppointmentRequestRepository appointmentRequestRepository, AppointmentScheduler appointmentScheduler, TenantAddressBook tenantAddressBook, IGeneticAlgorithmService geneticAlgorithmService)
         {
             this.appointmentRepository = appointmentRepository;
             this.appointmentRequestRepository = appointmentRequestRepository;
+            this.appointmentScheduler = appointmentScheduler;
             this.tenantAddressBook = tenantAddressBook;
             this.geneticAlgorithmService = geneticAlgorithmService;
         }
 
         public async Task<Unit> Handle(CalculateRouteCommand request, CancellationToken cancellationToken)
         {
-            AppointmentScheduler appointmentScheduler = new AppointmentScheduler();
             var appointmentRequests = await appointmentRequestRepository.GetByTenantIdAndDateAsync(request.TenantId, request.Date, cancellationToken);
             var tenantAddress = tenantAddressBook.GetAddress(request.TenantId);
             var tenantAppointmentRequest = new AppointmentRequest { Title = "TenantAddress", Latitude = tenantAddress.Latitude, Longitude = tenantAddress.Longitude };
@@ -38,26 +40,12 @@ namespace AppointmentProj.Application.Appointments.Commands.CalculateRoute
             var sortedAppointmentRequests = geneticAlgorithmService.Calculate(appointmentRequests, 100, GetAmountGenerations(appointmentRequests.Count-1));
             var costArray = geneticAlgorithmService.CalculateCostArray();
             var scheduledAppointments = appointmentScheduler.ScheduleAppointments(sortedAppointmentRequests, costArray);
-            int appointmentId;
-            foreach (Appointment appointment in scheduledAppointments)
+            foreach (KeyValuePair<int, Appointment> appointment in scheduledAppointments)
             {
-                appointmentId = await appointmentRepository.SaveAsync(new Appointment
-                {
-                    Title = appointment.Title,
-                    Description = appointment.Description,
-                    Longitude = appointment.Longitude,
-                    Latitude = appointment.Latitude,
-                    Duration = appointment.Duration,
-                    Date = appointment.Date,
-                    Start = appointment.Start,
-                    End = appointment.End,
-                    ClientId = appointment.ClientId,
-                    TenantId = appointment.TenantId,
-                    CreatedDateUtc = DateTime.Now
-                }, cancellationToken);
-                var appointmentRequestToChange = await appointmentRequestRepository.GetByIdAsync(appointment.Id, cancellationToken);
-                appointmentRequestToChange.AppointmentId = appointmentId;
-                await appointmentRequestRepository.PutAsync(appointmentRequestToChange, cancellationToken);
+                var appointmentId = await appointmentRepository.SaveAsync(appointment.Value, cancellationToken);
+                var appointmentRequest = appointmentRequests.FirstOrDefault(x => x.Id == appointment.Key);
+                appointmentRequest.AppointmentId = appointmentId;
+                await appointmentRequestRepository.PutAsync(appointmentRequest, cancellationToken);
             }
             return Unit.Value;
         }

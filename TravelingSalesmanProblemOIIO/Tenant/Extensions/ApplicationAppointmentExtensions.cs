@@ -6,9 +6,11 @@ using AppointmentProj.Persistance;
 using AppointmentProj.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using AppointmentProj.Application.Appointments.Interfaces;
 using AppointmentProj.Domain.Models;
 using AppointmentProj.Persistence;
+using AppointmentProj.Application.Services.AddressBookServices;
+using AppointmentProj.Application.Services.AlgorithmServices;
+using AppointmentProj.Application.Services.SchedulerServices;
 
 namespace AppointmentProj.Extensions
 {
@@ -19,6 +21,7 @@ namespace AppointmentProj.Extensions
             string connectionString = configuration.GetConnectionString("TSPAppointmentDatabase");
             services.AddScoped<AppointmentRepository>();
             services.AddScoped<AppointmentRequestRepository>();
+            services.AddScoped<AppointmentScheduler>();
             services.AddSingleton<AddressBook>();
             services.AddSingleton<TenantAddressBook>();
             services.AddDbContext<AppointmentDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);

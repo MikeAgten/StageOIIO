@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AppointmentProj.Application.Appointments.Interfaces
+namespace AppointmentProj.Application.Services.AlgorithmServices
 {
     public interface IGeneticAlgorithmService
     {

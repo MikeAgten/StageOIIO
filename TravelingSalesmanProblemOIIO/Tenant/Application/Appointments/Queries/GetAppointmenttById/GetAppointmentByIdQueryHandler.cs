@@ -8,6 +8,7 @@ using AppointmentProj.Persistance;
 using AppointmentProj.Domain.Models;
 using AppointmentProj.Application.Handlers.GetAppointmentById;
 using AppointmentProj.Persistence;
+using AppointmentProj.Application.Services.AddressBookServices;
 
 namespace AppointmentProj.Application.Queries.GetAppointmentById
 {

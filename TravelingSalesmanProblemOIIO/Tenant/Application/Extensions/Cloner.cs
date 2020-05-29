@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompareAlgorithmsApplication
+namespace AppointmentProj.Application.Extensions
 {
     public static class Cloner
     {

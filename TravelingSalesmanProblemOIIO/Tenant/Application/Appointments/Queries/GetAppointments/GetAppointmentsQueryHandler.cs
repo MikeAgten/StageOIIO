@@ -7,6 +7,7 @@ using AppointmentProj.Domain;
 using AppointmentProj.Domain.Models;
 using AppointmentProj.Persistence;
 using System;
+using AppointmentProj.Application.Services.AddressBookServices;
 
 namespace AppointmentProj.Application.Queries.GetAppointments
 {
@@ -26,10 +27,10 @@ namespace AppointmentProj.Application.Queries.GetAppointments
         {
             List<GetAppointmentsDto> appointmentDtos = new List<GetAppointmentsDto>();
             var appointmentRequests = await appointmentRequestRepository.GetAsync(cancellationToken);
-            DateTime? start = null;
-            DateTime? end = null;
             foreach (AppointmentRequest appointmentRequest in appointmentRequests)
             {
+                DateTime? start = null;
+                DateTime? end = null;
                 if (appointmentRequest.AppointmentId != null)
                 {
                     var appointment = await appointmentRepository.GetByIdAsync(appointmentRequest.AppointmentId.Value, cancellationToken);
