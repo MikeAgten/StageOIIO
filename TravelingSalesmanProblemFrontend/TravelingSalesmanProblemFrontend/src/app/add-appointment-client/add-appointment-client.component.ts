@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../services/contact.service';
 import { Contact } from '../models/contact.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Appointment } from '../models/appointment.model';
 import { AppointmentService } from '../services/appointment.service';
@@ -27,7 +27,7 @@ export class AddAppointmentClientComponent implements OnInit {
   toAddAppointment: Appointment;
   currentAddress: Address;
 
-  constructor(private contactService: ContactService, private appointmentService: AppointmentService, private route: ActivatedRoute) {}
+  constructor(private contactService: ContactService, private appointmentService: AppointmentService, private route: ActivatedRoute,  private router: Router) {}
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
@@ -69,6 +69,23 @@ export class AddAppointmentClientComponent implements OnInit {
   submit(appointmentform): void {
     console.log('current address : ' + this.currentAddress.number);
     this.dateString = this.date.toISOString().slice(0, 19);
+    if (this.contact.type === 0){
+      const appointment = new AppointmentRequest(
+        null,
+        this.toAddAppointment.title,
+        this.toAddAppointment.description,
+        this.currentAddress.latitude,
+        this.currentAddress.longitude,
+        Number(this.toAddAppointment.duration),
+        this.toAddAppointment.date,
+        Number(this.toAddAppointment.tenantId),
+        this.contactId
+      );
+      console.log('posting tenant appointment');
+      this.appointmentService.PostAppointment(appointment).subscribe(
+        data => console.log('succes!', data),
+        error => console.error('Error!', error));
+    } else if (this.contact.type === 1){
     const appointment = new AppointmentRequest(
       null,
       this.toAddAppointment.title,
@@ -80,10 +97,23 @@ export class AddAppointmentClientComponent implements OnInit {
       this.contactId,
       Number(this.toAddAppointment.tenantId)
     );
+    console.log('posting client appointment');
     this.appointmentService.PostAppointment(appointment).subscribe(
       data => console.log('succes!', data),
       error => console.error('Error!', error));
+    }
     appointmentform.reset();
+  }
+
+
+  BackHandle(event: Event){
+    console.log('current contact' + this.currentContactId);
+    if  (this.contact.type === 0){
+      this.router.navigate(['/tenant/', this.contact.id]);
+    }
+    if  (this.contact.type === 1){
+      this.router.navigate(['/contact/', this.contact.id]);
+    }
   }
 
   fillAddresses() {

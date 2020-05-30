@@ -34,7 +34,7 @@
       </div>
     </div>
     <button type="submit"  [disabled]="!appointmentForm.form.valid">Bevestig</button>
-    <button type="button" routerLink="/contact/{{contactId}}" [routerLinkActive]="'current'" title="clientHomePage">Terug</button>
+    <button type="button" (click)="BackHandle($event)" title="clientHomePage">Terug</button>
     <p *ngIf="!appointmentForm.form.valid" class="error"> Gelieve alle velden in te vullen</p>
   </form>
     </div>

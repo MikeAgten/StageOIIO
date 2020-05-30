@@ -39,15 +39,15 @@ export class LoginComponent implements OnInit {
 
   changeCurrentContact(id: number){
     this.currentContactId = id;
-    console.log("changed to" + this.currentContactId);
+    console.log('changed to' + this.currentContactId);
   }
 
   changeCurrentContactByType(){
-    console.log("changed to" + this.currentContactId);
+    console.log('changed to' + this.currentContactId);
   }
 
   loginHandle(event: Event){
-    console.log("current contact" + this.currentContactId);
+    console.log('current contact' + this.currentContactId);
     if(this.contactType == 0){
       this.router.navigate(['/tenant/', this.currentContactId]);
     }
